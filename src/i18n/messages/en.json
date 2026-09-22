@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "title": "Hilful Ventures Pvt Ltd",
+    "description": "Integrated mining and energy solutions"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "equipment": "Equipment Fleet",
+    "projects": "Projects",
+    "hse": "HSE & Governance",
+    "resources": "Resources",
+    "contact": "Contact"
+  },
+  "common": {
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "contactUs": "Contact Us",
+    "getInTouch": "Get in Touch",
+    "viewAll": "View All",
+    "backToHome": "Back to Home",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "notFound": "Page not found",
+    "notFoundDescription": "The page you are looking for does not exist or has been moved.",
+    "copyright": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "footer": {
+    "companyName": "Hilful Ventures Pvt Ltd",
+    "tagline": "Integrated Mining & Energy Solutions",
+    "quickLinks": "Quick Links",
+    "services": "Our Services",
+    "contactInfo": "Contact Information"
+  },
+  "services": {
+    "title": "Our Services",
+    "exploration": "Minerals & Oil Exploration",
+    "equipmentLeasing": "Mining Equipment Leasing",
+    "projectManagement": "Turnkey Mining Project Management",
+    "trading": "Mineral & Hydrocarbon Commodities Trading"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch for business inquiries",
+    "form": {
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "company": "Company Name",
+      "service": "Service of Interest",
+      "message": "Your Message",
+      "submit": "Submit Inquiry",
+      "success": "Thank you for your inquiry. We will respond shortly.",
+      "error": "There was an error submitting your inquiry. Please try again."
+    }
+  }
+}
