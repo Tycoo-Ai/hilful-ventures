@@ -1,0 +1,10 @@
+export { HeroSection } from "./hero-section";
+export { CapabilityStrip } from "./capability-strip";
+export { AboutSection } from "./about-section";
+export { OperationalCapabilities } from "./operational-capabilities";
+export { EquipmentShowcase } from "./equipment-showcase";
+export { HilfulAdvantage } from "./hilful-advantage";
+export { HSESection } from "./hse-section";
+export { EngagementProcess } from "./engagement-process";
+export { ProjectShowcase } from "./project-showcase";
+export { FinalCTA } from "./final-cta";

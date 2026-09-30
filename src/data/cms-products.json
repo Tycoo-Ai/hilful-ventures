@@ -1,0 +1,557 @@
+[
+  {
+    "id": "5d0dcf7b-0574-441b-b06b-064f443546b9",
+    "slug": "water-based-drilling-fluids",
+    "name": "Water Based Drilling Fluids",
+    "departmentSlug": "mining-drilling-chemicals",
+    "departmentName": "Mining & Drilling Chemicals",
+    "shortDesc": "High-yield bentonite additives, PAC-LV, and xanthan polymer systems for borehole stability.",
+    "fullDesc": "Engineered for superior shale inhibition and cuttings suspension in diverse geological strata. Our water-based drilling polymer line provides optimal rheology control with negligible formation damage, supporting both fresh water and saturated salt fluid environments.",
+    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "specs": {
+      "moq": "20 Metric Tons (1 x 20ft FCL)",
+      "name": "Water Based Drilling Fluids",
+      "grade": "API Spec 13A Section 9 / 10 Compliant",
+      "origin": "India / International Direct Refinery",
+      "packaging": "25kg multi-wall paper bags with PE inner liner, shrink-wrapped on ISPM-15 heat treated pallets",
+      "purityOrForm": "Fine white to off-white dry powder"
+    },
+    "applications": [
+      "Deep onshore exploration & geothermal drilling",
+      "Borehole wall stabilization and shale swelling mitigation",
+      "Horizontal directional drilling (HDD) and civil tunneling slurry",
+      "Heavy mineral ore core drilling operations"
+    ],
+    "qualityDocs": [
+      "Certificate of Analysis (COA)",
+      "Safety Data Sheet (SDS)",
+      "API Spec 13A Conformity Report",
+      "Certificate of Origin"
+    ],
+    "shippingOptions": [
+      "FOB Chennai / Nhava Sheva",
+      "CIF Djibouti Port (for Ethiopia / East Africa)",
+      "CIF Jebel Ali / Middle East Ports",
+      "CIF Global Gateway Ports"
+    ],
+    "brochureUrl": "#enquire"
+  },
+  {
+    "id": "cbc9aef4-759f-4375-b66a-b3302ae8bea7",
+    "slug": "oil-synthetic-based-fluids",
+    "name": "Oil / Synthetic Based Fluids",
+    "departmentSlug": "mining-drilling-chemicals",
+    "departmentName": "Mining & Drilling Chemicals",
+    "shortDesc": "Primary & secondary emulsifiers, organophilic clays, and synthetic fluid loss controllers.",
+    "fullDesc": "Formulated for extreme wellbore conditions where water-based systems fail due to temperature, salt saturation, or reactive shale. Delivers high electrical stability, controlled fluid loss, and exceptional lubricity to prevent stuck pipe hazards in deep drilling.",
+    "image": "/chemicals.jpg",
+    "galleryImages": [
+      "/chemicals.jpg"
+    ],
+    "specs": {
+      "moq": "16 Metric Tons (80 Drums / 16 IBCs)",
+      "name": "Oil / Synthetic Based Invert Fluids",
+      "grade": "Heavy-Duty Invert Emulsion Additives",
+      "origin": "India / Refinery Direct",
+      "packaging": "200L / 55 Gallon Steel Drums or 1,000L Composite IBC Tanks",
+      "purityOrForm": "High-density active liquid surfactant complex"
+    },
+    "applications": [
+      "High Pressure High Temperature (HPHT) hydrocarbon exploration",
+      "Reactive gumbo shale formations and extended-reach horizontal drilling",
+      "Deep offshore and desert basin drilling campaigns"
+    ],
+    "qualityDocs": [
+      "Batch Inspection COA",
+      "IMO Maritime Hazmat Declarations",
+      "MSDS 16-Section Standard",
+      "Manufacturer Quality Guarantee"
+    ],
+    "shippingOptions": [
+      "UN-Certified Steel Drums",
+      "Composite IBC Tote Units",
+      "20ft ISO Tank Containers"
+    ],
+    "brochureUrl": "#enquire"
+  },
+  {
+    "id": "c3c13115-da86-439d-90f6-c82dff4fa5b1",
+    "slug": "modified-starch",
+    "name": "Modified Starch (Drilling Grade)",
+    "departmentSlug": "mining-drilling-chemicals",
+    "departmentName": "Mining & Drilling Chemicals",
+    "shortDesc": "Pregelatinized, non-ionic crosslinked starch for high-temperature fluid loss mitigation.",
+    "fullDesc": "A premium grade pregelatinized corn/potato starch derivative tailored specifically for drilling fluid filtration control. Exhibits thermal stability up to 130°C and maintains functional polymer chain integrity even in saturated brine and divalent calcium ion conditions.",
+    "image": "/chemicals.jpg",
+    "galleryImages": [
+      "/chemicals.jpg"
+    ],
+    "specs": {
+      "moq": "22 Metric Tons (1 x 20ft FCL)",
+      "name": "Modified Starch (Drilling Filtration Control)",
+      "grade": "API Spec 13A Starch Compliant",
+      "origin": "India",
+      "packaging": "25kg craft paper bags with moisture-proof polyethylene liner",
+      "purityOrForm": "Free-flowing light cream powder"
+    },
+    "applications": [
+      "API fluid loss control in fresh, sea, and saturated salt muds",
+      "Non-damaging workover and completion fluid systems",
+      "Core recovery drilling where minimal filter cake thickness is required"
+    ],
+    "qualityDocs": [
+      "API 13A Batch Analysis Certificate",
+      "Thermal Degradation Curve Data",
+      "Phytosanitary Certificate",
+      "Non-Toxic Environmental Clearance"
+    ],
+    "shippingOptions": [
+      "Palletized 25kg bags (40 bags per wooden pallet)",
+      "Container bulk lining options available on request"
+    ],
+    "brochureUrl": "#enquire"
+  },
+  {
+    "id": "e32f83d4-747d-4d55-b7b7-ce3f8aca3d7f",
+    "slug": "hms-1-2-steel-scrap",
+    "name": "HMS 1 & 2 Steel Scrap",
+    "departmentSlug": "ferrous-non-ferrous-metal",
+    "departmentName": "Ferrous / Non-Ferrous Metal",
+    "shortDesc": "Heavy Melting Steel 80:20 blend, cut to furnace size, zero prohibited items.",
+    "fullDesc": "Consistently graded heavy melting steel scrap sourced from industrial dismantling, structural beams, and heavy machinery frames. Clean cut to lengths under 1.5 meters to ensure effortless induction and electric arc furnace charging with minimal slag residue.",
+    "image": "/metals.jpg",
+    "galleryImages": [
+      "/metals.jpg",
+      "/hero-mine.jpg"
+    ],
+    "specs": {
+      "moq": "100 Metric Tons (4-5 Containers)",
+      "name": "Heavy Melting Steel (HMS 1 & 2 Blend)",
+      "grade": "ISRI 200 - 206 (80:20 Ratio)",
+      "origin": "East Africa / Middle East / Direct Industrial Source",
+      "packaging": "Loose stuffed in heavy-duty 20ft ocean containers",
+      "purityOrForm": "Heavy carbon steel cut lengths (thickness >= 6mm for HMS 1)"
+    },
+    "applications": [
+      "Electric Arc Furnace (EAF) primary steelmaking",
+      "Induction furnace foundry melting for construction rebar",
+      "Forging billet and structural casting production"
+    ],
+    "qualityDocs": [
+      "Pre-Shipment Inspection Certificate (PSIC)",
+      "Radiation Free Certificate",
+      "Weighbridge Dual Slips",
+      "Bill of Lading & Commercial Invoice"
+    ],
+    "shippingOptions": [
+      "Containerized 20ft heavy payload (25-27 MT per TEU)",
+      "CFR / CIF Major Asian & Middle Eastern Ports"
+    ],
+    "brochureUrl": "#enquire"
+  },
+  {
+    "id": "41116758-ea96-48cf-861b-82d2288a87f9",
+    "slug": "steel-scrap-turnings",
+    "name": "Steel Scrap & Cast Iron Turnings",
+    "departmentSlug": "ferrous-non-ferrous-metal",
+    "departmentName": "Ferrous / Non-Ferrous Metal",
+    "shortDesc": "Clean dry machine turnings and briquetted cast iron borings for foundry remelt.",
+    "fullDesc": "Uniformly sorted machining residues and iron foundry borings. Processed through centrifuge de-oiling or high-pressure hydraulic briquetting to minimize oxidation losses and maximize molten metal yield during cupola or induction melting.",
+    "image": "/metals.jpg",
+    "galleryImages": [
+      "/metals.jpg"
+    ],
+    "specs": {
+      "moq": "50 Metric Tons",
+      "name": "Cast Iron Borings & Steel Turnings",
+      "grade": "ISRI 220 - 223 Compliant",
+      "origin": "Certified Industrial Machining Centers",
+      "packaging": "Compressed dense briquettes or bulk container stuffed",
+      "purityOrForm": "Low-moisture briquetted or shredded iron chips"
+    },
+    "applications": [
+      "Grey iron and ductile iron automotive casting",
+      "Counterweight and ballast casting production",
+      "Secondary remelting charge optimization"
+    ],
+    "qualityDocs": [
+      "Chemical Composition Assay",
+      "Moisture & Oil Content Certificate",
+      "PSIC Inspection Documentation"
+    ],
+    "shippingOptions": [
+      "20ft heavy containers",
+      "FOB / CIF options available"
+    ],
+    "brochureUrl": "#enquire"
+  },
+  {
+    "id": "a284d8b8-49c1-44f8-a28f-47b6485c5c67",
+    "slug": "copper-cathodes-scrap",
+    "name": "Copper Wire / Millberry & Birch Scrap",
+    "departmentSlug": "ferrous-non-ferrous-metal",
+    "departmentName": "Ferrous / Non-Ferrous Metal",
+    "shortDesc": "99.9% pure electrolytic copper wire scrap, unalloyed, stripped bright wire.",
+    "fullDesc": "Premium clean copper wire scrap free of enamel, solder, burned insulation, and excess oxidation. Sourced from high-voltage transmission lines, power transformer dismantlings, and industrial cable stripping facilities.",
+    "image": "/metals.jpg",
+    "galleryImages": [
+      "/metals.jpg"
+    ],
+    "specs": {
+      "moq": "25 Metric Tons (1 x 20ft FCL)",
+      "name": "Copper Wire Scrap (Millberry / Berry)",
+      "grade": "ISRI Barley / Berry / Millberry (99.9% Cu min)",
+      "origin": "Africa / Middle East Selected Industrial Stock",
+      "packaging": "Hydraulic wire-tied bales or strapped bundles on pallets",
+      "purityOrForm": "Bright bare electrolytic copper wire >= 1.2mm gauge"
+    },
+    "applications": [
+      "Copper rod continuous casting and wire drawing",
+      "Electrical busbar, transformer strip, and brass alloying",
+      "High-conductivity electrical alloy manufacturing"
+    ],
+    "qualityDocs": [
+      "Spectrometer Chemical Assay",
+      "Independent Assay Report (SGS/AHK)",
+      "Customs Export Clearance",
+      "Certificate of Origin"
+    ],
+    "shippingOptions": [
+      "High-security locked 20ft ocean containers",
+      "Insured CIF maritime freight"
+    ],
+    "brochureUrl": "#enquire"
+  },
+  {
+    "id": "6601f269-10c3-490c-9e90-7816cfe2aa72",
+    "slug": "aluminium-brass-lead",
+    "name": "Aluminium, Brass & Lead Scrap",
+    "departmentSlug": "ferrous-non-ferrous-metal",
+    "departmentName": "Ferrous / Non-Ferrous Metal",
+    "shortDesc": "Tense/Tabor aluminium, Honey brass scrap, and soft lead remelt ingots.",
+    "fullDesc": "Broad portfolio of non-ferrous foundry feeds including sorted aluminium sheet and cast scrap, clean yellow brass valves and turnings, and refined soft lead pigs for battery recycling and alloy manufacturing.",
+    "image": "/metals.jpg",
+    "galleryImages": [
+      "/metals.jpg"
+    ],
+    "specs": {
+      "moq": "25 Metric Tons",
+      "name": "Aluminium, Brass & Secondary Lead Scrap",
+      "grade": "ISRI Tense / Tabor / Honey / Radio Compliant",
+      "origin": "Global Secondary Recyclers",
+      "packaging": "Strapped bales, jumbo boxes, or steel-banded pallets",
+      "purityOrForm": "Dense mechanically sorted alloy fractions"
+    },
+    "applications": [
+      "Secondary aluminium extrusion billet and ingot casting",
+      "Plumbing fixture and brass rod manufacturing",
+      "Lead acid battery plate manufacturing"
+    ],
+    "qualityDocs": [
+      "Spectrographic Chemical Analysis",
+      "PSIC Certificate",
+      "Weight & Packing Verification"
+    ],
+    "shippingOptions": [
+      "20ft and 40ft standard dry containers"
+    ],
+    "brochureUrl": "#enquire"
+  },
+  {
+    "id": "prod-301",
+    "slug": "premium-iron-ore-lump-fines",
+    "name": "Premium Iron Ore (Lump & Fines)",
+    "departmentSlug": "minerals-mud-chemicals",
+    "departmentName": "Minerals & Mud Chemicals to ONG Exploration",
+    "shortDesc": "High Fe content (62%-64.5%) sourced from reliable mines, ideal for steel production.",
+    "fullDesc": "Our premium iron ore is sourced from reliable mines and is ideal for steel production and other metallurgical processes. It offers high iron content and low impurities, ensuring efficient and cost-effective operations across blast furnace, DRI (Direct Reduced Iron), and induction steelmaking.",
+    "image": "/hero-mine.jpg",
+    "galleryImages": [
+      "/hero-mine.jpg",
+      "/metals.jpg"
+    ],
+    "specs": {
+      "name": "Premium Iron Ore (Lump & Fines)",
+      "grade": "62.0% - 64.5% Fe Content Guaranteed",
+      "packaging": "Bulk Vessel Stowed / Big Bags on Pallets",
+      "moq": "5,000 Metric Tons (Bulk) / 100 MT (Containerized)",
+      "origin": "Certified Mining Concessions (India / East Africa)",
+      "purityOrForm": "Calibrated Lumps (10-40mm) or Sinter Fines (0-10mm)"
+    },
+    "applications": [
+      "Blast furnace primary ironmaking and steelmaking",
+      "Direct Reduced Iron (DRI / Sponge Iron) manufacturing",
+      "Foundry billet, rebar, and structural casting remelt"
+    ],
+    "qualityDocs": [
+      "Independent Assay Certificate (SGS/Intertek)",
+      "Moisture & Grain Size Report",
+      "Radiation Free Certificate",
+      "Certificate of Origin"
+    ],
+    "shippingOptions": [
+      "Bulk carrier vessel loading (FOB / CIF)",
+      "20ft ocean containers with heavy payload"
+    ],
+    "brochureUrl": "#enquire",
+    "featured": true
+  },
+  {
+    "id": "prod-302",
+    "slug": "drilling-mud-chemicals-ong",
+    "name": "ONG Drilling Mud Chemicals & Additives",
+    "departmentSlug": "minerals-mud-chemicals",
+    "departmentName": "Minerals & Mud Chemicals to ONG Exploration",
+    "shortDesc": "API 13A certified bentonite, barite, and fluid-loss polymers for Oil & Natural Gas drilling.",
+    "fullDesc": "Formulated specifically for oil and natural gas (ONG) exploration, our drilling mud chemistry portfolio delivers borehole wall stability, cuttings suspension, and hydrostatic pressure control across high-pressure high-temperature (HPHT) exploration environments.",
+    "image": "/chemicals.jpg",
+    "galleryImages": [
+      "/chemicals.jpg",
+      "/hero-mine.jpg"
+    ],
+    "specs": {
+      "name": "ONG Drilling Mud Chemical System",
+      "grade": "API Spec 13A Section 9 / 10 / 11 Compliant",
+      "packaging": "25kg Multi-wall Moisture-proof Bags / 1MT Jumbo Bags",
+      "moq": "20 Metric Tons (1 x 20ft FCL)",
+      "origin": "Direct Accredited Refinery",
+      "purityOrForm": "Dry free-flowing powders & rheology modifiers"
+    },
+    "applications": [
+      "Deep onshore and offshore oil and gas drilling rigs",
+      "Borehole wall stabilization and shale swelling mitigation",
+      "Horizontal directional drilling (HDD) and geothermal wells"
+    ],
+    "qualityDocs": [
+      "Certificate of Analysis (COA)",
+      "Safety Data Sheet (SDS)",
+      "API 13A Conformity Report"
+    ],
+    "shippingOptions": [
+      "20ft ocean containers on ISPM-15 heat-treated pallets"
+    ],
+    "brochureUrl": "#enquire",
+    "featured": true
+  },
+  {
+    "id": "prod-303",
+    "slug": "high-density-drilling-barite",
+    "name": "High-Density Drilling Barite (4.20 SG)",
+    "departmentSlug": "minerals-mud-chemicals",
+    "departmentName": "Minerals & Mud Chemicals to ONG Exploration",
+    "shortDesc": "Heavy weighting agent for ONG drill string pressure control and wellbore stability.",
+    "fullDesc": "Premium barium sulfate (BaSO4) weighing agent milled to API 13A particle size distributions. Provides exact fluid density control with minimal abrasive wear on mud pumps and drilling equipment.",
+    "image": "/chemicals.jpg",
+    "galleryImages": [
+      "/chemicals.jpg"
+    ],
+    "specs": {
+      "name": "Drilling Barite (BaSO4)",
+      "grade": "API 13A Minimum 4.20 g/cm³ Specific Gravity",
+      "packaging": "1.5 MT Big Bags with multi-layer PE liner",
+      "moq": "50 Metric Tons",
+      "origin": "High-Grade Barite Reserves",
+      "purityOrForm": "Fine grey-tan powder >= 97% passing 200 mesh"
+    },
+    "applications": [
+      "Well kill and weighting fluids in ONG drilling",
+      "High-pressure reservoir hydrostatic pressure balance",
+      "Subsea well completion fluids"
+    ],
+    "qualityDocs": [
+      "Specific Gravity Test Certificate",
+      "Heavy Metals Assay",
+      "SGS Pre-Shipment Inspection"
+    ],
+    "shippingOptions": [
+      "Containerized 20ft FCL / Bulk Breakbulk"
+    ],
+    "brochureUrl": "#enquire",
+    "featured": false
+  },
+  {
+    "id": "prod-304",
+    "slug": "metallurgical-sinter-ore",
+    "name": "Metallurgical Sinter Ore & Mineral Concentrates",
+    "departmentSlug": "minerals-mud-chemicals",
+    "departmentName": "Minerals & Mud Chemicals to ONG Exploration",
+    "shortDesc": "Beneficiated mineral concentrates tailored for induction and electric arc furnace operations.",
+    "fullDesc": "Processed mineral ores and metallurgical charges prepared to rigorous customer sizing and moisture specifications, ensuring optimal furnace thermal efficiency.",
+    "image": "/hero-mine.jpg",
+    "galleryImages": [
+      "/hero-mine.jpg"
+    ],
+    "specs": {
+      "name": "Sinter Feed Ore Concentrate",
+      "grade": "Custom Metallurgical Grade (60%+ Fe)",
+      "packaging": "Bulk Vessel or 25-ton 20ft Heavy Containers",
+      "moq": "100 Metric Tons",
+      "origin": "Direct Primary Extraction Hubs",
+      "purityOrForm": "Dry sized mineral concentrate"
+    },
+    "applications": [
+      "Foundry cupola furnace operations",
+      "Ferroalloy and non-ferrous smelting",
+      "Thermal metallurgy and rebar production"
+    ],
+    "qualityDocs": [
+      "Chemical Composition Assay",
+      "Grain Size Distribution Certificate"
+    ],
+    "shippingOptions": [
+      "Containerized or Bulk Vessel charter"
+    ],
+    "brochureUrl": "#enquire",
+    "featured": false
+  },
+  {
+    "id": "prod-401",
+    "slug": "pulverized-fuel-fly-ash",
+    "name": "Pulverized Fuel Fly Ash (Class F / Class C)",
+    "departmentSlug": "quartz-and-fly-ash",
+    "departmentName": "Quartz and Fly Ash",
+    "shortDesc": "Fine, grey amorphous powder byproduct of coal power stations, ASTM C618 compliant.",
+    "fullDesc": "Fly Ash (pulverized fuel ash) is a byproduct of a coal-based thermal power station generated by the combustion of pulverized coal. Fly Ash is a fine, grey amorphous powder. It acts as a high-performance pozzolanic supplementary cementitious material, reducing heat of hydration, mitigating alkali-silica reaction, and dramatically enhancing concrete durability.",
+    "image": "/metals.jpg",
+    "galleryImages": [
+      "/metals.jpg",
+      "/chemicals.jpg"
+    ],
+    "specs": {
+      "name": "Pulverized Fuel Fly Ash",
+      "grade": "ASTM C618 Class F & Class C / BS EN 450 Compliant",
+      "packaging": "1.2 MT to 1.4 MT Jumbo Bags with PE liner, or Bulk Bulker",
+      "moq": "50 Metric Tons (2 x 20ft FCL)",
+      "origin": "Modern Coal-Based Thermal Power Stations",
+      "purityOrForm": "Fine grey amorphous powder (Loss on Ignition < 3.0%)"
+    },
+    "applications": [
+      "Ready-mix concrete and precast infrastructure components",
+      "Portland Pozzolana Cement (PPC) manufacturing",
+      "Geopolymer bricks, structural embankments, and mine backfill"
+    ],
+    "qualityDocs": [
+      "ASTM C618 Compliance Certificate",
+      "Loss on Ignition (LOI) Assay",
+      "Blaine Fineness Report",
+      "Certificate of Origin"
+    ],
+    "shippingOptions": [
+      "20ft ocean containers with heavy payload (~26-27 MT per TEU)",
+      "Bulk pneumatic bulker tankers"
+    ],
+    "brochureUrl": "#enquire",
+    "featured": true
+  },
+  {
+    "id": "prod-402",
+    "slug": "high-purity-silica-quartz",
+    "name": "High-Purity Natural Quartz (Lumps & Granules)",
+    "departmentSlug": "quartz-and-fly-ash",
+    "departmentName": "Quartz and Fly Ash",
+    "shortDesc": "Snow-white natural silica quartz 99.5%+ SiO2, ultra-low iron, for glass and ceramics.",
+    "fullDesc": "Sourced from crystalline quartz veins and optically sorted to eliminate metallic and mica inclusions. Provides consistent hardness (Mohs 7), thermal stability, and chemically inert matrix for flat glass, container glass, and high-voltage electrical porcelain.",
+    "image": "/hero-mine.jpg",
+    "galleryImages": [
+      "/hero-mine.jpg",
+      "/metals.jpg"
+    ],
+    "specs": {
+      "name": "High-Purity Natural Quartz",
+      "grade": "SiO2 >= 99.5%, Fe2O3 <= 0.02%",
+      "packaging": "1.0 MT Jumbo Bags with multi-layer liner",
+      "moq": "25 Metric Tons (1 x 20ft FCL)",
+      "origin": "Certified Virgin Quartz Quarries",
+      "purityOrForm": "Snow-white crystalline lumps (25-100mm) or sized granules"
+    },
+    "applications": [
+      "Float glass and specialty container glass fabrication",
+      "Ceramic sanitaryware, frit, and porcelain glaze formulations",
+      "Engineered stone and artificial quartz countertop manufacturing"
+    ],
+    "qualityDocs": [
+      "XRF Chemical Assay Report",
+      "Optical Purity Certification",
+      "Grain Size Distribution Analysis"
+    ],
+    "shippingOptions": [
+      "20ft ocean containers",
+      "FOB / CIF major international ports"
+    ],
+    "brochureUrl": "#enquire",
+    "featured": true
+  },
+  {
+    "id": "prod-403",
+    "slug": "micronized-silica-quartz-powder",
+    "name": "Micronized Quartz Powder / Silica Flour",
+    "departmentSlug": "quartz-and-fly-ash",
+    "departmentName": "Quartz and Fly Ash",
+    "shortDesc": "Micro-milled 300 to 500 mesh quartz powder for paint, epoxies, and refractory coatings.",
+    "fullDesc": "Iron-free ball milled crystalline silica flour with controlled particle size distribution. Delivers superior abrasion resistance, dimensional stability, and optical clarity in industrial coatings, specialty resins, and refractory ramming masses.",
+    "image": "/chemicals.jpg",
+    "galleryImages": [
+      "/chemicals.jpg"
+    ],
+    "specs": {
+      "name": "Micronized Silica Flour",
+      "grade": "300 Mesh / 400 Mesh / 500 Mesh (99.2% SiO2)",
+      "packaging": "25kg / 50kg HDPE bags on shrink-wrapped pallets",
+      "moq": "20 Metric Tons",
+      "origin": "Precision Mineral Milling Facilities",
+      "purityOrForm": "Super-fine snow-white powder"
+    },
+    "applications": [
+      "Industrial epoxy coatings and marine anti-corrosion paints",
+      "Refractory castables and foundry mould washes",
+      "Silicone rubber, polymer sealants, and adhesive fillers"
+    ],
+    "qualityDocs": [
+      "Particle Size Distribution (PSD) Laser Analysis",
+      "Spectrometer Assay"
+    ],
+    "shippingOptions": [
+      "Palletized 20ft ocean containers"
+    ],
+    "brochureUrl": "#enquire",
+    "featured": false
+  },
+  {
+    "id": "prod-404",
+    "slug": "cenospheres-thermal-microspheres",
+    "name": "Cenospheres & Thermal Bottom Ash",
+    "departmentSlug": "quartz-and-fly-ash",
+    "departmentName": "Quartz and Fly Ash",
+    "shortDesc": "Lightweight hollow ceramic microspheres and granular bottom ash aggregate.",
+    "fullDesc": "Naturally buoyant hollow silicate microspheres recovered from thermal power station ash lagoons. Provides exceptional strength-to-weight ratio, low thermal conductivity, and fire-resistant insulating properties for aerospace, drilling cements, and acoustic building boards.",
+    "image": "/metals.jpg",
+    "galleryImages": [
+      "/metals.jpg"
+    ],
+    "specs": {
+      "name": "Thermal Cenospheres",
+      "grade": "True Density 0.70 - 0.85 g/cm³, Al2O3 >= 30%",
+      "packaging": "500kg - 600kg Big Bags with plastic inner liner",
+      "moq": "15 Metric Tons",
+      "origin": "Thermal Power Station Flotation Plants",
+      "purityOrForm": "Hollow spherical light-grey/tan microspheres"
+    },
+    "applications": [
+      "Lightweight oil well cementing slurries",
+      "Thermal insulation coatings and syntactic foams",
+      "Automotive composite plastics and acoustic paneling"
+    ],
+    "qualityDocs": [
+      "Bulk Density & Sieve Analysis",
+      "Crush Strength Test Report"
+    ],
+    "shippingOptions": [
+      "40ft High Cube containers for maximum volumetric load"
+    ],
+    "brochureUrl": "#enquire",
+    "featured": false
+  }
+]

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 840" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#070e17"/>
+      <stop offset="40%" stop-color="#0c1a2a"/>
+      <stop offset="70%" stop-color="#122740"/>
+      <stop offset="100%" stop-color="#162f4d"/>
+    </linearGradient>
+    <linearGradient id="terraceGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a3555"/>
+      <stop offset="100%" stop-color="#0a1522"/>
+    </linearGradient>
+    <linearGradient id="terraceGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#234a6f"/>
+      <stop offset="100%" stop-color="#08101a"/>
+    </linearGradient>
+    <linearGradient id="accentGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c98b2f" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#d9a555" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#b47720" stop-opacity="0.1"/>
+    </linearGradient>
+    <pattern id="gridPattern" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#234a6f" stroke-width="0.75" stroke-opacity="0.25"/>
+    </pattern>
+  </defs>
+
+  <!-- Sky & Atmospheric Base -->
+  <rect width="1920" height="840" fill="url(#skyGrad)"/>
+
+  <!-- Technical Overlay Grid -->
+  <rect width="1920" height="840" fill="url(#gridPattern)"/>
+
+  <!-- Atmospheric Glow from pit lighting / horizon -->
+  <circle cx="1350" cy="460" r="420" fill="#c98b2f" opacity="0.08" filter="blur(40px)"/>
+  <circle cx="450" cy="520" r="300" fill="#2d5f8a" opacity="0.12" filter="blur(50px)"/>
+
+  <!-- Distant Mountain Ridges & Geological Strata -->
+  <path d="M 0 520 Q 320 440 680 480 T 1320 450 T 1920 470 L 1920 840 L 0 840 Z" fill="#0c1724" opacity="0.7"/>
+  <path d="M 0 560 Q 420 500 860 530 T 1540 490 T 1920 530 L 1920 840 L 0 840 Z" fill="#09121c" opacity="0.9"/>
+
+  <!-- Open Pit Mining Terraces / Stepped Benches -->
+  <!-- Level 1 (Upper Bench) -->
+  <polygon points="0,620 480,590 920,610 1480,570 1920,610 1920,650 1440,610 880,640 420,620 0,650" fill="#162c45"/>
+  <path d="M 0 620 L 480 590 L 920 610 L 1480 570 L 1920 610" stroke="#c98b2f" stroke-width="1" stroke-opacity="0.4" fill="none"/>
+
+  <!-- Level 2 (Mid Bench) -->
+  <polygon points="0,670 540,640 1020,660 1560,620 1920,660 1920,710 1520,670 980,700 480,680 0,710" fill="#122438"/>
+  <path d="M 0 670 L 540 640 L 1020 660 L 1560 620 L 1920 660" stroke="#3b6991" stroke-width="1.2" stroke-opacity="0.5" fill="none"/>
+
+  <!-- Haul Road Ramp Vector -->
+  <path d="M 120 840 L 640 730 L 1280 660 L 1760 590" stroke="url(#accentGlow)" stroke-width="3" stroke-dasharray="8 6" fill="none"/>
+
+  <!-- Level 3 (Lower Floor & Working Face) -->
+  <polygon points="0,730 620,700 1140,720 1680,680 1920,720 1920,840 0,840" fill="#08101a"/>
+  
+  <!-- Silhouette of Heavy Mining Assets on Bench (Distant scale) -->
+  <!-- Asset 1: Hydraulic Excavator Silhouette -->
+  <g transform="translate(1320, 525) scale(0.7)" fill="#1c3654">
+    <rect x="0" y="30" width="70" height="25" rx="3"/>
+    <polygon points="20,30 35,10 65,10 65,30"/>
+    <!-- Boom & Arm -->
+    <path d="M 65 20 L 110 -25 L 140 15 L 125 35 Z" fill="#b47720" opacity="0.8"/>
+    <path d="M 140 15 L 165 40 L 150 45 Z" fill="#d9a555"/>
+    <!-- Tracks -->
+    <rect x="-10" y="52" width="90" height="15" rx="5" fill="#060c14"/>
+    <circle cx="1300" cy="550" r="1.5" fill="#fff"/>
+  </g>
+
+  <!-- Asset 2: Heavy Haul Truck Silhouette -->
+  <g transform="translate(1480, 535) scale(0.65)" fill="#1a324e">
+    <polygon points="0,20 20,0 70,0 80,25 0,25"/>
+    <rect x="75" y="10" width="30" height="20" rx="2" fill="#d9a555" opacity="0.9"/>
+    <!-- Tires -->
+    <circle cx="20" cy="35" r="14" fill="#060c14"/>
+    <circle cx="75" cy="35" r="14" fill="#060c14"/>
+  </g>
+
+  <!-- Structural Rig / Mast Tower on Ridge -->
+  <g transform="translate(1680, 410)" stroke="#3a6085" stroke-width="1.5" fill="none">
+    <line x1="20" y1="0" x2="0" y2="90"/>
+    <line x1="20" y1="0" x2="40" y2="90"/>
+    <line x1="5" y1="30" x2="35" y2="30"/>
+    <line x1="10" y1="60" x2="30" y2="60"/>
+    <circle cx="20" cy="0" r="3" fill="#c98b2f"/>
+  </g>
+
+  <!-- Subtle Surveying Contour Elevation Marks -->
+  <g stroke="#2d5f8a" stroke-width="0.75" stroke-dasharray="3 4" fill="none" opacity="0.4">
+    <path d="M 100 600 Q 400 570 700 630 T 1300 580 T 1800 630"/>
+    <path d="M 150 650 Q 450 620 750 680 T 1350 630 T 1850 680"/>
+  </g>
+
+  <!-- Vignette Gradient for Typography Readability -->
+  <rect width="1920" height="840" fill="url(#skyGrad)" opacity="0.35"/>
+  <rect width="1920" height="840" fill="black" opacity="0.25"/>
+</svg>

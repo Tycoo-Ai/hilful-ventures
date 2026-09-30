@@ -6,18 +6,22 @@
   "navigation": {
     "home": "الرئيسية",
     "about": "من نحن",
-    "services": "الخدمات",
+    "services": "القدرات والخدمات",
     "equipment": "أسطول المعدات",
     "projects": "المشاريع",
-    "hse": "الصحة والسلامة والحوكمة",
+    "hse": "السلامة والحوكمة",
     "resources": "الموارد",
-    "contact": "اتصل بنا"
+    "contact": "اتصل بنا",
+    "requestProposal": "طلب مقترح"
   },
   "common": {
     "readMore": "اقرأ المزيد",
     "learnMore": "اعرف المزيد",
     "contactUs": "اتصل بنا",
     "getInTouch": "تواصل معنا",
+    "requestProposal": "طلب مقترح",
+    "exploreCapabilities": "استكشف القدرات",
+    "submitTender": "تقديم مناقصة / طلب عروض (RFP)",
     "viewAll": "عرض الكل",
     "backToHome": "العودة للرئيسية",
     "loading": "جاري التحميل...",

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgAbout" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1a2a"/>
+      <stop offset="50%" stop-color="#122740"/>
+      <stop offset="100%" stop-color="#0a1522"/>
+    </linearGradient>
+    <linearGradient id="strata1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2d5f8a" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#1a3555" stop-opacity="0.6"/>
+    </linearGradient>
+    <linearGradient id="strataOre" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c98b2f" stop-opacity="0.7"/>
+      <stop offset="50%" stop-color="#d9a555" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#966118" stop-opacity="0.6"/>
+    </linearGradient>
+    <pattern id="dotGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#4a7faa" opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#bgAbout)"/>
+  <rect width="1200" height="900" fill="url(#dotGrid)"/>
+
+  <!-- Stratigraphic Cross-Section Layers -->
+  <g transform="translate(60, 80)">
+    <!-- Boundary Box -->
+    <rect width="1080" height="740" fill="#08101a" stroke="#234a6f" stroke-width="1.5" opacity="0.9"/>
+
+    <!-- Surface Topography Line -->
+    <path d="M 0 140 Q 240 110 520 160 T 1080 120 L 1080 260 L 0 260 Z" fill="#18304c"/>
+    <path d="M 0 140 Q 240 110 520 160 T 1080 120" stroke="#6e9ec5" stroke-width="2" fill="none"/>
+
+    <!-- Sedimentary Overburden Layer -->
+    <path d="M 0 260 L 1080 260 L 1080 400 L 0 400 Z" fill="url(#strata1)"/>
+    <line x1="0" y1="260" x2="1080" y2="260" stroke="#3b6991" stroke-width="1" stroke-dasharray="6 4"/>
+
+    <!-- Mineralized Hydrocarbon / Ore Deposit Lens -->
+    <path d="M 120 450 Q 420 380 720 440 T 1020 460 L 980 560 Q 680 540 380 570 Z" fill="url(#strataOre)"/>
+    
+    <!-- Fault Line Shift / Shear Zone -->
+    <line x1="420" y1="80" x2="320" y2="700" stroke="#e5be7e" stroke-width="1.5" stroke-dasharray="10 5"/>
+    <line x1="720" y1="80" x2="650" y2="700" stroke="#3b6991" stroke-width="1.5" stroke-dasharray="8 6"/>
+
+    <!-- Bedrock Basement Formation -->
+    <path d="M 0 580 L 1080 580 L 1080 740 L 0 740 Z" fill="#0d1b2a"/>
+    <line x1="0" y1="580" x2="1080" y2="580" stroke="#234a6f" stroke-width="1.5"/>
+
+    <!-- Exploratory Drill Hole Trajectories -->
+    <!-- Drill Hole A -->
+    <line x1="280" y1="135" x2="280" y2="540" stroke="#fff" stroke-width="1.5" opacity="0.8"/>
+    <circle cx="280" cy="135" r="4" fill="#c98b2f"/>
+    <circle cx="280" cy="460" r="3" fill="#fff"/>
+    <circle cx="280" cy="540" r="5" fill="#c98b2f"/>
+
+    <!-- Drill Hole B (Angled Core Bore) -->
+    <line x1="680" y1="150" x2="560" y2="520" stroke="#fff" stroke-width="1.5" opacity="0.8"/>
+    <circle cx="680" cy="150" r="4" fill="#c98b2f"/>
+    <circle cx="560" cy="520" r="5" fill="#c98b2f"/>
+
+    <!-- Core Samples Indication Markers -->
+    <rect x="274" y="440" width="12" height="40" fill="#e5be7e" stroke="#000" stroke-width="1"/>
+    <rect x="580" y="445" width="12" height="35" fill="#e5be7e" stroke="#000" stroke-width="1"/>
+
+    <!-- Technical Dimension Lines & Elevation Marks -->
+    <g stroke="#4a7faa" stroke-width="0.75" fill="none">
+      <line x1="20" y1="140" x2="20" y2="720"/>
+      <line x1="15" y1="140" x2="25" y2="140"/>
+      <line x1="15" y1="260" x2="25" y2="260"/>
+      <line x1="15" y1="450" x2="25" y2="450"/>
+      <line x1="15" y1="580" x2="25" y2="580"/>
+      <line x1="15" y1="720" x2="25" y2="720"/>
+    </g>
+  </g>
+</svg>

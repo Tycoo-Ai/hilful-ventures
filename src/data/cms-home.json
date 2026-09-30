@@ -1,0 +1,15 @@
+{
+  "en": {
+    "hero": {
+      "heroImage": "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790763543/hilful/general/gambar_bg_banner_1790763541746.jpg",
+      "headlineLine1": "Unlocking Geological Potential.",
+      "headlineLine2": "Powering Industrial Scale.",
+      "eyebrow": "INTEGRATED MINING & ENERGY SOLUTIONS",
+      "description": "From frontier mineral and hydrocarbon exploration to heavy equipment leasing, turnkey project management, and cross-border commodities trade—Hilful Ventures Pvt Ltd delivers end-to-end technical precision and operational reliability across the resource lifecycle.",
+      "primaryCtaText": "Explore Capabilities",
+      "primaryCtaHref": "/services",
+      "secondaryCtaText": "Request an Operational Proposal",
+      "secondaryCtaHref": "/contact"
+    }
+  }
+}

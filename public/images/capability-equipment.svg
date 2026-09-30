@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgEquip" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#091420"/>
+      <stop offset="50%" stop-color="#0f2238"/>
+      <stop offset="100%" stop-color="#070e17"/>
+    </linearGradient>
+    <linearGradient id="goldPlate" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c98b2f"/>
+      <stop offset="50%" stop-color="#e5be7e"/>
+      <stop offset="100%" stop-color="#b47720"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#bgEquip)"/>
+
+  <!-- Technical Heavy Excavator Industrial Drawing -->
+  <g transform="translate(140, 160)">
+    <!-- Undercarriage / Track Assembly -->
+    <rect x="180" y="380" width="560" height="90" rx="45" fill="#0c1826" stroke="#2d5f8a" stroke-width="2"/>
+    <!-- Drive Sprockets & Rollers -->
+    <circle cx="230" cy="425" r="35" fill="#162e4a" stroke="#c98b2f" stroke-width="2"/>
+    <circle cx="330" cy="425" r="28" fill="#162e4a" stroke="#4a7faa" stroke-width="1.5"/>
+    <circle cx="430" cy="425" r="28" fill="#162e4a" stroke="#4a7faa" stroke-width="1.5"/>
+    <circle cx="530" cy="425" r="28" fill="#162e4a" stroke="#4a7faa" stroke-width="1.5"/>
+    <circle cx="630" cy="425" r="28" fill="#162e4a" stroke="#4a7faa" stroke-width="1.5"/>
+    <circle cx="690" cy="425" r="35" fill="#162e4a" stroke="#c98b2f" stroke-width="2"/>
+
+    <!-- Slew Ring / Turntable -->
+    <rect x="360" y="355" width="200" height="25" fill="#1c3757" stroke="#2d5f8a" stroke-width="1.5"/>
+
+    <!-- Machine Upper House / Counterweight Body -->
+    <polygon points="220,355 220,240 380,210 580,210 620,355" fill="url(#goldPlate)" opacity="0.9"/>
+    <!-- Counterweight -->
+    <polygon points="200,355 200,260 270,240 270,355" fill="#0c1826" stroke="#c98b2f" stroke-width="1.5"/>
+    <!-- Operator Cab -->
+    <polygon points="520,210 520,130 620,130 650,220 620,320 520,320" fill="#08111c" stroke="#4a7faa" stroke-width="2"/>
+    <polygon points="535,145 535,210 610,210 610,145" fill="#2d5f8a" opacity="0.6"/>
+
+    <!-- Heavy Hydraulic Boom & Arm -->
+    <!-- Boom -->
+    <polygon points="560,280 620,260 760,40 730,20 540,240" fill="url(#goldPlate)"/>
+    <circle cx="560" cy="270" r="12" fill="#0c1826" stroke="#fff" stroke-width="2"/>
+    <circle cx="745" cy="30" r="10" fill="#0c1826" stroke="#fff" stroke-width="2"/>
+
+    <!-- Hydraulic Cylinder -->
+    <line x1="590" y1="290" x2="680" y2="120" stroke="#d9d5d9" stroke-width="8"/>
+    <line x1="680" y1="120" x2="720" y2="70" stroke="#fff" stroke-width="5"/>
+
+    <!-- Stick / Dipper Arm -->
+    <polygon points="745,30 890,190 870,210 730,40" fill="url(#goldPlate)"/>
+    <circle cx="880" cy="200" r="10" fill="#0c1826" stroke="#fff" stroke-width="2"/>
+
+    <!-- Heavy Rock Bucket -->
+    <path d="M 880 200 L 960 260 L 980 340 L 920 370 L 860 310 Z" fill="#0c1826" stroke="#c98b2f" stroke-width="2"/>
+    <!-- Bucket Teeth -->
+    <polygon points="980,340 1005,365 990,375 970,350" fill="#e5be7e"/>
+    <polygon points="965,350 990,375 975,385 955,360" fill="#e5be7e"/>
+  </g>
+</svg>

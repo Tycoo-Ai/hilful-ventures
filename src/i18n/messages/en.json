@@ -5,19 +5,23 @@
   },
   "navigation": {
     "home": "Home",
-    "about": "About Us",
-    "services": "Services",
-    "equipment": "Equipment Fleet",
+    "about": "About",
+    "services": "Capabilities / Services",
+    "equipment": "Equipment",
     "projects": "Projects",
     "hse": "HSE & Governance",
     "resources": "Resources",
-    "contact": "Contact"
+    "contact": "Contact",
+    "requestProposal": "Request a Proposal"
   },
   "common": {
     "readMore": "Read More",
     "learnMore": "Learn More",
     "contactUs": "Contact Us",
     "getInTouch": "Get in Touch",
+    "requestProposal": "Request a Proposal",
+    "exploreCapabilities": "Explore Capabilities",
+    "submitTender": "Submit a Tender / RFP",
     "viewAll": "View All",
     "backToHome": "Back to Home",
     "loading": "Loading...",

@@ -1,0 +1,273 @@
+// Hilful Ventures Pvt Ltd — Prisma Schema
+// Database model for CMS, Media Assets, Multilingual Content, and Admin Access
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+  VIEWER
+}
+
+enum ContentStatus {
+  DRAFT
+  PREVIEW
+  PUBLISHED
+}
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  name         String
+  passwordHash String
+  role         Role      @default(ADMIN)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  sessions     Session[]
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  sessionToken String   @unique
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expires      DateTime
+  createdAt    DateTime @default(now())
+}
+
+model SiteSetting {
+  id        String   @id @default(uuid())
+  key       String   @unique
+  value     String
+  locale    String   @default("en")
+  updatedAt DateTime @updatedAt
+}
+
+model Page {
+  id          String        @id @default(uuid())
+  slug        String        @unique
+  title       String
+  description String?
+  sections    PageSection[]
+  isPublished Boolean       @default(false)
+  publishedAt DateTime?
+  updatedAt   DateTime      @updatedAt
+}
+
+model PageSection {
+  id         String        @id @default(uuid())
+  pageId     String
+  page       Page          @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  sectionKey String
+  status     ContentStatus @default(DRAFT)
+  data       Json
+  locale     String        @default("en")
+  updatedAt  DateTime      @updatedAt
+
+  @@unique([pageId, sectionKey, locale, status])
+}
+
+model Capability {
+  id          String        @id @default(uuid())
+  slug        String        @unique
+  number      String
+  title       String
+  overview    String
+  activities  Json
+  imageUrl    String?
+  status      ContentStatus @default(DRAFT)
+  locale      String        @default("en")
+  sortOrder   Int           @default(0)
+  updatedAt   DateTime      @updatedAt
+}
+
+model Equipment {
+  id          String        @id @default(uuid())
+  name        String
+  category    String
+  description String
+  imageUrl    String?
+  status      ContentStatus @default(DRAFT)
+  locale      String        @default("en")
+  sortOrder   Int           @default(0)
+  updatedAt   DateTime      @updatedAt
+}
+
+model Project {
+  id          String        @id @default(uuid())
+  title       String
+  category    String
+  description String
+  imageUrl    String?
+  status      ContentStatus @default(DRAFT)
+  locale      String        @default("en")
+  sortOrder   Int           @default(0)
+  updatedAt   DateTime      @updatedAt
+}
+
+model GalleryItem {
+  id          String        @id @default(uuid())
+  title       String
+  category    String
+  caption     String?
+  imageUrl    String
+  status      ContentStatus @default(DRAFT)
+  locale      String        @default("en")
+  sortOrder   Int           @default(0)
+  updatedAt   DateTime      @updatedAt
+}
+
+model MediaAsset {
+  id          String   @id @default(uuid())
+  filename    String
+  url         String
+  altText     String
+  width       Int
+  height      Int
+  format      String
+  category    String?
+  caption     String?
+  provider    String   @default("CLOUDINARY")
+  publicId    String?
+  uploadedAt  DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+}
+
+model SeoMetadata {
+  id          String   @id @default(uuid())
+  path        String
+  title       String
+  description String
+  ogImage     String?
+  locale      String   @default("en")
+  updatedAt   DateTime @updatedAt
+
+  @@unique([path, locale])
+}
+
+enum SubmissionStatus {
+  NEW
+  REVIEWED
+  IN_PROGRESS
+  CLOSED
+}
+
+model ContactSubmission {
+  id                  String           @id @default(uuid())
+  name                String
+  company             String
+  email               String
+  phone               String
+  country             String
+  enquiryType         String
+  areaOfInterest      String
+  message             String           @db.Text
+  attachmentReference String?
+  status              SubmissionStatus @default(NEW)
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([email])
+}
+
+model Resource {
+  id            String   @id @default(uuid())
+  title         String
+  titleAr       String
+  category      String
+  format        String   @default("PDF")
+  language      String   @default("EN / AR")
+  description   String
+  descriptionAr String
+  status        String   @default("PREPARING")
+  fileUrl       String?
+  fileSize      String?
+  sortOrder     Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now()) @updatedAt
+
+  @@index([status])
+}
+
+model Department {
+  id                    String        @id @default(uuid())
+  slug                  String        @unique
+  number                String
+  name                  String
+  tagline               String
+  overview              String        @db.Text
+  whatWeDo              String        @db.Text
+  image                 String
+  coverImage            String
+  icon                  String        @default("Layers")
+  specSummary           Json
+  process               Json
+  qualityCertifications Json
+  faqs                  Json
+  status                ContentStatus @default(PUBLISHED)
+  sortOrder             Int           @default(0)
+  products              Product[]
+  createdAt             DateTime      @default(now())
+  updatedAt             DateTime      @updatedAt
+}
+
+model Product {
+  id              String        @id @default(uuid())
+  slug            String        @unique
+  name            String
+  departmentSlug  String
+  departmentName  String
+  department      Department    @relation(fields: [departmentSlug], references: [slug], onDelete: Cascade)
+  shortDesc       String
+  fullDesc        String        @db.Text
+  image           String
+  galleryImages   String[]
+  specs           Json
+  applications    String[]
+  qualityDocs     String[]
+  shippingOptions String[]
+  brochureUrl     String?
+  featured        Boolean       @default(false)
+  status          ContentStatus @default(PUBLISHED)
+  sortOrder       Int           @default(0)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@index([departmentSlug])
+}
+
+model Office {
+  id             String   @id @default(uuid())
+  key            String   @unique
+  country        String
+  name           String
+  address        String
+  email          String
+  phone1         String
+  phone2         String?
+  mapEmbedUrl    String   @db.Text
+  googleMapsLink String   @db.Text
+  badge          String
+  hours          String
+  sortOrder      Int      @default(0)
+  updatedAt      DateTime @updatedAt
+}
+
+model ThemeConfig {
+  id        String   @id @default(uuid())
+  key       String   @unique
+  value     Json
+  updatedAt DateTime @updatedAt
+}
+
+
+

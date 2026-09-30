@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgComm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070d14"/>
+      <stop offset="50%" stop-color="#112438"/>
+      <stop offset="100%" stop-color="#0a1520"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#bgComm)"/>
+
+  <!-- Commodities Bulk Freight Logistics Graphic -->
+  <g transform="translate(100, 100)">
+    <!-- Water / Terminal Quay Line -->
+    <line x1="0" y1="460" x2="1000" y2="460" stroke="#3b6991" stroke-width="2"/>
+    <rect x="0" y="460" width="1000" height="140" fill="#081422" opacity="0.9"/>
+
+    <!-- Ocean Bulk Carrier Silhouette (Cross-Border Maritime Supply Chain) -->
+    <g transform="translate(140, 240)">
+      <!-- Vessel Hull -->
+      <polygon points="0,170 80,220 540,220 580,170 520,170 60,170" fill="#0c1b2c" stroke="#4a7faa" stroke-width="2"/>
+      <!-- Cargo Holds (Bulk Mineral Hatches) -->
+      <rect x="100" y="150" width="80" height="20" fill="#1d3b5e" stroke="#c98b2f" stroke-width="1.5"/>
+      <rect x="200" y="150" width="80" height="20" fill="#1d3b5e" stroke="#c98b2f" stroke-width="1.5"/>
+      <rect x="300" y="150" width="80" height="20" fill="#1d3b5e" stroke="#c98b2f" stroke-width="1.5"/>
+      <rect x="400" y="150" width="80" height="20" fill="#1d3b5e" stroke="#c98b2f" stroke-width="1.5"/>
+      <!-- Bridge / Accommodation Superstructure -->
+      <polygon points="490,170 490,70 550,70 560,170" fill="#152b44" stroke="#4a7faa" stroke-width="2"/>
+      <rect x="500" y="85" width="40" height="15" fill="#4a7faa" opacity="0.6"/>
+      <!-- Mast & Radar -->
+      <line x1="520" y1="70" x2="520" y2="30" stroke="#e5be7e" stroke-width="2"/>
+      <line x1="510" y1="40" x2="530" y2="40" stroke="#e5be7e" stroke-width="1.5"/>
+    </g>
+
+    <!-- Gantry Crane / Bulk Shiploader on Quay -->
+    <g transform="translate(680, 80)">
+      <!-- Gantry Legs -->
+      <line x1="40" y1="380" x2="80" y2="120" stroke="#c98b2f" stroke-width="4"/>
+      <line x1="200" y1="380" x2="160" y2="120" stroke="#c98b2f" stroke-width="4"/>
+      <line x1="55" y1="260" x2="185" y2="260" stroke="#3b6991" stroke-width="2"/>
+      <!-- Boom Extending over Vessel -->
+      <polygon points="40,120 200,120 180,90 60,90" fill="#1d3b5e" stroke="#c98b2f" stroke-width="2"/>
+      <line x1="-120" y1="100" x2="260" y2="100" stroke="#c98b2f" stroke-width="3"/>
+      <!-- Chute / Hopper Loading Arm -->
+      <line x1="-40" y1="100" x2="-40" y2="260" stroke="#e5be7e" stroke-width="2"/>
+      <polygon points="-50,260 -30,260 -35,285 -45,285" fill="#e5be7e"/>
+    </g>
+
+    <!-- Rail Freight Logistics Vectors on Quay -->
+    <g transform="translate(80, 480)">
+      <line x1="0" y1="30" x2="400" y2="30" stroke="#4a7faa" stroke-width="1.5"/>
+      <line x1="0" y1="45" x2="400" y2="45" stroke="#4a7faa" stroke-width="1.5"/>
+      <!-- Hopper Car Silhouettes -->
+      <rect x="40" y="0" width="70" height="28" rx="2" fill="#183452" stroke="#c98b2f" stroke-width="1"/>
+      <rect x="120" y="0" width="70" height="28" rx="2" fill="#183452" stroke="#c98b2f" stroke-width="1"/>
+      <rect x="200" y="0" width="70" height="28" rx="2" fill="#183452" stroke="#c98b2f" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

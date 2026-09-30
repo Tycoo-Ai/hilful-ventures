@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgPM" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070f1a"/>
+      <stop offset="50%" stop-color="#10253d"/>
+      <stop offset="100%" stop-color="#0a1624"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#bgPM)"/>
+
+  <!-- Turnkey Plant Blueprint Schematic -->
+  <g transform="translate(100, 100)">
+    <!-- Main Plant Structural Grid -->
+    <rect width="1000" height="600" fill="none" stroke="#1f4165" stroke-width="1.5" stroke-dasharray="10 8"/>
+
+    <!-- Primary Jaw / Cone Crusher Station -->
+    <g transform="translate(120, 260)">
+      <polygon points="40,0 160,0 180,180 20,180" fill="#142c47" stroke="#c98b2f" stroke-width="2"/>
+      <polygon points="60,30 140,30 150,150 50,150" fill="#09131f" stroke="#e5be7e" stroke-width="1"/>
+      <!-- Hopper -->
+      <polygon points="20,0 180,0 200,-70 0,-70" fill="#1b395d" stroke="#4a7faa" stroke-width="1.5"/>
+    </g>
+
+    <!-- Heavy Industrial Conveyor Bridge -->
+    <g transform="translate(280, 240)">
+      <!-- Angled Conveyor Truss -->
+      <polygon points="0,120 400,-60 410,-30 10,150" fill="#0d1f33" stroke="#c98b2f" stroke-width="1.5"/>
+      <!-- Internal Truss Webbing -->
+      <line x1="50" y1="98" x2="60" y2="128" stroke="#3b6991" stroke-width="1.5"/>
+      <line x1="120" y1="67" x2="130" y2="97" stroke="#3b6991" stroke-width="1.5"/>
+      <line x1="190" y1="36" x2="200" y2="66" stroke="#3b6991" stroke-width="1.5"/>
+      <line x1="260" y1="5" x2="270" y2="35" stroke="#3b6991" stroke-width="1.5"/>
+      <line x1="330" y1="-26" x2="340" y2="4" stroke="#3b6991" stroke-width="1.5"/>
+    </g>
+
+    <!-- Secondary Screening & Classification Tower -->
+    <g transform="translate(680, 140)">
+      <rect width="200" height="340" fill="#10253d" stroke="#4a7faa" stroke-width="2"/>
+      <!-- Multi-Deck Screens -->
+      <line x1="20" y1="80" x2="180" y2="120" stroke="#e5be7e" stroke-width="2"/>
+      <line x1="20" y1="160" x2="180" y2="200" stroke="#e5be7e" stroke-width="2"/>
+      <line x1="20" y1="240" x2="180" y2="280" stroke="#e5be7e" stroke-width="2"/>
+      <!-- Support Structural Pylons -->
+      <line x1="40" y1="340" x2="40" y2="420" stroke="#3b6991" stroke-width="4"/>
+      <line x1="160" y1="340" x2="160" y2="420" stroke="#3b6991" stroke-width="4"/>
+      <line x1="20" y1="380" x2="180" y2="380" stroke="#3b6991" stroke-width="2"/>
+    </g>
+
+    <!-- Stockpile Surge Cones -->
+    <g transform="translate(480, 420)">
+      <polygon points="120,40 220,140 20,140" fill="#1b395d" opacity="0.8"/>
+      <polygon points="120,40 180,140 60,140" fill="#c98b2f" opacity="0.6"/>
+    </g>
+  </g>
+</svg>
