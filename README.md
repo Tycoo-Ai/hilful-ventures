@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hilful Ventures — Global Commodities & Exploration Trading Platform
 
-## Getting Started
+Rooted in Earth. Trusted Worldwide.
 
-First, run the development server:
+A luxury editorial industrial commodities trading and resource supply web platform built with **Next.js 16 (App Router)**, **TypeScript**, **Tailwind CSS**, and **Prisma ORM**.
 
+---
+
+## 🌍 Core Trading Disciplines
+
+1. **Department 01: Mining & Drilling Chemicals** — Heavy drilling polymers, bentonite rheology modifiers, and fluid additives.
+2. **Department 02: Ferrous & Non-Ferrous Secondary Metals** — HMS 1&2, copper scrap, and foundry remelting stock.
+3. **Department 03: Minerals & Mud Chemicals to ONG Exploration** — API-grade mud chemicals, barite, attapulgite, and metallurgical iron ore.
+4. **Department 04: Quartz and Fly Ash** — Micronized Class F & C pozzolanic fly ash, industrial quartz silica, and micro-silica.
+
+---
+
+## 🚀 Getting Started
+
+### 1. Prerequisites
+- Node.js 18+ or 20+
+- PostgreSQL database (or Prisma-supported provider)
+- Cloudinary account for media assets (optional for local mock mode)
+
+### 2. Installation
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Tycoo-Ai/hilful.git
+cd hilful
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Environment Variables
+Copy `.env.example` to `.env.local`:
+```bash
+cp .env.example .env.local
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Database Setup
+```bash
+npx prisma generate
+npx prisma db push
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 5. Run Locally
+```bash
+npm run dev
+# or for production server
+npm run build
+npm run start
+```
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠 Features
+- **Bilingual & Bi-directional**: Full English (`/en`) & Arabic (`/ar`) with contextual RTL styling.
+- **Administrative CMS**: Content dashboard for hero, about, 4 departments, products, gallery, equipment, and contact inquiries.
+- **Media Management**: Direct Cloudinary integration with preset libraries and Google image URLs.
+- **Responsive Layout**: Precision typography and adaptive mobile/tablet viewports.
