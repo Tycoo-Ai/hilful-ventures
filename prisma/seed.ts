@@ -10,7 +10,7 @@ async function main() {
   const adminEmail = process.env.ADMIN_EMAIL || "admin@hilfulventures.com";
   const passwordHash =
     process.env.ADMIN_PASSWORD_HASH ||
-    "7a47564bb595136857c4985ff6289d12074a89e68c6ba165701eb319d3a0fe5f:697414a9d27ce866bc05a9e859b699e25ff1c05f505cf4dbc3ddf9664dc2a3560cdaa807d27bf6d29b48a259f1bb1b9f7721e60b99f9df40dff7b1db37660928";
+    "8e34d022a739676f1c5fdc5b1ab76bf916013ee37003f4b4469d917ade3d2c58:9aa0ab9a053a4e8375b9c76fc0d25d39c9443dfb9a0ab3a089c46c6cfe323cad79990296eb56225e6d28ab27b598e0841a0a8adf602166a85ad3dd0eaa09df0d";
 
   await prisma.user.upsert({
     where: { email: adminEmail },
