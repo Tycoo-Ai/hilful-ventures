@@ -234,7 +234,7 @@ export function Header({ settings }: { settings?: any }) {
             </Link>
 
             <Link
-              href="/#gallery"
+              href="/gallery"
               className="hv-nav-link"
               style={{
                 fontSize: "14px",
@@ -758,7 +758,7 @@ export function Header({ settings }: { settings?: any }) {
             </Link>
 
             <Link
-              href="/#gallery"
+              href="/gallery"
               onClick={() => setMobileMenuOpen(false)}
               style={{
                 fontSize: "18px",

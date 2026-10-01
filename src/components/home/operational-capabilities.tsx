@@ -6,8 +6,6 @@ import Link from "next/link";
 import { DEPARTMENTS, type DepartmentItem } from "@/data/hilful-data";
 
 export function OperationalCapabilities({
-  sectionTag,
-  items,
   departments,
 }: {
   sectionTag?: string;
@@ -73,7 +71,7 @@ export function OperationalCapabilities({
               maxWidth: "20ch",
             }}
           >
-            Four Dedicated Lines,<br />
+            Five Dedicated Divisions,<br />
             <em style={{ color: "#C9935A", fontStyle: "italic" }}>Unified Global Delivery</em>
           </h2>
           <Link
@@ -105,13 +103,14 @@ export function OperationalCapabilities({
         </div>
       </div>
 
-      {/* 4 Alternating or 2x2 Grid Cards Linking to /departments/[slug] */}
+      {/* Balanced 5-Department Alignment Grid */}
       <div className="container-xl">
         <div
           className="reveal reveal-delay-2"
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
             gap: "24px",
           }}
         >
@@ -121,10 +120,14 @@ export function OperationalCapabilities({
               href={`/departments/${dept.slug}`}
               style={{
                 textDecoration: "none",
-                display: "block",
+                display: "flex",
+                flexDirection: "column",
                 position: "relative",
-                height: "clamp(340px, 48vh, 440px)",
-                borderRadius: "6px",
+                flex: "1 1 340px",
+                maxWidth: "380px",
+                minWidth: "290px",
+                height: "460px",
+                borderRadius: "8px",
                 overflow: "hidden",
                 border: "1px solid rgba(168, 104, 58, 0.35)",
                 boxShadow: "0 10px 30px rgba(0, 0, 0, 0.4)",
@@ -146,7 +149,7 @@ export function OperationalCapabilities({
                 alt={dept.name}
                 fill
                 style={{ objectFit: "cover", objectPosition: "center" }}
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
               />
 
               {/* Cinematic Vignette Overlay */}
@@ -155,64 +158,75 @@ export function OperationalCapabilities({
                   position: "absolute",
                   inset: 0,
                   background:
-                    "linear-gradient(to top, rgba(30,19,12,0.96) 0%, rgba(30,19,12,0.6) 45%, rgba(30,19,12,0.2) 100%)",
+                    "linear-gradient(to top, rgba(20,12,7,0.98) 0%, rgba(20,12,7,0.72) 48%, rgba(20,12,7,0.3) 100%)",
                 }}
               />
 
-              {/* Department Content */}
+              {/* Pinned Top Header: Department Number & Products Count Badge */}
               <div
                 style={{
                   position: "absolute",
-                  inset: 0,
-                  padding: "32px",
+                  top: "20px",
+                  left: "24px",
+                  right: "24px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  zIndex: 3,
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading-stack, 'Cormorant Garamond', Georgia, serif)",
+                    fontSize: "2rem",
+                    fontWeight: 700,
+                    color: "#C9935A",
+                    textShadow: "0 2px 8px rgba(0,0,0,0.8)",
+                  }}
+                >
+                  {dept.number}
+                </span>
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: 700,
+                    letterSpacing: "0.15em",
+                    textTransform: "uppercase",
+                    color: "#F6F0E4",
+                    backgroundColor: "rgba(168, 104, 58, 0.75)",
+                    padding: "4px 12px",
+                    borderRadius: "3px",
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.4)",
+                    backdropFilter: "blur(4px)",
+                  }}
+                >
+                  {dept.products.length} Products
+                </span>
+              </div>
+
+              {/* Bottom Content Body */}
+              <div
+                style={{
+                  marginTop: "auto",
+                  padding: "24px",
                   display: "flex",
                   flexDirection: "column",
-                  justifyContent: "flex-end",
+                  position: "relative",
                   zIndex: 2,
                 }}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    marginBottom: "8px",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "var(--font-heading-stack, 'Cormorant Garamond', Georgia, serif)",
-                      fontSize: "1.75rem",
-                      fontWeight: 700,
-                      color: "#C9935A",
-                    }}
-                  >
-                    {dept.number}
-                  </span>
-                  <span
-                    style={{
-                      fontSize: "11px",
-                      fontWeight: 600,
-                      letterSpacing: "0.15em",
-                      textTransform: "uppercase",
-                      color: "#F6F0E4",
-                      backgroundColor: "rgba(168, 104, 58, 0.5)",
-                      padding: "4px 10px",
-                      borderRadius: "2px",
-                    }}
-                  >
-                    {dept.products.length} Products
-                  </span>
-                </div>
-
+                {/* Department Name with uniform height */}
                 <h3
                   style={{
                     fontFamily: "var(--font-heading-stack, 'Cormorant Garamond', Georgia, serif)",
-                    fontSize: "1.85rem",
+                    fontSize: "1.75rem",
                     fontWeight: 700,
                     lineHeight: 1.15,
                     color: "#F6F0E4",
-                    marginBottom: "10px",
+                    marginBottom: "8px",
+                    minHeight: "56px",
+                    display: "flex",
+                    alignItems: "center",
                   }}
                 >
                   {dept.name}
@@ -220,14 +234,15 @@ export function OperationalCapabilities({
 
                 <p
                   style={{
-                    fontSize: "0.875rem",
+                    fontSize: "0.8125rem",
                     color: "rgba(246, 240, 228, 0.8)",
-                    lineHeight: 1.6,
-                    marginBottom: "18px",
+                    lineHeight: 1.55,
+                    marginBottom: "14px",
                     display: "-webkit-box",
                     WebkitLineClamp: 2,
                     WebkitBoxOrient: "vertical",
                     overflow: "hidden",
+                    minHeight: "38px",
                   }}
                 >
                   {dept.overview}
@@ -239,7 +254,8 @@ export function OperationalCapabilities({
                     display: "flex",
                     flexWrap: "wrap",
                     gap: "6px",
-                    marginBottom: "20px",
+                    marginBottom: "16px",
+                    minHeight: "30px",
                   }}
                 >
                   {dept.products.slice(0, 3).map((p) => (
@@ -251,6 +267,10 @@ export function OperationalCapabilities({
                         backgroundColor: "rgba(246, 240, 228, 0.12)",
                         padding: "3px 8px",
                         borderRadius: "2px",
+                        maxWidth: "100%",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
                       }}
                     >
                       • {p.name}
@@ -258,16 +278,19 @@ export function OperationalCapabilities({
                   ))}
                 </div>
 
+                {/* Explore Action Button */}
                 <div
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
                     gap: "6px",
-                    fontSize: "12px",
-                    fontWeight: 600,
-                    letterSpacing: "0.1em",
+                    fontSize: "11px",
+                    fontWeight: 700,
+                    letterSpacing: "0.12em",
                     textTransform: "uppercase",
                     color: "#C9935A",
+                    paddingTop: "8px",
+                    borderTop: "1px solid rgba(168, 104, 58, 0.25)",
                   }}
                 >
                   <span>Explore Department Specification &amp; Products</span>

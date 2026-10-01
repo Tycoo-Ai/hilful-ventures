@@ -82,6 +82,7 @@ export default async function HomePage({
           ...content.about,
           ...aboutData,
           portraitImage: aboutData?.portraitImage || content.about?.portraitImage,
+          directors: aboutData?.directors || (content.about as any)?.directors,
         }}
       />
 

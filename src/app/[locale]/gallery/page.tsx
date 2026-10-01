@@ -40,15 +40,23 @@ export async function generateMetadata({
   };
 }
 
-function mapCategory(cat: string): "EXPLORATION" | "EQUIPMENT" | "MINING" | "INFRASTRUCTURE" | "ENERGY" | "LOGISTICS" {
+function mapCategory(cat: string): "GOLD_MINING" | "DRILLING_CHEMICALS" | "METALS" | "ONG_MINERALS" | "QUARTZ_FLYASH" {
   const upper = (cat || "").toUpperCase();
-  if (upper.includes("EXPLOR")) return "EXPLORATION";
-  if (upper.includes("EQUIP")) return "EQUIPMENT";
-  if (upper.includes("ENERGY") || upper.includes("HYDRO")) return "ENERGY";
-  if (upper.includes("LOGISTIC") || upper.includes("COMMODIT")) return "LOGISTICS";
-  if (upper.includes("INFRA") || upper.includes("PROCESS") || upper.includes("DEVELOP")) return "INFRASTRUCTURE";
-  return "MINING";
+  if (upper.includes("GOLD") || upper.includes("DORE") || upper.includes("ALLUVIAL")) return "GOLD_MINING";
+  if (upper.includes("DRILL") || upper.includes("POLYMER") || upper.includes("STARCH") || upper.includes("FLUID")) return "DRILLING_CHEMICALS";
+  if (upper.includes("METAL") || upper.includes("STEEL") || upper.includes("COPPER") || upper.includes("SCRAP") || upper.includes("ALUMINIUM")) return "METALS";
+  if (upper.includes("ONG") || upper.includes("IRON") || upper.includes("BARITE") || upper.includes("SINTER")) return "ONG_MINERALS";
+  if (upper.includes("QUARTZ") || upper.includes("FLY") || upper.includes("ASH") || upper.includes("SILICA")) return "QUARTZ_FLYASH";
+  return "GOLD_MINING";
 }
+
+const DEPT_NAMES: Record<string, string> = {
+  GOLD_MINING: "01. Gold Mining & Mineral Extraction",
+  DRILLING_CHEMICALS: "02. Drilling & Mud Chemicals",
+  METALS: "03. Ferrous & Non-Ferrous Secondary Metals",
+  ONG_MINERALS: "04. Minerals & Mud Chemicals to ONG Exploration",
+  QUARTZ_FLYASH: "05. Quartz and Fly Ash",
+};
 
 export default async function GalleryPage({
   params,
@@ -66,16 +74,23 @@ export default async function GalleryPage({
     const isPreview = await isPreviewActive();
     const galleryItems = await getGalleryServer(isPreview);
     if (galleryItems && galleryItems.length > 0) {
-      content.items = galleryItems.map((g, idx) => ({
-        id: g.id,
-        src: g.imageUrl,
-        alt: g.title,
-        title: g.title,
-        category: mapCategory(g.category),
-        aspectRatio: idx % 3 === 0 ? "featured" : "landscape",
-        caption: g.caption || g.title,
-        technicalMetadata: "FIELD OPERATION · INDUSTRIAL DISCIPLINE",
-      }));
+      const cmsMapped = galleryItems.map((g, idx) => {
+        const cat = mapCategory(g.category);
+        return {
+          id: g.id,
+          src: g.imageUrl,
+          alt: g.title,
+          title: g.title,
+          category: cat,
+          departmentName: DEPT_NAMES[cat] || "Hilful Department Operations",
+          aspectRatio: (idx % 3 === 0 ? "featured" : "landscape") as "featured" | "landscape",
+          caption: g.caption || g.title,
+          technicalMetadata: "FIELD CONCESSION · DISCIPLINE INSPECTED",
+        };
+      });
+
+      // Merge base departmental items with any newly uploaded CMS items
+      content.items = [...cmsMapped, ...baseContent.items.filter((b) => !cmsMapped.some((c) => c.id === b.id))];
     }
   } catch (err) {
     console.warn("Gallery CMS overlay fallback:", err);

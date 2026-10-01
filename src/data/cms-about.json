@@ -1,8 +1,8 @@
 {
   "en": {
     "eyebrow": "ABOUT HILFUL",
-    "headline": "NAVAS          -FOUNDER",
-    "storyText1": "ENGINEERED FOR OPERATIONAL PRECISION. BUILT FOR CAPITAL EFFICIENCY.                                                                                                         \n\n\nHilful Ventures was established as a premier cross-border commodities and logistics enterprise bridging primary resource extraction with global industrial demand.",
+    "headline": "OUR DIRECTORS",
+    "storyText1": "ENGINEERED FOR OPERATIONAL PRECISION. BUILT FOR CAPITAL EFFICIENCY.\n\nHilful Ventures was established as a premier cross-border commodities and logistics enterprise bridging primary resource extraction with global industrial demand.",
     "storyText2": "With active operational bases in Chennai, India and Assosa, Ethiopia, we provide uninterrupted supply chains for primary gold mining & mineral extraction, heavy drilling polymers, certified secondary smelting metals, oil & natural gas exploration minerals & mud chemicals, and high-grade quartz & fly ash.",
     "stat1Value": "5+",
     "stat1Label": "Specialized Commodity Disciplines",
@@ -10,6 +10,26 @@
     "stat2Label": "Continental Headquarters (India & Ethiopia)",
     "stat3Value": "100%",
     "stat3Label": "Independent Assay & COA Compliance",
-    "portraitImage": "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg"
+    "portraitImage": "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg",
+    "directors": [
+      {
+        "id": "dir-1",
+        "name": "Navas",
+        "role": "Founder & Managing Director",
+        "image": "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg"
+      },
+      {
+        "id": "dir-2",
+        "name": "Ghazi Ali",
+        "role": "Executive Director",
+        "image": "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg"
+      },
+      {
+        "id": "dir-3",
+        "name": "Noor",
+        "role": "Director of Operations",
+        "image": "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg"
+      }
+    ]
   }
 }

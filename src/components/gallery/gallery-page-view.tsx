@@ -178,7 +178,7 @@ export function GalleryPageView({ content, locale = "en" }: GalleryPageViewProps
                     {/* Top Sector Tag & Expand Icon */}
                     <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
                       <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-xs bg-[#0c1a2a] text-accent-300 border border-neutral-700">
-                        {item.category}
+                        {item.departmentName || item.category}
                       </span>
                       <div className="p-2 rounded-xs bg-[#0c1a2a]/80 text-white group-hover:bg-accent-500 group-hover:text-neutral-950 transition-colors shadow-2xs">
                         <Maximize2 className="w-3.5 h-3.5" />

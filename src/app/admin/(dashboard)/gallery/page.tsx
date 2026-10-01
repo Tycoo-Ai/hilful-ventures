@@ -18,15 +18,24 @@ interface GalleryPhoto {
 const initialGallery: GalleryPhoto[] = [
   {
     id: "gal-01",
+    title: "Gold Dore Bar Smelting & Assay Inspection",
+    category: "Gold Mining & Mineral Extraction",
+    imageUrl: "/hero-mine-bg.jpg",
+    caption: "Primary alluvial and hard-rock gold dore bars assayed for 92-96% fineness prior to vault security transfer.",
+    status: "PUBLISHED",
+    featured: true,
+  },
+  {
+    id: "gal-02",
     title: "Mining & Drilling Fluid Polymers",
-    category: "Mining & Drilling Chemicals",
+    category: "Drilling & Mud Chemicals",
     imageUrl: "/chemicals.jpg",
     caption: "Specialized API 13A drilling fluid polymers and starch derivatives in moisture-sealed export packaging.",
     status: "PUBLISHED",
     featured: true,
   },
   {
-    id: "gal-02",
+    id: "gal-03",
     title: "HMS 1 & 2 Steel Scrap Processing",
     category: "Ferrous / Non-Ferrous Metal",
     imageUrl: "/metals.jpg",
@@ -35,25 +44,25 @@ const initialGallery: GalleryPhoto[] = [
     featured: true,
   },
   {
-    id: "gal-03",
+    id: "gal-04",
     title: "High-Purity Iron Ore Fines & Lumps",
-    category: "Minerals & Mud Chemicals",
+    category: "Minerals & Mud Chemicals to ONG Exploration",
     imageUrl: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=1200&q=80",
     caption: "Premium grade iron ore sourced from reliable extraction pits for metallurgical and DRI steelmaking operations.",
     status: "PUBLISHED",
     featured: true,
   },
   {
-    id: "gal-04",
+    id: "gal-05",
     title: "Class F Micronized Pulverized Fly Ash",
-    category: "Quartz & Fly Ash",
+    category: "Quartz and Fly Ash",
     imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
     caption: "Pozzolanic pulverized fuel ash byproduct with high glass content, ideal for high-performance concrete.",
     status: "PUBLISHED",
     featured: true,
   },
   {
-    id: "gal-05",
+    id: "gal-06",
     title: "Pure Millberry Copper Wire Scrap",
     category: "Ferrous / Non-Ferrous Metal",
     imageUrl: "/metals.jpg",
@@ -61,9 +70,9 @@ const initialGallery: GalleryPhoto[] = [
     status: "PUBLISHED",
   },
   {
-    id: "gal-06",
+    id: "gal-07",
     title: "Deep Drilling Wellbore Fluid Additives",
-    category: "Mining & Drilling Chemicals",
+    category: "Drilling & Mud Chemicals",
     imageUrl: "/chemicals.jpg",
     caption: "High-temperature organic starch derivatives and bentonite rheology modifiers.",
     status: "PUBLISHED",
@@ -93,8 +102,8 @@ export default function AdminGalleryPage() {
   // Modal form state
   const [formData, setFormData] = useState({
     title: "",
-    category: "Mining & Drilling Chemicals",
-    imageUrl: "/chemicals.jpg",
+    category: "Gold Mining & Mineral Extraction",
+    imageUrl: "/hero-mine-bg.jpg",
     caption: "",
     status: "PUBLISHED" as "PUBLISHED" | "DRAFT",
     featured: false,
@@ -106,10 +115,11 @@ export default function AdminGalleryPage() {
   };
 
   const categories = [
-    "Mining & Drilling Chemicals",
+    "Gold Mining & Mineral Extraction",
+    "Drilling & Mud Chemicals",
     "Ferrous / Non-Ferrous Metal",
-    "Minerals & Mud Chemicals",
-    "Quartz & Fly Ash",
+    "Minerals & Mud Chemicals to ONG Exploration",
+    "Quartz and Fly Ash",
   ];
 
   const filtered = photos.filter((p) => {

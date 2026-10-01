@@ -44,7 +44,7 @@ export function ProductCatalogClient({ departments, initialProducts }: Props) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))",
             gap: "20px",
           }}
         >
@@ -341,6 +341,9 @@ export function ProductCatalogClient({ departments, initialProducts }: Props) {
                     color: "#1E130C",
                     marginBottom: "10px",
                     lineHeight: 1.25,
+                    minHeight: "56px",
+                    display: "flex",
+                    alignItems: "center",
                   }}
                 >
                   {prod.name}
@@ -352,6 +355,11 @@ export function ProductCatalogClient({ departments, initialProducts }: Props) {
                     color: "#5A3A22",
                     lineHeight: 1.6,
                     marginBottom: "16px",
+                    minHeight: "44px",
+                    display: "-webkit-box",
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: "vertical",
+                    overflow: "hidden",
                   }}
                 >
                   {prod.shortDesc}
@@ -364,6 +372,7 @@ export function ProductCatalogClient({ departments, initialProducts }: Props) {
                     flexWrap: "wrap",
                     gap: "6px",
                     marginBottom: "20px",
+                    minHeight: "32px",
                   }}
                 >
                   <span
