@@ -52,9 +52,37 @@ export interface AboutContent {
     primaryCta: { text: string; href: string };
     secondaryCta: { text: string; href: string };
   };
+  portraitImage?: string;
+  directors?: {
+    id: string;
+    name: string;
+    role?: string;
+    image: string;
+  }[];
 }
 
 export const aboutContentEn: AboutContent = {
+  portraitImage: "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg",
+  directors: [
+    {
+      id: "dir-1",
+      name: "Navas",
+      role: "Founder & Managing Director",
+      image: "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg",
+    },
+    {
+      id: "dir-2",
+      name: "Ghazi Ali",
+      role: "Executive Director",
+      image: "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg",
+    },
+    {
+      id: "dir-3",
+      name: "Noor",
+      role: "Director of Operations",
+      image: "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg",
+    },
+  ],
   hero: {
     eyebrow: "ABOUT HILFUL",
     headline: "ENGINEERED FOR OPERATIONAL PRECISION. BUILT FOR CAPITAL EFFICIENCY.",
@@ -212,6 +240,27 @@ export const aboutContentEn: AboutContent = {
 };
 
 export const aboutContentAr: AboutContent = {
+  portraitImage: "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg",
+  directors: [
+    {
+      id: "dir-1",
+      name: "نافاس",
+      role: "المؤسس والعضو المنتدب",
+      image: "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg",
+    },
+    {
+      id: "dir-2",
+      name: "غازي علي",
+      role: "المدير التنفيذي",
+      image: "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg",
+    },
+    {
+      id: "dir-3",
+      name: "نور",
+      role: "مدير العمليات",
+      image: "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg",
+    },
+  ],
   hero: {
     eyebrow: "عن هلفول فنتشرز",
     headline: "مصممة للدقة التشغيلية. مبنية لكفاءة رأس المال.",

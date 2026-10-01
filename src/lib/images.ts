@@ -226,8 +226,8 @@ export const aboutImages = {
   },
   whoWeAre: {
     id: "about-who-we-are",
-    src: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=85",
-    alt: "Representative industrial engineering oversight and field operational management",
+    src: "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg",
+    alt: "Hilful Ventures Executive Leadership and Operational Directors",
     width: 1200,
     height: 900,
   },

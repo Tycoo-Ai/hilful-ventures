@@ -40,26 +40,89 @@ export function AboutSection({ content: initialContent }: { content?: any }) {
 
   useEffect(() => {
     if (initialContent) {
-      setContent(initialContent);
+      setContent((prev: any) => {
+        // If prev already has active custom directors from localStorage, preserve them
+        if (prev?.directors && prev.directors.length > 0 && (!initialContent.directors || initialContent.directors.length === 0)) {
+          return { ...initialContent, directors: prev.directors, portraitImage: prev.directors[0]?.image || initialContent.portraitImage };
+        }
+        return initialContent;
+      });
     }
   }, [initialContent]);
 
-  // Client-side fallback to ensure latest portrait and directors from CMS
+  // Client-side instant hydration and real-time sync
   useEffect(() => {
+    // 1. Instant check from localStorage (0ms latency, persists across refresh)
+    try {
+      const local = localStorage.getItem("hilful_cms_about");
+      if (local) {
+        const parsed = JSON.parse(local);
+        if (parsed.directors && Array.isArray(parsed.directors) && parsed.directors.length > 0) {
+          setContent((prev: any) => ({
+            ...prev,
+            ...parsed,
+            directors: parsed.directors,
+            portraitImage: parsed.directors[0]?.image || parsed.portraitImage,
+          }));
+        }
+      }
+    } catch {}
+
+    // 2. Cross-tab and same-window instant update listener
+    const handleUpdate = (e: any) => {
+      const updated = e.detail;
+      if (updated && updated.directors && Array.isArray(updated.directors)) {
+        setContent((prev: any) => ({
+          ...prev,
+          ...updated,
+          directors: updated.directors,
+          portraitImage: updated.directors[0]?.image || updated.portraitImage,
+        }));
+      }
+    };
+    window.addEventListener("hilful_about_updated", handleUpdate);
+
+    let bc: BroadcastChannel | null = null;
+    if (typeof BroadcastChannel !== "undefined") {
+      try {
+        bc = new BroadcastChannel("hilful_cms_channel");
+        bc.onmessage = (event) => {
+          if (event.data?.type === "ABOUT_UPDATED" && event.data?.data) {
+            const d = event.data.data;
+            setContent((prev: any) => ({
+              ...prev,
+              ...d,
+              directors: d.directors,
+              portraitImage: d.directors?.[0]?.image || d.portraitImage,
+            }));
+          }
+        };
+      } catch {}
+    }
+
+    // 3. Fallback network sync from Cloud/Server API
     fetch("/api/admin/cms/about")
       .then((res) => res.json())
       .then((data) => {
         const active = data?.published || data?.draft;
-        if (active) {
+        if (active && active.directors && Array.isArray(active.directors) && active.directors.length > 0) {
           setContent((prev: any) => ({
             ...prev,
             ...active,
-            portraitImage: active.portraitImage || active.image || prev?.portraitImage,
-            directors: active.directors && active.directors.length > 0 ? active.directors : prev?.directors,
+            portraitImage: active.directors[0]?.image || active.portraitImage || prev?.portraitImage,
+            directors: active.directors,
           }));
+          try {
+            localStorage.setItem("hilful_cms_about", JSON.stringify(active));
+          } catch {}
         }
       })
       .catch(() => {});
+
+    return () => {
+      window.removeEventListener("hilful_about_updated", handleUpdate);
+      if (bc) bc.close();
+    };
   }, []);
 
   useEffect(() => {

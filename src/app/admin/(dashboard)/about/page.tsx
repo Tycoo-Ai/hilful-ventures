@@ -54,22 +54,49 @@ export default function AdminAboutPage() {
     directors: INITIAL_DIRECTORS,
   });
 
-  // Load latest persisted about content on mount
+  // Load latest persisted about content on mount (LocalStorage first, then Cloud/API)
   useEffect(() => {
+    // 1. Instant hydration from localStorage
+    try {
+      const local = localStorage.getItem("hilful_cms_about");
+      if (local) {
+        const parsed = JSON.parse(local);
+        if (parsed.directors && Array.isArray(parsed.directors) && parsed.directors.length > 0) {
+          setAboutData(parsed);
+        }
+      }
+    } catch {}
+
+    // 2. Network sync from Cloud/Server API
     fetch("/api/admin/cms/about")
       .then((res) => res.json())
       .then((data) => {
         const active = data?.published || data?.draft;
         if (active) {
-          setAboutData((prev) => ({
-            ...prev,
-            eyebrow: active.hero?.eyebrow || active.eyebrow || prev.eyebrow,
-            headline: active.hero?.headline || active.headline || prev.headline,
-            storyText1: active.story?.p1 || active.storyText1 || prev.storyText1,
-            storyText2: active.story?.p2 || active.storyText2 || prev.storyText2,
-            portraitImage: active.portraitImage || active.image || prev.portraitImage,
-            directors: active.directors && Array.isArray(active.directors) && active.directors.length > 0 ? active.directors : prev.directors,
-          }));
+          setAboutData((prev) => {
+            const hasServerDirs =
+              active.directors && Array.isArray(active.directors) && active.directors.length > 0;
+            const chosenDirectors = hasServerDirs ? active.directors : prev.directors;
+
+            const next = {
+              ...prev,
+              eyebrow: active.hero?.eyebrow || active.eyebrow || prev.eyebrow,
+              headline: active.hero?.headline || active.headline || prev.headline,
+              storyText1: active.story?.p1 || active.storyText1 || prev.storyText1,
+              storyText2: active.story?.p2 || active.storyText2 || prev.storyText2,
+              portraitImage:
+                chosenDirectors[0]?.image || active.portraitImage || active.image || prev.portraitImage,
+              directors: chosenDirectors,
+            };
+
+            // If server returned valid directors, persist to localStorage
+            if (hasServerDirs) {
+              try {
+                localStorage.setItem("hilful_cms_about", JSON.stringify(next));
+              } catch {}
+            }
+            return next;
+          });
         }
       })
       .catch((err) => console.warn("Failed to load about CMS:", err));
@@ -90,6 +117,20 @@ export default function AdminAboutPage() {
         portraitImage: aboutData.directors[0]?.image || aboutData.portraitImage,
       };
 
+      // 1. Immediately store in localStorage so a refresh can NEVER wipe it out
+      try {
+        localStorage.setItem("hilful_cms_about", JSON.stringify(payload));
+        window.dispatchEvent(new CustomEvent("hilful_about_updated", { detail: payload }));
+        if (typeof BroadcastChannel !== "undefined") {
+          const bc = new BroadcastChannel("hilful_cms_channel");
+          bc.postMessage({ type: "ABOUT_UPDATED", data: payload });
+          bc.close();
+        }
+      } catch (storageErr) {
+        console.warn("LocalStorage save warning:", storageErr);
+      }
+
+      // 2. Persist to API and Cloudinary
       await fetch("/api/admin/cms/about", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -97,7 +138,7 @@ export default function AdminAboutPage() {
       });
       showToast("✓ Directors and About Us page saved and published live!");
     } catch {
-      showToast("✓ About Us content updated locally.");
+      showToast("✓ Saved to local storage and active across your browser.");
     } finally {
       setSaving(false);
     }

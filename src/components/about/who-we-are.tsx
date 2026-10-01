@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { SafeImage } from "@/components/ui/safe-image";
 import { Container } from "@/components/ui";
 import { Reveal, FadeIn, StaggerChildren, StaggerItem } from "@/components/animations";
@@ -11,6 +12,32 @@ interface WhoWeAreProps {
 }
 
 export function WhoWeAre({ content }: WhoWeAreProps) {
+  const initialImg =
+    (content as any)?.portraitImage ||
+    (content as { image?: string }).image ||
+    aboutImages.whoWeAre.src;
+
+  const [activeImage, setActiveImage] = useState<string>(initialImg);
+
+  useEffect(() => {
+    try {
+      const local = localStorage.getItem("hilful_cms_about");
+      if (local) {
+        const parsed = JSON.parse(local);
+        const img = parsed.portraitImage || parsed.directors?.[0]?.image;
+        if (img) setActiveImage(img);
+      }
+    } catch {}
+
+    const handleUpdate = (e: any) => {
+      const updated = e.detail;
+      const img = updated?.portraitImage || updated?.directors?.[0]?.image;
+      if (img) setActiveImage(img);
+    };
+    window.addEventListener("hilful_about_updated", handleUpdate);
+    return () => window.removeEventListener("hilful_about_updated", handleUpdate);
+  }, []);
+
   return (
     <section className="py-24 lg:py-32 bg-white text-[#0c1a2a] border-b border-neutral-200">
       <Container size="full">
@@ -20,7 +47,7 @@ export function WhoWeAre({ content }: WhoWeAreProps) {
             <Reveal>
               <div className="relative aspect-[4/5] rounded-sm overflow-hidden bg-neutral-900 border border-neutral-200 shadow-xl">
                 <SafeImage
-                  src={(content as any)?.portraitImage || (content as { image?: string }).image || aboutImages.whoWeAre.src}
+                  src={activeImage}
                   alt={(content as { imageAlt?: string }).imageAlt || aboutImages.whoWeAre.alt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"

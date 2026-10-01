@@ -3,6 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { DEPARTMENTS, type DepartmentItem, type ProductItem } from "@/data/hilful-data";
 import { homeContent, type HomeContent } from "@/data/home-content";
 import { aboutContentEn, aboutContentAr, type AboutContent } from "@/data/about-content";
+import cmsAboutDefault from "@/data/cms-about.json";
+import { saveCloudJson, getCloudJson } from "@/lib/cloud-storage";
 import fs from "fs";
 import path from "path";
 
@@ -421,8 +423,7 @@ export interface HomeDiskData {
 export async function getHomeServer(locale: "en" | "ar" = "en"): Promise<HomeContent> {
   const base = JSON.parse(JSON.stringify(homeContent[locale]));
   const disk = readJsonFile<HomeDiskData>(HOME_FILE);
-  const aboutDisk = readJsonFile<AboutDiskData>(ABOUT_FILE);
-  const aboutData = aboutDisk?.[locale] || aboutDisk?.en;
+  const aboutData = await getAboutServer(locale);
   const portrait = aboutData?.portraitImage;
 
   let home = base;
@@ -442,6 +443,7 @@ export async function getHomeServer(locale: "en" | "ar" = "en"): Promise<HomeCon
       ...home.about,
       ...aboutData,
       portraitImage: portrait || (home.about as any)?.portraitImage || "/about-portrait.jpg",
+      directors: aboutData.directors || (home.about as any)?.directors,
     } as any;
   }
 
@@ -511,17 +513,38 @@ export interface AboutDiskData {
 
 export async function getAboutServer(locale: "en" | "ar" = "en"): Promise<any> {
   const base = JSON.parse(JSON.stringify(locale === "ar" ? aboutContentAr : aboutContentEn));
-  const disk = readJsonFile<AboutDiskData>(ABOUT_FILE);
+  let disk = readJsonFile<AboutDiskData>(ABOUT_FILE);
+
+  // 1. Try reading from persistent Cloudinary JSON first
+  if (!disk || !disk[locale]) {
+    try {
+      const cloudData = await getCloudJson<AboutDiskData>("cms-about");
+      if (cloudData && (cloudData[locale] || cloudData.en)) {
+        disk = cloudData;
+        writeJsonFile(ABOUT_FILE, cloudData);
+      }
+    } catch {}
+  }
+
+  // 2. Fallback to bundled cms-about.json
+  if (!disk || (!disk[locale] && !disk.en)) {
+    disk = (cmsAboutDefault as unknown) as AboutDiskData;
+  }
+
   const aboutData = disk?.[locale] || disk?.en;
   if (aboutData) {
     return {
       ...base,
       ...aboutData,
-      portraitImage: aboutData.portraitImage,
+      portraitImage: aboutData.portraitImage || base.portraitImage,
+      directors:
+        aboutData.directors && Array.isArray(aboutData.directors) && aboutData.directors.length > 0
+          ? aboutData.directors
+          : base.directors,
       whoWeAre: {
         ...base.whoWeAre,
-        image: aboutData.portraitImage || base.whoWeAre?.image,
-        portraitImage: aboutData.portraitImage,
+        image: aboutData.portraitImage || base.portraitImage || base.whoWeAre?.image,
+        portraitImage: aboutData.portraitImage || base.portraitImage,
       },
     };
   }
@@ -529,12 +552,29 @@ export async function getAboutServer(locale: "en" | "ar" = "en"): Promise<any> {
 }
 
 export async function saveAboutServer(locale: "en" | "ar" = "en", data: any): Promise<any> {
-  const disk = readJsonFile<AboutDiskData>(ABOUT_FILE) || {};
+  let disk = readJsonFile<AboutDiskData>(ABOUT_FILE) || {};
+  if (!disk || Object.keys(disk).length === 0) {
+    try {
+      const cloudData = await getCloudJson<AboutDiskData>("cms-about");
+      if (cloudData) disk = cloudData;
+    } catch {}
+  }
+  if (!disk || Object.keys(disk).length === 0) {
+    disk = JSON.parse(JSON.stringify(cmsAboutDefault));
+  }
+
   disk[locale] = {
     ...(disk[locale] || {}),
     ...data,
   };
   writeJsonFile(ABOUT_FILE, disk);
+
+  // Permanently sync to Cloudinary raw cloud storage so Netlify lambdas stay in sync!
+  try {
+    await saveCloudJson("cms-about", disk);
+  } catch (cloudErr) {
+    console.warn("[CMS Service] Cloudinary raw upload warning:", cloudErr);
+  }
 
   try {
     const page = await prisma.page.upsert({
