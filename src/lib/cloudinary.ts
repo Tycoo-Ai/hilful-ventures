@@ -10,22 +10,22 @@ import { v2 as cloudinary, type UploadApiResponse } from "cloudinary";
  * - Handles upload, secure URL generation, metadata extraction, and safe deletion.
  */
 
+const DEFAULT_CLOUD_NAME = "sbjkwjoj";
+const DEFAULT_API_KEY = "698312436955675";
+const DEFAULT_API_SECRET = "0IJvsyqu7iMH9fuC_ZnZVHDmIfo";
+
 export const isCloudinaryConfigured = (): boolean => {
-  const cName = process.env.CLOUDINARY_CLOUD_NAME || process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-  const k = process.env.CLOUDINARY_API_KEY;
-  const s = process.env.CLOUDINARY_API_SECRET;
-  if (process.env.CLOUDINARY_URL) return true;
-  return Boolean(cName && k && s);
+  return true;
 };
 
 export function ensureCloudinaryConfig() {
-  const cName = process.env.CLOUDINARY_CLOUD_NAME || process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-  const k = process.env.CLOUDINARY_API_KEY;
-  const s = process.env.CLOUDINARY_API_SECRET;
+  const cName = process.env.CLOUDINARY_CLOUD_NAME || process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || DEFAULT_CLOUD_NAME;
+  const k = process.env.CLOUDINARY_API_KEY || DEFAULT_API_KEY;
+  const s = process.env.CLOUDINARY_API_SECRET || DEFAULT_API_SECRET;
 
   if (process.env.CLOUDINARY_URL) {
     cloudinary.config();
-  } else if (cName && k && s) {
+  } else {
     cloudinary.config({
       cloud_name: cName,
       api_key: k,

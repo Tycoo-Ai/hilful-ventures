@@ -89,20 +89,30 @@ export async function POST(request: Request) {
         height = cloudinaryResult.height;
         format = cloudinaryResult.format;
       } catch (cloudErr) {
-        console.warn("[Cloudinary Upload] Falling back to local storage:", cloudErr);
+        console.warn("[Cloudinary Upload] First attempt failed, retrying:", cloudErr);
+        try {
+          const retryResult = await uploadToCloudinary(buffer, {
+            folder: "hilful/general",
+            publicId,
+            resourceType: isVideo ? "video" : "image",
+            tags: ["hilful-ventures"],
+          });
+          finalUrl = retryResult.secureUrl;
+          provider = "CLOUDINARY";
+          width = retryResult.width;
+          height = retryResult.height;
+          format = retryResult.format;
+        } catch (retryErr) {
+          console.error("[Cloudinary Upload] All attempts failed:", retryErr);
+        }
       }
     }
 
-    // If Cloudinary is not configured or failed, save directly to public/uploads
     if (!finalUrl) {
-      const fs = await import("fs/promises");
-      const uploadsDir = path.join(process.cwd(), "public", "uploads");
-      await fs.mkdir(uploadsDir, { recursive: true });
-      const savedFileName = `${publicId}${originalExt}`;
-      const filePath = path.join(uploadsDir, savedFileName);
-      await fs.writeFile(filePath, buffer);
-      finalUrl = `/uploads/${savedFileName}`;
-      provider = "LOCAL";
+      return NextResponse.json(
+        { error: "Cloud media storage failed. Please ensure the file is an image under 20MB." },
+        { status: 500 }
+      );
     }
 
     let asset = null;

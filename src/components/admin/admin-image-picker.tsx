@@ -80,25 +80,16 @@ export function AdminImagePicker({
       const data = await res.json();
       if (res.ok && data.url) {
         onChange(data.url);
+        setUploadError(null);
       } else {
-        // Fallback: Read as Data URL in browser so it still shows immediately!
-        const reader = new FileReader();
-        reader.onload = (loadEvent) => {
-          if (loadEvent.target?.result) {
-            onChange(loadEvent.target.result as string);
-          }
-        };
-        reader.readAsDataURL(file);
+        const errorMsg = data?.error || "Upload failed. Please try again.";
+        setUploadError(errorMsg);
+        alert(`Image Upload Error: ${errorMsg}`);
       }
-    } catch {
-      // Local fallback on network failure
-      const reader = new FileReader();
-      reader.onload = (loadEvent) => {
-        if (loadEvent.target?.result) {
-          onChange(loadEvent.target.result as string);
-        }
-      };
-      reader.readAsDataURL(file);
+    } catch (err: any) {
+      const errorMsg = err?.message || "Network error while uploading image.";
+      setUploadError(errorMsg);
+      alert(`Image Upload Error: ${errorMsg}`);
     } finally {
       setUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = "";

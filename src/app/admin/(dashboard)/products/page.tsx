@@ -17,13 +17,26 @@ export default function AdminProductsPage() {
   const [toast, setToast] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
 
-  // Load latest persisted products on mount
+  // Load latest persisted products on mount (LocalStorage first, then API/Cloud)
   useEffect(() => {
+    try {
+      const local = localStorage.getItem("hilful_cms_products");
+      if (local) {
+        const parsed = JSON.parse(local);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setProducts(parsed);
+        }
+      }
+    } catch {}
+
     fetch("/api/admin/cms/products")
       .then((res) => res.json())
       .then((data) => {
         if (data.products && Array.isArray(data.products) && data.products.length > 0) {
           setProducts(data.products);
+          try {
+            localStorage.setItem("hilful_cms_products", JSON.stringify(data.products));
+          } catch {}
         }
       })
       .catch((err) => console.warn("Failed to load products from API:", err));
@@ -172,19 +185,36 @@ export default function AdminProductsPage() {
       const data = await res.json();
       const savedProd = data.product || targetProd;
 
+      let nextList: ProductItem[];
       if (isNew) {
-        setProducts((prev) => [savedProd, ...prev]);
+        nextList = [savedProd, ...products];
+        setProducts(nextList);
         showToast(`✓ Commodity "${savedProd.name}" added to catalog live!`);
       } else {
-        setProducts((prev) => prev.map((p) => (p.slug === savedProd.slug ? savedProd : p)));
+        nextList = products.map((p) => (p.slug === savedProd.slug ? savedProd : p));
+        setProducts(nextList);
         showToast(`✓ Product "${savedProd.name}" picture and specifications updated live!`);
       }
+      try {
+        localStorage.setItem("hilful_cms_products", JSON.stringify(nextList));
+        if (typeof BroadcastChannel !== "undefined") {
+          const bc = new BroadcastChannel("hilful_cms_channel");
+          bc.postMessage({ type: "PRODUCTS_UPDATED", data: nextList });
+          bc.close();
+        }
+      } catch {}
     } catch {
+      let nextList: ProductItem[];
       if (isNew) {
-        setProducts((prev) => [targetProd, ...prev]);
+        nextList = [targetProd, ...products];
+        setProducts(nextList);
       } else {
-        setProducts((prev) => prev.map((p) => (p.slug === targetProd.slug ? targetProd : p)));
+        nextList = products.map((p) => (p.slug === targetProd.slug ? targetProd : p));
+        setProducts(nextList);
       }
+      try {
+        localStorage.setItem("hilful_cms_products", JSON.stringify(nextList));
+      } catch {}
       showToast(`✓ Product "${targetProd.name}" updated!`);
     } finally {
       setSaving(false);
@@ -194,16 +224,25 @@ export default function AdminProductsPage() {
 
   const handleDelete = async (slug: string) => {
     if (confirm("Are you sure you want to remove this product from the live catalog?")) {
+      const nextList = products.filter((p) => p.slug !== slug);
+      setProducts(nextList);
+      try {
+        localStorage.setItem("hilful_cms_products", JSON.stringify(nextList));
+        if (typeof BroadcastChannel !== "undefined") {
+          const bc = new BroadcastChannel("hilful_cms_channel");
+          bc.postMessage({ type: "PRODUCTS_UPDATED", data: nextList });
+          bc.close();
+        }
+      } catch {}
+
       try {
         await fetch("/api/admin/cms/products", {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ slug }),
         });
-        setProducts((prev) => prev.filter((p) => p.slug !== slug));
         showToast("✓ Product removed from live catalog.");
       } catch {
-        setProducts((prev) => prev.filter((p) => p.slug !== slug));
         showToast("✓ Product removed.");
       }
       setEditingProduct(null);

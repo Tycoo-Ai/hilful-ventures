@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { DepartmentItem, ProductItem } from "@/data/hilful-data";
@@ -11,11 +11,40 @@ interface Props {
 }
 
 export function ProductCatalogClient({ departments, initialProducts }: Props) {
+  const [products, setProducts] = useState<ProductItem[]>(initialProducts);
   const [selectedDeptSlug, setSelectedDeptSlug] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
+  useEffect(() => {
+    try {
+      const local = localStorage.getItem("hilful_cms_products");
+      if (local) {
+        const parsed = JSON.parse(local);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setProducts(parsed);
+        }
+      }
+    } catch {}
+
+    let bc: BroadcastChannel | null = null;
+    if (typeof BroadcastChannel !== "undefined") {
+      try {
+        bc = new BroadcastChannel("hilful_cms_channel");
+        bc.onmessage = (event) => {
+          if (event.data?.type === "PRODUCTS_UPDATED" && Array.isArray(event.data?.data)) {
+            setProducts(event.data.data);
+          }
+        };
+      } catch {}
+    }
+
+    return () => {
+      if (bc) bc.close();
+    };
+  }, []);
+
   const filteredProducts = useMemo(() => {
-    return initialProducts.filter((product) => {
+    return products.filter((product) => {
       const matchesDept =
         selectedDeptSlug === "all" || product.departmentSlug === selectedDeptSlug;
       const matchesQuery =
@@ -25,7 +54,7 @@ export function ProductCatalogClient({ departments, initialProducts }: Props) {
         product.specs.grade.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesDept && matchesQuery;
     });
-  }, [initialProducts, selectedDeptSlug, searchQuery]);
+  }, [products, selectedDeptSlug, searchQuery]);
 
   return (
     <div className="container-xl" style={{ padding: "64px clamp(1.5rem, 5vw, 6rem)" }}>

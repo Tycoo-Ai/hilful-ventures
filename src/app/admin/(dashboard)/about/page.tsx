@@ -131,14 +131,26 @@ export default function AdminAboutPage() {
       }
 
       // 2. Persist to API and Cloudinary
-      await fetch("/api/admin/cms/about", {
+      const res = await fetch("/api/admin/cms/about", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "saveAndPublish", data: payload }),
       });
+
+      if (!res.ok) {
+        if (res.status === 401) {
+          alert("Your admin session has expired. Please log in again.");
+          window.location.href = "/admin/login";
+          return;
+        }
+        const errJson = await res.json().catch(() => ({}));
+        throw new Error(errJson.error || "Server save failed");
+      }
+
       showToast("✓ Directors and About Us page saved and published live!");
-    } catch {
-      showToast("✓ Saved to local storage and active across your browser.");
+    } catch (err: any) {
+      console.warn("About save error:", err);
+      showToast(err?.message ? `⚠ ${err.message}` : "✓ Saved to browser storage.");
     } finally {
       setSaving(false);
     }

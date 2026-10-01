@@ -105,7 +105,16 @@ export async function getDepartmentsServer(): Promise<DepartmentItem[]> {
     return cached;
   }
 
-  // 2. Try Prisma database
+  // 2. Try persistent Cloudinary storage
+  try {
+    const cloudDepts = await getCloudJson<DepartmentItem[]>("cms-departments");
+    if (cloudDepts && Array.isArray(cloudDepts) && cloudDepts.length > 0) {
+      writeJsonFile(DEPTS_FILE, cloudDepts);
+      return cloudDepts;
+    }
+  } catch {}
+
+  // 3. Try Prisma database
   try {
     const dbDepts = await prisma.department.findMany({
       orderBy: { sortOrder: "asc" },
@@ -190,6 +199,13 @@ export async function saveDepartmentServer(dept: DepartmentItem): Promise<Depart
   // Persist to local disk JSON store immediately
   writeJsonFile(DEPTS_FILE, updatedList);
 
+  // Persist to Cloudinary raw storage
+  try {
+    await saveCloudJson("cms-departments", updatedList);
+  } catch (cloudErr) {
+    console.warn("[CMS Service] Cloudinary department save warning:", cloudErr);
+  }
+
   // Persist to Prisma DB asynchronously (best effort)
   try {
     await prisma.department.upsert({
@@ -249,12 +265,25 @@ export async function saveDepartmentServer(dept: DepartmentItem): Promise<Depart
 export async function getProductsServer(departmentSlug?: string): Promise<ProductItem[]> {
   let products: ProductItem[] = [];
 
-  // 1. Check local JSON file
-  const cached = readJsonFile<ProductItem[]>(PRODS_FILE);
-  if (cached && Array.isArray(cached) && cached.length > 0) {
-    products = cached;
-  } else {
-    // 2. Read from Prisma
+  // 1. Check persistent Cloudinary storage first
+  try {
+    const cloudProds = await getCloudJson<ProductItem[]>("cms-products");
+    if (cloudProds && Array.isArray(cloudProds) && cloudProds.length > 0) {
+      writeJsonFile(PRODS_FILE, cloudProds);
+      products = cloudProds;
+    }
+  } catch {}
+
+  // 2. Check local JSON file if cloud didn't return
+  if (products.length === 0) {
+    const cached = readJsonFile<ProductItem[]>(PRODS_FILE);
+    if (cached && Array.isArray(cached) && cached.length > 0) {
+      products = cached;
+    }
+  }
+
+  // 3. Fallback to Prisma database
+  if (products.length === 0) {
     try {
       const dbProds = await prisma.product.findMany({
         orderBy: { sortOrder: "asc" },
@@ -282,14 +311,14 @@ export async function getProductsServer(departmentSlug?: string): Promise<Produc
     } catch (err) {
       console.warn("[CMS Service] Prisma product fetch fallback:", err);
     }
+  }
 
-    // 3. Fallback from DEPARTMENTS flatMap
+    // 4. Fallback from DEPARTMENTS flatMap
     if (products.length === 0) {
       const depts = await getDepartmentsServer();
       products = depts.flatMap((d) => d.products);
       writeJsonFile(PRODS_FILE, products);
     }
-  }
 
   if (departmentSlug && departmentSlug !== "all") {
     return products.filter((p) => p.departmentSlug === departmentSlug);
@@ -319,6 +348,13 @@ export async function saveProductServer(product: ProductItem): Promise<ProductIt
 
   // Persist to local disk JSON store immediately
   writeJsonFile(PRODS_FILE, updatedList);
+
+  // Persist to Cloudinary raw JSON for cross-serverless persistence
+  try {
+    await saveCloudJson("cms-products", updatedList);
+  } catch (cloudErr) {
+    console.warn("[CMS Service] Cloudinary product save warning:", cloudErr);
+  }
 
   // Also update parent department in departments store
   try {
@@ -396,6 +432,12 @@ export async function deleteProductServer(slugOrId: string): Promise<boolean> {
   const current = await getProductsServer();
   const updatedList = current.filter((p) => p.slug !== slugOrId && p.id !== slugOrId);
   writeJsonFile(PRODS_FILE, updatedList);
+
+  try {
+    await saveCloudJson("cms-products", updatedList);
+  } catch (cloudErr) {
+    console.warn("[CMS Service] Cloudinary product delete warning:", cloudErr);
+  }
 
   try {
     await prisma.product.deleteMany({
@@ -679,6 +721,15 @@ const DEFAULT_GALLERY_ITEMS: GalleryDiskItem[] = [
 ];
 
 export async function getGalleryServer(includeDrafts = false): Promise<GalleryDiskItem[]> {
+  // 1. Try persistent Cloudinary storage first
+  try {
+    const cloudGal = await getCloudJson<GalleryDiskItem[]>("cms-gallery");
+    if (cloudGal && Array.isArray(cloudGal) && cloudGal.length > 0) {
+      writeJsonFile(GALLERY_FILE, cloudGal);
+      return includeDrafts ? cloudGal : cloudGal.filter((i) => i.status === "PUBLISHED");
+    }
+  } catch {}
+
   const disk = readJsonFile<GalleryDiskItem[]>(GALLERY_FILE);
   if (disk && Array.isArray(disk) && disk.length > 0) {
     return includeDrafts ? disk : disk.filter((i) => i.status === "PUBLISHED");
@@ -701,6 +752,12 @@ export async function saveGalleryItemServer(item: GalleryDiskItem): Promise<Gall
   }
 
   writeJsonFile(GALLERY_FILE, updated);
+
+  try {
+    await saveCloudJson("cms-gallery", updated);
+  } catch (cloudErr) {
+    console.warn("[CMS Service] Cloudinary gallery save warning:", cloudErr);
+  }
 
   try {
     await prisma.galleryItem.upsert({
@@ -735,6 +792,12 @@ export async function deleteGalleryItemServer(id: string): Promise<boolean> {
   const current = await getGalleryServer(true);
   const updated = current.filter((i) => i.id !== id);
   writeJsonFile(GALLERY_FILE, updated);
+
+  try {
+    await saveCloudJson("cms-gallery", updated);
+  } catch (cloudErr) {
+    console.warn("[CMS Service] Cloudinary gallery delete warning:", cloudErr);
+  }
 
   try {
     await prisma.galleryItem.deleteMany({
