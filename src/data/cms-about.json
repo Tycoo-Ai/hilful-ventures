@@ -1,7 +1,7 @@
 {
   "en": {
     "eyebrow": "ABOUT HILFUL",
-    "headline": "OUR DIRECTORS",
+    "headline": "ENGINEERED FOR OPERATIONAL PRECISION. BUILT FOR CAPITAL EFFICIENCY.",
     "storyText1": "ENGINEERED FOR OPERATIONAL PRECISION. BUILT FOR CAPITAL EFFICIENCY.\n\nHilful Ventures was established as a premier cross-border commodities and logistics enterprise bridging primary resource extraction with global industrial demand.",
     "storyText2": "With active operational bases in Chennai, India and Assosa, Ethiopia, we provide uninterrupted supply chains for primary gold mining & mineral extraction, heavy drilling polymers, certified secondary smelting metals, oil & natural gas exploration minerals & mud chemicals, and high-grade quartz & fly ash.",
     "stat1Value": "5+",
@@ -10,26 +10,193 @@
     "stat2Label": "Continental Headquarters (India & Ethiopia)",
     "stat3Value": "100%",
     "stat3Label": "Independent Assay & COA Compliance",
-    "portraitImage": "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg",
+    "portraitImage": "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790858088/hilful/general/WhatsApp_Image_2026-10-01_at_10_58_52_AM_1790858088079.jpg",
     "directors": [
-      {
-        "id": "dir-1",
-        "name": "Navas",
-        "role": "Founder & Managing Director",
-        "image": "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg"
-      },
       {
         "id": "dir-2",
         "name": "Ghazi Ali",
         "role": "Executive Director",
-        "image": "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg"
+        "image": "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790858088/hilful/general/WhatsApp_Image_2026-10-01_at_10_58_52_AM_1790858088079.jpg"
+      },
+      {
+        "id": "dir-1",
+        "name": "Navas",
+        "role": "Founder & Managing Director",
+        "image": "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790858099/hilful/general/WhatsApp_Image_2026-09-19_at_11_47_19_AM_1790858099276.jpg"
       },
       {
         "id": "dir-3",
-        "name": "Noor",
+        "name": "ISOOOR KHAN",
         "role": "Director of Operations",
-        "image": "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg"
+        "image": "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790858105/hilful/general/WhatsApp_Image_2026-10-01_at_10_58_51_AM_1790858105877.jpg"
       }
-    ]
+    ],
+    "hero": {
+      "eyebrow": "ABOUT HILFUL",
+      "headline": "ENGINEERED FOR OPERATIONAL PRECISION. BUILT FOR CAPITAL EFFICIENCY.",
+      "subheadline": "AN INTEGRATED INDUSTRIAL MODEL FOR MINING AND ENERGY RESOURCES",
+      "description": "Hilful Ventures Pvt Ltd delivers structured technical and commercial capabilities across the extractive lifecycle—unifying exploration, heavy machinery logistics, turnkey project management, and physical commodities trade."
+    },
+    "whoWeAre": {
+      "sectionTag": "INSTITUTIONAL FOUNDATION",
+      "headline": "An Integrated Industrial Partner Across the Extractive Lifecycle.",
+      "paragraphs": [
+        "Hilful Ventures Pvt Ltd is structured to bridge the operational gap between initial mineral and energy exploration and final commercial off-take. By integrating technical evaluation, heavy equipment supply, on-site project management, and physical commodities trading, we provide a unified operational architecture for resource projects.",
+        "Our capability model is designed for capital efficiency and disciplined execution. Rather than managing fragmented contractors, Hilful aligns technical methodologies, equipment logistics, and site governance under a single operational standard.",
+        "Operating across mineral exploration, hydrocarbon evaluation, specialized fleet leasing, turnkey mine infrastructure, and physical trading, Hilful supports project owners with practical execution capacity and structured commercial frameworks."
+      ],
+      "pillars": [
+        {
+          "number": "01",
+          "title": "Subsurface Evaluation & Exploration",
+          "description": "Geological mapping, geochemical sampling, geophysical surveys, and exploratory core drilling evaluated under recognized JORC and NI 43-101 reporting standards."
+        },
+        {
+          "number": "02",
+          "title": "Heavy Equipment Mobilization",
+          "description": "High-capacity mining fleet availability deployed under flexible wet or dry lease agreements, supported by scheduled preventative maintenance."
+        },
+        {
+          "number": "03",
+          "title": "Turnkey Project Execution",
+          "description": "Full-lifecycle execution covering mine planning, permitting workflows, civil infrastructure setup, and process plant management."
+        },
+        {
+          "number": "04",
+          "title": "Physical Commodities Trading",
+          "description": "Structured procurement, quality verification, logistics management, and Incoterms-governed export execution for mineral commodities and specialized hydrocarbon byproduct streams."
+        }
+      ],
+      "image": "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg",
+      "portraitImage": "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg"
+    },
+    "operatingModel": {
+      "sectionTag": "INTEGRATED CAPABILITY MODEL",
+      "headline": "The Hilful Capability Architecture.",
+      "subtext": "A structured representation of how Hilful connects technical evaluation, equipment deployment, site execution, and commercial off-take.",
+      "stages": [
+        {
+          "step": "01",
+          "title": "Exploration",
+          "description": "Early-stage geological assessment, geophysical surveys, and exploratory core drilling to determine deposit characteristics and estimate mineral reserve potential.",
+          "scope": [
+            "Geological Mapping",
+            "Geochemical Sampling",
+            "Geophysical Surveys",
+            "Exploratory Drilling"
+          ]
+        },
+        {
+          "step": "02",
+          "title": "Equipment & Mobilization",
+          "description": "Deployment of high-availability heavy machinery configured for site requirements, backed by on-site mechanical support and telematics monitoring.",
+          "scope": [
+            "Excavators & Haul Trucks",
+            "Drill Rigs & Dozers",
+            "Crushing & Screening",
+            "Wet / Dry Leasing"
+          ]
+        },
+        {
+          "step": "03",
+          "title": "Project Execution",
+          "description": "Turnkey project delivery encompassing site civil works, access infrastructure, processing plant setup, and environmental baseline integration.",
+          "scope": [
+            "Pre-Feasibility & Planning",
+            "Site Civil Infrastructure",
+            "Processing Setup",
+            "Extraction Workflows"
+          ]
+        },
+        {
+          "step": "04",
+          "title": "Production / Supply Chain",
+          "description": "Disciplined extraction management and production optimization to maintain throughput, minimize downtime, and ensure ore recovery efficiency.",
+          "scope": [
+            "Extraction Management",
+            "Material Haulage",
+            "Crushing & Sizing",
+            "Quality Sampling"
+          ]
+        },
+        {
+          "step": "05",
+          "title": "Market Delivery",
+          "description": "Physical commodities procurement, quality verification, Incoterms-governed export logistics, and processing arrangements for industrial hydrocarbon byproducts.",
+          "scope": [
+            "Procurement",
+            "Quality Verification",
+            "Logistics",
+            "Incoterms"
+          ]
+        }
+      ]
+    },
+    "advantage": {
+      "sectionTag": "INSTITUTIONAL PRINCIPLES",
+      "headline": "The Hilful Operational Advantage.",
+      "subtext": "Four core operating principles that guide our technical execution, commercial integrity, and resource management.",
+      "principles": [
+        {
+          "number": "01",
+          "title": "Integrated Accountability",
+          "description": "Unifying technical evaluation, machinery deployment, and site execution under a single operational standard reduces contractor fragmentation, alignment delays, and interface friction across project stages."
+        },
+        {
+          "number": "02",
+          "title": "HSE & Environmental Compliance",
+          "description": "Operational adherence to host-jurisdiction statutory requirements, site baseline standards, and strict workforce safety protocols embedded across every operational phase."
+        },
+        {
+          "number": "03",
+          "title": "Asset Telematics & Fleet Uptime",
+          "description": "Continuous telematics oversight, scheduled preventative maintenance protocols, and dedicated on-site mechanical support maximize heavy equipment availability in remote environments."
+        },
+        {
+          "number": "04",
+          "title": "Regulatory & Commercial Integrity",
+          "description": "Transparent commercial contracting, standardized Incoterms shipping protocols, structured quality verification, and adherence to legal frameworks ensure reliable partner relationships."
+        }
+      ]
+    },
+    "hse": {
+      "sectionTag": "SAFETY & REGULATORY GOVERNANCE",
+      "headline": "Workforce Safety & Site Standards.",
+      "subtext": "Structured adherence to occupational health and safety requirements, regulatory compliance, and operational standards across all project activities.",
+      "pillars": [
+        {
+          "title": "Workforce Safety & Operational Protocol",
+          "description": "Maintaining structured operational protocols and site safety awareness to safeguard personnel and maintain disciplined operating conditions.",
+          "points": [
+            "Implementation of verified site safety procedures and operational guidelines",
+            "Operational safety awareness and equipment handling standards",
+            "Site safety coordination aligned with applicable statutory requirements",
+            "Continuous focus on workforce safety and disciplined operational routines"
+          ]
+        },
+        {
+          "title": "Regulatory Compliance & Site Standards",
+          "description": "Conducting field exploration, extraction activities, equipment mobilization, and logistics in accordance with applicable regulatory and statutory frameworks.",
+          "points": [
+            "Compliance with statutory mining and operational permit terms",
+            "Adherence to established regional regulatory and environmental requirements",
+            "Implementation of site operational standards across project areas",
+            "Alignment with regulatory reporting and governance requirements"
+          ]
+        }
+      ]
+    },
+    "closingCta": {
+      "headline": "Ready to Partner on Your Next Mining or Energy Venture?",
+      "subtext": "Engage our technical and commercial teams to discuss exploration requirements, fleet leasing terms, or turnkey project execution.",
+      "primaryCta": {
+        "text": "Request an Operational Proposal",
+        "href": "/contact"
+      },
+      "secondaryCta": {
+        "text": "Explore Our Capabilities",
+        "href": "/services"
+      }
+    }
   }
 }

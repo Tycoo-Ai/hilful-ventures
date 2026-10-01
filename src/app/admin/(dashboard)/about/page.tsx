@@ -14,22 +14,22 @@ export interface DirectorItem {
 
 const INITIAL_DIRECTORS: DirectorItem[] = [
   {
-    id: "dir-1",
-    name: "Navas",
-    role: "Founder & Managing Director",
-    image: "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg",
-  },
-  {
     id: "dir-2",
     name: "Ghazi Ali",
     role: "Executive Director",
-    image: "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg",
+    image: "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790858088/hilful/general/WhatsApp_Image_2026-10-01_at_10_58_52_AM_1790858088079.jpg",
+  },
+  {
+    id: "dir-1",
+    name: "Navas",
+    role: "Founder & Managing Director",
+    image: "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790858099/hilful/general/WhatsApp_Image_2026-09-19_at_11_47_19_AM_1790858099276.jpg",
   },
   {
     id: "dir-3",
-    name: "Noor",
+    name: "ISOOOR KHAN",
     role: "Director of Operations",
-    image: "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg",
+    image: "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790858105/hilful/general/WhatsApp_Image_2026-10-01_at_10_58_51_AM_1790858105877.jpg",
   },
 ];
 
@@ -50,7 +50,7 @@ export default function AdminAboutPage() {
     stat2Label: "Continental Headquarters (India & Ethiopia)",
     stat3Value: "100%",
     stat3Label: "Independent Assay & COA Compliance",
-    portraitImage: "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg",
+    portraitImage: "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790858088/hilful/general/WhatsApp_Image_2026-10-01_at_10_58_52_AM_1790858088079.jpg",
     directors: INITIAL_DIRECTORS,
   });
 

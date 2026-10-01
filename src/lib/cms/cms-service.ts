@@ -99,13 +99,7 @@ export function revalidateWebRoutes(paths: string[] = []) {
 // ============================================================================
 
 export async function getDepartmentsServer(): Promise<DepartmentItem[]> {
-  // 1. Try local file store first for ultra-fast response
-  const cached = readJsonFile<DepartmentItem[]>(DEPTS_FILE);
-  if (cached && Array.isArray(cached) && cached.length > 0) {
-    return cached;
-  }
-
-  // 2. Try persistent Cloudinary storage
+  // 1. Check persistent Cloudinary storage first
   try {
     const cloudDepts = await getCloudJson<DepartmentItem[]>("cms-departments");
     if (cloudDepts && Array.isArray(cloudDepts) && cloudDepts.length > 0) {
@@ -113,6 +107,12 @@ export async function getDepartmentsServer(): Promise<DepartmentItem[]> {
       return cloudDepts;
     }
   } catch {}
+
+  // 2. Fallback to local file store
+  const cached = readJsonFile<DepartmentItem[]>(DEPTS_FILE);
+  if (cached && Array.isArray(cached) && cached.length > 0) {
+    return cached;
+  }
 
   // 3. Try Prisma database
   try {
@@ -464,7 +464,22 @@ export interface HomeDiskData {
 
 export async function getHomeServer(locale: "en" | "ar" = "en"): Promise<HomeContent> {
   const base = JSON.parse(JSON.stringify(homeContent[locale]));
-  const disk = readJsonFile<HomeDiskData>(HOME_FILE);
+  let disk: HomeDiskData | null = null;
+
+  // 1. Check persistent Cloudinary storage first
+  try {
+    const cloudHome = await getCloudJson<HomeDiskData>("cms-home");
+    if (cloudHome && (cloudHome[locale] || cloudHome.en)) {
+      disk = cloudHome;
+      writeJsonFile(HOME_FILE, cloudHome);
+    }
+  } catch {}
+
+  // 2. Fallback to local disk file
+  if (!disk || !disk[locale]) {
+    disk = readJsonFile<HomeDiskData>(HOME_FILE);
+  }
+
   const aboutData = await getAboutServer(locale);
   const portrait = aboutData?.portraitImage;
 
@@ -512,6 +527,12 @@ export async function saveHomeHeroServer(
   writeJsonFile(HOME_FILE, disk);
 
   try {
+    await saveCloudJson("cms-home", disk);
+  } catch (cloudErr) {
+    console.warn("[CMS Service] Cloudinary home save warning:", cloudErr);
+  }
+
+  try {
     const page = await prisma.page.upsert({
       where: { slug: "home" },
       update: {},
@@ -555,20 +576,23 @@ export interface AboutDiskData {
 
 export async function getAboutServer(locale: "en" | "ar" = "en"): Promise<any> {
   const base = JSON.parse(JSON.stringify(locale === "ar" ? aboutContentAr : aboutContentEn));
-  let disk = readJsonFile<AboutDiskData>(ABOUT_FILE);
+  let disk: AboutDiskData | null = null;
 
-  // 1. Try reading from persistent Cloudinary JSON first
+  // 1. MUST TRY READING FROM PERSISTENT CLOUDINARY JSON FIRST!
+  try {
+    const cloudData = await getCloudJson<AboutDiskData>("cms-about");
+    if (cloudData && (cloudData[locale] || cloudData.en)) {
+      disk = cloudData;
+      writeJsonFile(ABOUT_FILE, cloudData);
+    }
+  } catch {}
+
+  // 2. Fallback to local disk file if Cloudinary was unreachable or empty
   if (!disk || !disk[locale]) {
-    try {
-      const cloudData = await getCloudJson<AboutDiskData>("cms-about");
-      if (cloudData && (cloudData[locale] || cloudData.en)) {
-        disk = cloudData;
-        writeJsonFile(ABOUT_FILE, cloudData);
-      }
-    } catch {}
+    disk = readJsonFile<AboutDiskData>(ABOUT_FILE);
   }
 
-  // 2. Fallback to bundled cms-about.json
+  // 3. Fallback to bundled cms-about.json
   if (!disk || (!disk[locale] && !disk.en)) {
     disk = (cmsAboutDefault as unknown) as AboutDiskData;
   }
