@@ -105,21 +105,21 @@ export function HeroSection({
 
       {/* Content */}
       <div className="hv-hero__content">
-        <div ref={tagRef} className="hv-hero__tag">
+        <div ref={tagRef} className="hv-hero__tag" style={{ color: "#C9935A" }}>
           {(content as any)?.eyebrow || content?.categoryPill || content?.tagline || "Est. Trading Excellence · Global Commodities"}
         </div>
 
-        <h1 ref={h1Ref} className="hv-hero__h1">
+        <h1 ref={h1Ref} className="hv-hero__h1" style={{ color: "#F6F0E4" }}>
           {(content as any)?.headlineLine1 || content?.headline?.line1 || "Rooted in Earth."}
           {((content as any)?.headlineLine2 || content?.headline?.line2) && (
             <>
               <br />
-              {(content as any)?.headlineLine2 || content?.headline?.line2}
+              <span style={{ color: "#F6F0E4" }}>{(content as any)?.headlineLine2 || content?.headline?.line2}</span>
             </>
           )}
         </h1>
 
-        <p ref={subRef} className="hv-hero__sub">
+        <p ref={subRef} className="hv-hero__sub" style={{ color: "rgba(246, 240, 228, 0.88)" }}>
           {content?.description ||
             content?.subheadline ||
             "Industrial commodities trading — mining chemicals, ferrous metals, minerals & mud chemicals, quartz & fly ash. Reliable supply across continents."}

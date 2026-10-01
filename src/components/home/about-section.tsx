@@ -379,26 +379,26 @@ export function AboutSection({ content: initialContent }: { content?: any }) {
 
           {/* Text column */}
           <div className="hv-about__text">
-            <p className="label reveal">{content?.eyebrow || "About Us"}</p>
-            <h2 className="reveal reveal-delay-1">
+            <p className="label reveal" style={{ color: "#A8683A", fontSize: "12px", letterSpacing: "0.25em", textTransform: "uppercase" }}>{content?.eyebrow || "About Us"}</p>
+            <h2 className="reveal reveal-delay-1" style={{ color: "#1E130C" }}>
               {content?.headline ? (
                 <span>{content.headline}</span>
               ) : (
                 <>
                   OUR<br />
-                  <em style={{ fontStyle: "italic", color: "var(--copper)" }}>
+                  <em style={{ fontStyle: "italic", color: "#A8683A" }}>
                     DIRECTORS
                   </em>
                 </>
               )}
             </h2>
 
-            <p className="reveal reveal-delay-2">
+            <p className="reveal reveal-delay-2" style={{ color: "#5A3A22" }}>
               {content?.storyText1 ||
                 content?.story?.p1 ||
                 "ENGINEERED FOR OPERATIONAL PRECISION. BUILT FOR CAPITAL EFFICIENCY. Hilful Ventures was established as a premier cross-border commodities and logistics enterprise bridging primary resource extraction with global industrial demand."}
             </p>
-            <p className="reveal reveal-delay-2">
+            <p className="reveal reveal-delay-2" style={{ color: "#5A3A22" }}>
               {content?.storyText2 ||
                 content?.story?.p2 ||
                 "With active operational bases in Chennai, India and Assosa, Ethiopia, we provide uninterrupted supply chains for primary gold mining & mineral extraction, heavy drilling polymers, certified secondary smelting metals, oil & natural gas exploration minerals & mud chemicals, and high-grade quartz & fly ash."}
@@ -406,16 +406,16 @@ export function AboutSection({ content: initialContent }: { content?: any }) {
 
             <div className="hv-about__stats reveal reveal-delay-3">
               <div>
-                <div className="hv-about__stat-num">{content?.stat1Value || "5+"}</div>
-                <div className="hv-about__stat-label">{content?.stat1Label || "Specialized Commodity Disciplines"}</div>
+                <div className="hv-about__stat-num" style={{ color: "#1E130C" }}>{content?.stat1Value || "5+"}</div>
+                <div className="hv-about__stat-label" style={{ color: "#A8683A" }}>{content?.stat1Label || "Specialized Commodity Disciplines"}</div>
               </div>
               <div>
-                <div className="hv-about__stat-num">{content?.stat2Value || "2"}</div>
-                <div className="hv-about__stat-label">{content?.stat2Label || "Continental Headquarters (India & Ethiopia)"}</div>
+                <div className="hv-about__stat-num" style={{ color: "#1E130C" }}>{content?.stat2Value || "2"}</div>
+                <div className="hv-about__stat-label" style={{ color: "#A8683A" }}>{content?.stat2Label || "Continental Headquarters (India & Ethiopia)"}</div>
               </div>
               <div>
-                <div className="hv-about__stat-num">{content?.stat3Value || "100%"}</div>
-                <div className="hv-about__stat-label">{content?.stat3Label || "Independent Assay & COA Compliance"}</div>
+                <div className="hv-about__stat-num" style={{ color: "#1E130C" }}>{content?.stat3Value || "100%"}</div>
+                <div className="hv-about__stat-label" style={{ color: "#A8683A" }}>{content?.stat3Label || "Independent Assay & COA Compliance"}</div>
               </div>
             </div>
           </div>
