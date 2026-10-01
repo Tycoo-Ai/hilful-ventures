@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import type { DepartmentItem, ProductItem } from "@/data/hilful-data";
 
 interface Props {

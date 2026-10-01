@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Link } from "@/i18n/routing";
 
 interface HeroContent {
   headline?: { line1?: string; line2?: string };
@@ -126,12 +127,12 @@ export function HeroSection({
         </p>
 
         <div ref={ctasRef} className="hv-hero__ctas">
-          <a
-            href={(content as any)?.primaryCtaHref || content?.primaryCta?.href || "#products"}
+          <Link
+            href={(content as any)?.primaryCtaHref || content?.primaryCta?.href || "/products"}
             className="btn-primary"
             id="hero-cta-products"
           >
-            {(content as any)?.primaryCtaText || content?.primaryCta?.text || "Our Products"}
+            <span>{(content as any)?.primaryCtaText || content?.primaryCta?.text || "Explore Capabilities"}</span>
             <svg
               width="14"
               height="14"
@@ -143,14 +144,14 @@ export function HeroSection({
             >
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </a>
-          <a
-            href={(content as any)?.secondaryCtaHref || content?.secondaryCta?.href || "#contact"}
+          </Link>
+          <Link
+            href={(content as any)?.secondaryCtaHref || content?.secondaryCta?.href || "/contact"}
             className="btn-ghost"
             id="hero-cta-enquire"
           >
-            {(content as any)?.secondaryCtaText || content?.secondaryCta?.text || "Enquire Now"}
-          </a>
+            <span>{(content as any)?.secondaryCtaText || content?.secondaryCta?.text || "Request an Operational Proposal"}</span>
+          </Link>
         </div>
       </div>
     </section>

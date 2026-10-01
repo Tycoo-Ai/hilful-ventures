@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { DEPARTMENTS } from "@/data/hilful-data";
 
@@ -293,8 +293,8 @@ export function Header({ settings }: { settings?: any }) {
               Catalog
             </Link>
 
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               id="header-cta-enquire"
               style={{
                 fontSize: "13px",
@@ -319,7 +319,7 @@ export function Header({ settings }: { settings?: any }) {
               }}
             >
               Enquire
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Hamburger Button */}
@@ -809,8 +809,8 @@ export function Header({ settings }: { settings?: any }) {
               paddingTop: "24px",
             }}
           >
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               onClick={() => setMobileMenuOpen(false)}
               style={{
                 display: "block",
@@ -826,7 +826,7 @@ export function Header({ settings }: { settings?: any }) {
               }}
             >
               Enquire Now
-            </a>
+            </Link>
           </div>
         </div>
       )}

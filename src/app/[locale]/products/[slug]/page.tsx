@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { DEPARTMENTS, PROCESS_STEPS, WHY_US_ITEMS, TESTIMONIALS } from "@/data/hilful-data";
 import { getProductBySlugServer, getDepartmentBySlugServer } from "@/lib/cms/cms-service";
 import type { Metadata } from "next";
@@ -637,8 +637,8 @@ export default async function ProductDetailPage({
               WhatsApp Commercial Desk
             </a>
 
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               style={{
                 backgroundColor: "#A8683A",
                 color: "#FFFFFF",
@@ -652,7 +652,7 @@ export default async function ProductDetailPage({
               }}
             >
               Go to Full Contact Form
-            </a>
+            </Link>
           </div>
         </div>
       </section>

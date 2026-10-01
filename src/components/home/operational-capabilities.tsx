@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { DEPARTMENTS, type DepartmentItem } from "@/data/hilful-data";
 
 export function OperationalCapabilities({

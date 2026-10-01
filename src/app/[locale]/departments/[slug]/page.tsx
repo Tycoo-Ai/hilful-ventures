@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { DEPARTMENTS, type DepartmentItem } from "@/data/hilful-data";
 import { getDepartmentsServer, getDepartmentBySlugServer } from "@/lib/cms/cms-service";
 import type { Metadata } from "next";
@@ -803,8 +803,8 @@ export default async function DepartmentDetailPage({
               Enquire on WhatsApp
             </a>
 
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               style={{
                 backgroundColor: "#A8683A",
                 color: "#FFFFFF",
@@ -818,7 +818,7 @@ export default async function DepartmentDetailPage({
               }}
             >
               Go to Full Enquiry Form
-            </a>
+            </Link>
           </div>
         </div>
       </section>
