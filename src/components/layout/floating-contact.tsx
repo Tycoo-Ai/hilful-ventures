@@ -11,7 +11,7 @@ export function FloatingContact({ settings }: { settings?: any }) {
   const indiaOffice = OFFICES.find((o) => o.key === "india") || OFFICES[0];
   const ethiopiaOffice = OFFICES.find((o) => o.key === "ethiopia") || OFFICES[1];
 
-  const whatsappNumber = "919994033191";
+  const whatsappNumber = "919655522111";
   const whatsappMsg = encodeURIComponent(
     "Hello Hilful Ventures, I would like to enquire about your products."
   );
@@ -259,11 +259,11 @@ export function FloatingContact({ settings }: { settings?: any }) {
                     fontSize: "0.8125rem",
                     color: "#C9935A",
                     textDecoration: "none",
-                    fontWeight: 500,
-                    marginBottom: "2px",
+                    fontWeight: 600,
+                    marginBottom: "3px",
                   }}
                 >
-                  {indiaOffice.phone1}
+                  {indiaOffice.phone1} <span style={{ fontSize: "0.6875rem", color: "#25D366", fontWeight: 600 }}>• Primary / WhatsApp</span>
                 </a>
                 {indiaOffice.phone2 && (
                   <a
@@ -275,7 +275,7 @@ export function FloatingContact({ settings }: { settings?: any }) {
                       textDecoration: "none",
                     }}
                   >
-                    {indiaOffice.phone2}
+                    {indiaOffice.phone2} <span style={{ fontSize: "0.6875rem", color: "rgba(246,240,228,0.5)" }}>(Secondary Desk)</span>
                   </a>
                 )}
               </div>

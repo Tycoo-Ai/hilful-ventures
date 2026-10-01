@@ -15,14 +15,14 @@ export default function AdminAboutPage() {
     storyText1:
       "Hilful Ventures was established as a premier cross-border commodities and logistics enterprise bridging primary resource extraction with global industrial demand.",
     storyText2:
-      "With active operational bases in Chennai, India and Assosa, Ethiopia, we provide uninterrupted supply chains for heavy mining drilling polymers, certified secondary smelting metals, oil & natural gas exploration minerals & mud chemicals, and high-grade quartz & fly ash.",
-    stat1Value: "4+",
+      "With active operational bases in Chennai, India and Assosa, Ethiopia, we provide uninterrupted supply chains for primary gold mining & mineral extraction, heavy drilling polymers, certified secondary smelting metals, oil & natural gas exploration minerals & mud chemicals, and high-grade quartz & fly ash.",
+    stat1Value: "5+",
     stat1Label: "Specialized Commodity Disciplines",
     stat2Value: "2",
     stat2Label: "Continental Headquarters (India & Ethiopia)",
     stat3Value: "100%",
     stat3Label: "Independent Assay & COA Compliance",
-    portraitImage: "/about-portrait.jpg",
+    portraitImage: "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790765148/hilful/general/458241330865178129_1790765146572.jpg",
   });
 
   // Load latest persisted about content on mount

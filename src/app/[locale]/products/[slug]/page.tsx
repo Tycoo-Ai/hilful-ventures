@@ -252,7 +252,7 @@ export default async function ProductDetailPage({
                 </a>
 
                 <a
-                  href={`https://wa.me/919994033191?text=${encodeURIComponent(`Hello Hilful Ventures, I want to enquire about ${prod.name}.`)}`}
+                  href={`https://wa.me/919655522111?text=${encodeURIComponent(`Hello Hilful Ventures, I want to enquire about ${prod.name}.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -618,7 +618,7 @@ export default async function ProductDetailPage({
 
           <div style={{ display: "flex", justifyContent: "center", gap: "16px", flexWrap: "wrap" }}>
             <a
-              href={`https://wa.me/919994033191?text=${encodeURIComponent(`Hello Hilful Ventures, I would like to request a quotation for ${prod.name} (MOQ: ${prod.specs.moq}).`)}`}
+              href={`https://wa.me/919655522111?text=${encodeURIComponent(`Hello Hilful Ventures, I would like to request a quotation for ${prod.name} (MOQ: ${prod.specs.moq}).`)}`}
               target="_blank"
               rel="noopener noreferrer"
               style={{

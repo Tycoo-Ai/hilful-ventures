@@ -79,13 +79,13 @@ export function Footer({ settings }: { settings?: any }) {
                 marginBottom: "24px",
               }}
             >
-              International commodities trading specializing in mining &amp; drilling chemicals, secondary ferrous and non-ferrous metals, minerals &amp; mud chemicals for ONG exploration, and quartz &amp; fly ash.
+              International commodities trading specializing in primary gold mining &amp; mineral extraction, heavy drilling chemicals, secondary ferrous and non-ferrous metals, minerals &amp; mud chemicals for ONG exploration, and quartz &amp; fly ash.
             </p>
 
             {/* Socials / Direct Messaging */}
             <div style={{ display: "flex", gap: "12px" }}>
               <a
-                href="https://wa.me/919994033191?text=Hello%20Hilful%20Ventures%2C%20I%20would%20like%20to%20enquire%20about%20your%20products."
+                href="https://wa.me/919655522111?text=Hello%20Hilful%20Ventures%2C%20I%20would%20like%20to%20enquire%20about%20your%20products."
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Hilful Ventures WhatsApp"

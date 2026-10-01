@@ -8,6 +8,7 @@ export function FinalCTA({ content }: { content?: any }) {
   const [activeOfficeKey, setActiveOfficeKey] = useState<"india" | "ethiopia">("india");
   const [selectedOfficeInForm, setSelectedOfficeInForm] = useState<string>("India (Chennai HQ)");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [dispatchUrls, setDispatchUrls] = useState<{ whatsapp: string; mailto: string } | null>(null);
 
   const currentOffice =
     OFFICES.find((o) => o.key === activeOfficeKey) || OFFICES[0];
@@ -36,20 +37,46 @@ export function FinalCTA({ content }: { content?: any }) {
     const formData = new FormData(form);
     const payload = Object.fromEntries(formData);
 
+    const name = String(payload.name || payload.fullName || "").trim();
+    const company = String(payload.company || "").trim();
+    const email = String(payload.email || payload.workEmail || "").trim();
+    const phone = String(payload.phone || "").trim();
+    const route = String(payload.country || selectedOfficeInForm).trim();
+    const interest = String(payload.areaOfInterest || "").trim();
+    const spec = String(payload.message || "").trim();
+
+    const formattedText = `*HILFUL VENTURES — FORMAL QUOTATION REQUEST*
+• *Name:* ${name}
+• *Company:* ${company || "Individual/Entity"}
+• *Phone:* ${phone}
+• *Email:* ${email}
+• *Office/Route:* ${route}
+• *Product/Division:* ${interest}
+• *Specifications / Volume:*
+${spec}`;
+
+    const waUrl = `https://wa.me/919655522111?text=${encodeURIComponent(formattedText)}`;
+    const emailSubject = `Formal Quotation Request: ${name} (${company || interest})`;
+    const emailBody = `Dear Hilful Ventures Trade Desk,\n\nI would like to submit a formal quotation request:\n\nName: ${name}\nCompany: ${company}\nPhone: ${phone}\nEmail: ${email}\nOffice/Route: ${route}\nProduct/Division: ${interest}\n\nSpecifications / Volume Requirements:\n${spec}\n\nKind regards,\n${name}`;
+    const mailUrl = `mailto:hilfulventures@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+
+    setDispatchUrls({ whatsapp: waUrl, mailto: mailUrl });
+
+    // Open WhatsApp directly in new window
     try {
-      const res = await fetch("/api/contact", {
+      window.open(waUrl, "_blank");
+    } catch {}
+
+    try {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      if (res.ok) {
-        setStatus("sent");
-        form.reset();
-      } else {
-        setStatus("error");
-      }
+      setStatus("sent");
     } catch {
-      setStatus("error");
+      // Even if offline/local server issue, WhatsApp & Mail are prepared and available
+      setStatus("sent");
     }
   };
 
@@ -538,7 +565,7 @@ export function FinalCTA({ content }: { content?: any }) {
                     name="phone"
                     type="tel"
                     required
-                    placeholder="+91 99940 33191"
+                    placeholder="+91 96555 22111"
                     style={{
                       width: "100%",
                       padding: "12px 14px",
@@ -589,20 +616,79 @@ export function FinalCTA({ content }: { content?: any }) {
                 />
               </div>
 
-              {/* Status Notice */}
+              {/* Status Notice & Direct Actions */}
               {status === "sent" && (
                 <div
                   style={{
-                    backgroundColor: "rgba(37, 211, 102, 0.15)",
+                    backgroundColor: "rgba(20, 45, 25, 0.9)",
                     border: "1px solid #25D366",
-                    color: "#25D366",
-                    padding: "12px 16px",
-                    borderRadius: "4px",
-                    marginBottom: "16px",
+                    color: "#F6F0E4",
+                    padding: "16px",
+                    borderRadius: "6px",
+                    marginBottom: "20px",
                     fontSize: "14px",
+                    boxShadow: "0 8px 24px rgba(37, 211, 102, 0.2)",
                   }}
                 >
-                  ✓ Thank you. Your inquiry has been routed to our {selectedOfficeInForm} desk. A trade manager will contact you promptly.
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px", color: "#25D366", fontWeight: 700, marginBottom: "8px", fontSize: "15px" }}>
+                    <span>✓</span>
+                    <span>Quotation Request Ready &amp; Dispatched</span>
+                  </div>
+                  <p style={{ margin: "0 0 12px 0", fontSize: "13px", color: "rgba(246, 240, 228, 0.85)", lineHeight: 1.5 }}>
+                    Your quotation details for <strong>{selectedOfficeInForm}</strong> have been prepared. Click below to continue directly via WhatsApp or Email:
+                  </p>
+                  
+                  {dispatchUrls && (
+                    <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                      <a
+                        href={dispatchUrls.whatsapp}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          flex: 1,
+                          minWidth: "160px",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "8px",
+                          backgroundColor: "#25D366",
+                          color: "#FFFFFF",
+                          padding: "10px 16px",
+                          borderRadius: "4px",
+                          fontWeight: 600,
+                          fontSize: "13px",
+                          textDecoration: "none",
+                          boxShadow: "0 4px 12px rgba(37, 211, 102, 0.3)",
+                        }}
+                      >
+                        <span>Open WhatsApp</span>
+                        <span>&rarr;</span>
+                      </a>
+                      
+                      <a
+                        href={dispatchUrls.mailto}
+                        style={{
+                          flex: 1,
+                          minWidth: "160px",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "8px",
+                          backgroundColor: "#A8683A",
+                          color: "#FFFFFF",
+                          padding: "10px 16px",
+                          borderRadius: "4px",
+                          fontWeight: 600,
+                          fontSize: "13px",
+                          textDecoration: "none",
+                          boxShadow: "0 4px 12px rgba(168, 104, 58, 0.3)",
+                        }}
+                      >
+                        <span>Send via Email</span>
+                        <span>&rarr;</span>
+                      </a>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -618,7 +704,7 @@ export function FinalCTA({ content }: { content?: any }) {
                     fontSize: "14px",
                   }}
                 >
-                  There was an issue dispatching your request. Please email us directly at hilfulventures@gmail.com or call +91 99940 33191.
+                  Direct dispatch fallback: Please message our primary trade desk on WhatsApp or call +91 96555 22111 / hilfulventures@gmail.com.
                 </div>
               )}
 

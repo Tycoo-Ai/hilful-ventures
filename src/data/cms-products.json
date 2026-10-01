@@ -1,22 +1,135 @@
 [
   {
-    "id": "5d0dcf7b-0574-441b-b06b-064f443546b9",
-    "slug": "water-based-drilling-fluids",
-    "name": "Water Based Drilling Fluids",
-    "departmentSlug": "mining-drilling-chemicals",
-    "departmentName": "Mining & Drilling Chemicals",
-    "shortDesc": "High-yield bentonite additives, PAC-LV, and xanthan polymer systems for borehole stability.",
-    "fullDesc": "Engineered for superior shale inhibition and cuttings suspension in diverse geological strata. Our water-based drilling polymer line provides optimal rheology control with negligible formation damage, supporting both fresh water and saturated salt fluid environments.",
-    "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
+    "id": "prod-101",
+    "slug": "gold-ore-concentrates",
+    "name": "Gold Ore Concentrates & Gravity Feeds",
+    "departmentSlug": "gold-mining-extraction",
+    "departmentName": "Gold Mining & Mineral Extraction",
+    "shortDesc": "High-grade auriferous mineral concentrates from alluvial and hard-rock gravity recovery circuits.",
+    "fullDesc": "Beneficiated gold ore concentrates extracted from rich placer gravels and quartz vein formations. Prepared through hydrocyclone sizing and multi-tier shaking tables to deliver high-yield furnace charge or leaching feed.",
+    "image": "/hero-mine.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80"
+      "/hero-mine.jpg",
+      "/chemicals.jpg"
     ],
     "specs": {
+      "name": "Auriferous Ore Concentrates",
+      "grade": "Au Grade: 50g/MT – 350g/MT Calibrated",
+      "packaging": "Heavy-duty UN-approved sealed tamper-evident steel drums",
+      "moq": "5 Metric Tons",
+      "origin": "Assosa Gold Mining Belt, Ethiopia",
+      "purityOrForm": "Coarse to fine mineral concentrate"
+    },
+    "applications": [
+      "Refinery pyrometallurgical smelting charge",
+      "Vat and tank hydrometallurgical leaching plants",
+      "Precious metal secondary upgrading operations"
+    ],
+    "qualityDocs": [
+      "Fire Assay Batch Certificate",
+      "XRF Elemental Analysis",
+      "Concession Origin Document",
+      "Certificate of Origin"
+    ],
+    "shippingOptions": [
+      "Secured Armored Air Freight",
+      "Sealed 20ft ocean containers (FOB Djibouti / CIF Global Ports)"
+    ],
+    "brochureUrl": "#enquire",
+    "featured": true
+  },
+  {
+    "id": "prod-102",
+    "slug": "assayed-gold-dore-bars",
+    "name": "Assayed Gold Dore Bars & Bullion",
+    "departmentSlug": "gold-mining-extraction",
+    "departmentName": "Gold Mining & Mineral Extraction",
+    "shortDesc": "Direct mine-smelted unrefined gold doré bars with verified fire assay purity (92% - 98.5% Au).",
+    "fullDesc": "Primary unrefined gold bullion bars cast directly at our mine-site induction foundries in Assosa. Every bar is individually stamped, weighed, and accompanied by accredited fire assay documentation ensuring strict OECD chain of custody.",
+    "image": "/hero-mine.jpg",
+    "galleryImages": [
+      "/hero-mine.jpg"
+    ],
+    "specs": {
+      "name": "Raw Gold Doré Bars",
+      "grade": "Au Purity 92.0% – 98.5% (Verified Fire Assay)",
+      "packaging": "Secured tamper-evident security cases with serialized bolt seals",
+      "moq": "5 Kilograms (Commercial Lot)",
+      "origin": "Primary Concessions, Assosa, Ethiopia",
+      "purityOrForm": "Cast solid Doré Bars (1kg / 2.5kg / 5kg)"
+    },
+    "applications": [
+      "LBMA refinery feedstock for Good Delivery 99.99% gold",
+      "Commercial bullion reserves and sovereign minting",
+      "High-spec industrial electronics alloy feedstock"
+    ],
+    "qualityDocs": [
+      "Accredited Fire Assay Certificate",
+      "Central Bank Export License",
+      "OECD Chain of Custody Declaration"
+    ],
+    "shippingOptions": [
+      "Brink's / Malca-Amit Armored Air Courier to Dubai, Zurich, London, or Mumbai"
+    ],
+    "brochureUrl": "#enquire",
+    "featured": true
+  },
+  {
+    "id": "prod-103",
+    "slug": "alluvial-gold-recovery-systems",
+    "name": "Alluvial Gold Processing & Flotation Chemistry",
+    "departmentSlug": "gold-mining-extraction",
+    "departmentName": "Gold Mining & Mineral Extraction",
+    "shortDesc": "Specialized leaching agents, xanthates, and flotation reagents for maximum precious metal yield.",
+    "fullDesc": "High-efficiency leaching reagents, frothers, and collectors specifically formulated for fine-grain auriferous sands and refractory sulfidic gold ores, accelerating leaching kinetics and boosting gold recovery.",
+    "image": "/chemicals.jpg",
+    "galleryImages": [
+      "/chemicals.jpg",
+      "/hero-mine.jpg"
+    ],
+    "specs": {
+      "name": "Gold Extraction & Flotation Chemical System",
+      "grade": "Technical Grade Mineral Processing Reagents (98% Active)",
+      "packaging": "25kg moisture-proof craft bags / 1MT Jumbo tote units",
       "moq": "20 Metric Tons (1 x 20ft FCL)",
+      "origin": "Direct Chemical Refineries (India)",
+      "purityOrForm": "Free-flowing dry crystals & concentrated liquid formulations"
+    },
+    "applications": [
+      "CIL / CIP gold leaching operations",
+      "Placer gold centrifugal enrichment",
+      "Refractory sulfide ore flotation"
+    ],
+    "qualityDocs": [
+      "Batch Inspection Certificate",
+      "Dangerous Goods Compliance",
+      "MSDS 16-Section Standard"
+    ],
+    "shippingOptions": [
+      "Containerized 20ft ocean freight with IMO maritime safety clearance"
+    ],
+    "brochureUrl": "#enquire",
+    "featured": true
+  },
+  {
+    "id": "prod-201",
+    "slug": "water-based-drilling-fluids",
+    "name": "Water Based Drilling Fluids",
+    "departmentSlug": "drilling-chemicals",
+    "departmentName": "Drilling & Mud Chemicals",
+    "shortDesc": "High-yield bentonite additives, PAC-LV, and xanthan polymer systems for borehole stability.",
+    "fullDesc": "Engineered for superior shale inhibition and cuttings suspension in diverse geological strata. Our water-based drilling polymer line provides optimal rheology control with negligible formation damage, supporting both fresh water and saturated salt fluid environments.",
+    "image": "/chemicals.jpg",
+    "galleryImages": [
+      "/chemicals.jpg",
+      "/hero-mine.jpg"
+    ],
+    "specs": {
       "name": "Water Based Drilling Fluids",
       "grade": "API Spec 13A Section 9 / 10 Compliant",
-      "origin": "India / International Direct Refinery",
       "packaging": "25kg multi-wall paper bags with PE inner liner, shrink-wrapped on ISPM-15 heat treated pallets",
+      "moq": "20 Metric Tons (1 x 20ft FCL)",
+      "origin": "India / International Direct Refinery",
       "purityOrForm": "Fine white to off-white dry powder"
     },
     "applications": [
@@ -37,14 +150,15 @@
       "CIF Jebel Ali / Middle East Ports",
       "CIF Global Gateway Ports"
     ],
-    "brochureUrl": "#enquire"
+    "brochureUrl": "#enquire",
+    "featured": true
   },
   {
-    "id": "cbc9aef4-759f-4375-b66a-b3302ae8bea7",
+    "id": "prod-202",
     "slug": "oil-synthetic-based-fluids",
     "name": "Oil / Synthetic Based Fluids",
-    "departmentSlug": "mining-drilling-chemicals",
-    "departmentName": "Mining & Drilling Chemicals",
+    "departmentSlug": "drilling-chemicals",
+    "departmentName": "Drilling & Mud Chemicals",
     "shortDesc": "Primary & secondary emulsifiers, organophilic clays, and synthetic fluid loss controllers.",
     "fullDesc": "Formulated for extreme wellbore conditions where water-based systems fail due to temperature, salt saturation, or reactive shale. Delivers high electrical stability, controlled fluid loss, and exceptional lubricity to prevent stuck pipe hazards in deep drilling.",
     "image": "/chemicals.jpg",
@@ -52,11 +166,11 @@
       "/chemicals.jpg"
     ],
     "specs": {
-      "moq": "16 Metric Tons (80 Drums / 16 IBCs)",
       "name": "Oil / Synthetic Based Invert Fluids",
       "grade": "Heavy-Duty Invert Emulsion Additives",
-      "origin": "India / Refinery Direct",
       "packaging": "200L / 55 Gallon Steel Drums or 1,000L Composite IBC Tanks",
+      "moq": "16 Metric Tons (80 Drums / 16 IBCs)",
+      "origin": "India / Refinery Direct",
       "purityOrForm": "High-density active liquid surfactant complex"
     },
     "applications": [
@@ -75,14 +189,15 @@
       "Composite IBC Tote Units",
       "20ft ISO Tank Containers"
     ],
-    "brochureUrl": "#enquire"
+    "brochureUrl": "#enquire",
+    "featured": true
   },
   {
-    "id": "c3c13115-da86-439d-90f6-c82dff4fa5b1",
+    "id": "prod-203",
     "slug": "modified-starch",
     "name": "Modified Starch (Drilling Grade)",
-    "departmentSlug": "mining-drilling-chemicals",
-    "departmentName": "Mining & Drilling Chemicals",
+    "departmentSlug": "drilling-chemicals",
+    "departmentName": "Drilling & Mud Chemicals",
     "shortDesc": "Pregelatinized, non-ionic crosslinked starch for high-temperature fluid loss mitigation.",
     "fullDesc": "A premium grade pregelatinized corn/potato starch derivative tailored specifically for drilling fluid filtration control. Exhibits thermal stability up to 130°C and maintains functional polymer chain integrity even in saturated brine and divalent calcium ion conditions.",
     "image": "/chemicals.jpg",
@@ -90,11 +205,11 @@
       "/chemicals.jpg"
     ],
     "specs": {
-      "moq": "22 Metric Tons (1 x 20ft FCL)",
       "name": "Modified Starch (Drilling Filtration Control)",
       "grade": "API Spec 13A Starch Compliant",
-      "origin": "India",
       "packaging": "25kg craft paper bags with moisture-proof polyethylene liner",
+      "moq": "22 Metric Tons (1 x 20ft FCL)",
+      "origin": "India",
       "purityOrForm": "Free-flowing light cream powder"
     },
     "applications": [
@@ -112,10 +227,11 @@
       "Palletized 25kg bags (40 bags per wooden pallet)",
       "Container bulk lining options available on request"
     ],
-    "brochureUrl": "#enquire"
+    "brochureUrl": "#enquire",
+    "featured": true
   },
   {
-    "id": "e32f83d4-747d-4d55-b7b7-ce3f8aca3d7f",
+    "id": "prod-201",
     "slug": "hms-1-2-steel-scrap",
     "name": "HMS 1 & 2 Steel Scrap",
     "departmentSlug": "ferrous-non-ferrous-metal",
@@ -128,11 +244,11 @@
       "/hero-mine.jpg"
     ],
     "specs": {
-      "moq": "100 Metric Tons (4-5 Containers)",
       "name": "Heavy Melting Steel (HMS 1 & 2 Blend)",
       "grade": "ISRI 200 - 206 (80:20 Ratio)",
-      "origin": "East Africa / Middle East / Direct Industrial Source",
       "packaging": "Loose stuffed in heavy-duty 20ft ocean containers",
+      "moq": "100 Metric Tons (4-5 Containers)",
+      "origin": "East Africa / Middle East / Direct Industrial Source",
       "purityOrForm": "Heavy carbon steel cut lengths (thickness >= 6mm for HMS 1)"
     },
     "applications": [
@@ -150,10 +266,11 @@
       "Containerized 20ft heavy payload (25-27 MT per TEU)",
       "CFR / CIF Major Asian & Middle Eastern Ports"
     ],
-    "brochureUrl": "#enquire"
+    "brochureUrl": "#enquire",
+    "featured": true
   },
   {
-    "id": "41116758-ea96-48cf-861b-82d2288a87f9",
+    "id": "prod-202",
     "slug": "steel-scrap-turnings",
     "name": "Steel Scrap & Cast Iron Turnings",
     "departmentSlug": "ferrous-non-ferrous-metal",
@@ -165,11 +282,11 @@
       "/metals.jpg"
     ],
     "specs": {
-      "moq": "50 Metric Tons",
       "name": "Cast Iron Borings & Steel Turnings",
       "grade": "ISRI 220 - 223 Compliant",
-      "origin": "Certified Industrial Machining Centers",
       "packaging": "Compressed dense briquettes or bulk container stuffed",
+      "moq": "50 Metric Tons",
+      "origin": "Certified Industrial Machining Centers",
       "purityOrForm": "Low-moisture briquetted or shredded iron chips"
     },
     "applications": [
@@ -186,10 +303,11 @@
       "20ft heavy containers",
       "FOB / CIF options available"
     ],
-    "brochureUrl": "#enquire"
+    "brochureUrl": "#enquire",
+    "featured": false
   },
   {
-    "id": "a284d8b8-49c1-44f8-a28f-47b6485c5c67",
+    "id": "prod-203",
     "slug": "copper-cathodes-scrap",
     "name": "Copper Wire / Millberry & Birch Scrap",
     "departmentSlug": "ferrous-non-ferrous-metal",
@@ -201,11 +319,11 @@
       "/metals.jpg"
     ],
     "specs": {
-      "moq": "25 Metric Tons (1 x 20ft FCL)",
       "name": "Copper Wire Scrap (Millberry / Berry)",
       "grade": "ISRI Barley / Berry / Millberry (99.9% Cu min)",
-      "origin": "Africa / Middle East Selected Industrial Stock",
       "packaging": "Hydraulic wire-tied bales or strapped bundles on pallets",
+      "moq": "25 Metric Tons (1 x 20ft FCL)",
+      "origin": "Africa / Middle East Selected Industrial Stock",
       "purityOrForm": "Bright bare electrolytic copper wire >= 1.2mm gauge"
     },
     "applications": [
@@ -223,10 +341,11 @@
       "High-security locked 20ft ocean containers",
       "Insured CIF maritime freight"
     ],
-    "brochureUrl": "#enquire"
+    "brochureUrl": "#enquire",
+    "featured": true
   },
   {
-    "id": "6601f269-10c3-490c-9e90-7816cfe2aa72",
+    "id": "prod-204",
     "slug": "aluminium-brass-lead",
     "name": "Aluminium, Brass & Lead Scrap",
     "departmentSlug": "ferrous-non-ferrous-metal",
@@ -238,11 +357,11 @@
       "/metals.jpg"
     ],
     "specs": {
-      "moq": "25 Metric Tons",
       "name": "Aluminium, Brass & Secondary Lead Scrap",
       "grade": "ISRI Tense / Tabor / Honey / Radio Compliant",
-      "origin": "Global Secondary Recyclers",
       "packaging": "Strapped bales, jumbo boxes, or steel-banded pallets",
+      "moq": "25 Metric Tons",
+      "origin": "Global Secondary Recyclers",
       "purityOrForm": "Dense mechanically sorted alloy fractions"
     },
     "applications": [
@@ -258,7 +377,8 @@
     "shippingOptions": [
       "20ft and 40ft standard dry containers"
     ],
-    "brochureUrl": "#enquire"
+    "brochureUrl": "#enquire",
+    "featured": false
   },
   {
     "id": "prod-301",

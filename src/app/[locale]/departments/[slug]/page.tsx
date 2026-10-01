@@ -784,7 +784,7 @@ export default async function DepartmentDetailPage({
 
           <div style={{ display: "flex", justifyContent: "center", gap: "16px", flexWrap: "wrap" }}>
             <a
-              href={`https://wa.me/919994033191?text=${encodeURIComponent(`Hello Hilful Ventures, I am enquiring about ${dept.name}.`)}`}
+              href={`https://wa.me/919655522111?text=${encodeURIComponent(`Hello Hilful Ventures, I am enquiring about ${dept.name}.`)}`}
               target="_blank"
               rel="noopener noreferrer"
               style={{

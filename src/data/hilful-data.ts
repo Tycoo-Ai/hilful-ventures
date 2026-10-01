@@ -71,8 +71,8 @@ export const OFFICES: OfficeLocation[] = [
     name: "Hilful Ventures Pvt Ltd",
     address: "211 (201), Linghi Chetty Street, Mannady, Chennai - 600 001, Tamil Nadu, India",
     email: "hilfulventures@gmail.com",
-    phone1: "+91 99940 33191",
-    phone2: "+91 96555 22111",
+    phone1: "+91 96555 22111",
+    phone2: "+91 99940 33191",
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.2087522502663!2d80.28723657577558!3d13.090333212351232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526f5053b2169b%3A0xb3638dbfecdf36b9!2sLinghi%20Chetty%20St%2C%20Mannadi%2C%20George%20Town%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
     googleMapsLink: "https://maps.google.com/?q=211+Linghi+Chetty+Street+Mannady+Chennai+600001",
     badge: "Headquarters & Global Trade Desk",
@@ -97,12 +97,137 @@ export const OFFICES: OfficeLocation[] = [
 export const DEPARTMENTS: DepartmentItem[] = [
   {
     id: "dept-1",
-    slug: "mining-drilling-chemicals",
+    slug: "gold-mining-extraction",
     number: "01",
-    name: "Mining & Drilling Chemicals",
+    name: "Gold Mining & Mineral Extraction",
+    tagline: "Primary Alluvial & Hard-Rock Gold Recovery, Bullion Assay & Concession Extraction",
+    overview:
+      "Hilful Ventures places gold mining and precious mineral recovery at the heart of our operations, executing large-scale alluvial extraction, gravity separation, and certified bullion refining in East Africa.",
+    whatWeDo:
+      "Headquartered in Assosa, Ethiopia and Chennai, India, our flagship Gold Mining division operates primary concessions equipped with high-yield centrifugal gravity concentrators, shaking tables, and zero-discharge washing circuits. We supply verified raw gold ore concentrates, unrefined doré bars (92% - 98.5% Au purity), and specialized precious metal extraction chemistry to accredited international refineries.",
+    image: "/hero-mine.jpg",
+    coverImage: "/hero-mine.jpg",
+    icon: "Gem",
+    specSummary: [
+      { label: "Primary Concession Hub", value: "Assosa Woreda (Benishangul-Gumuz, Ethiopia)" },
+      { label: "Assayed Au Dore Purity", value: "92.0% – 98.5% Fine Gold Assay" },
+      { label: "Extraction Method", value: "Centrifugal Gravity Sluicing & Closed-Loop Cyanidation" },
+      { label: "Export Compliance", value: "Ministry of Mines & Central Bank Certified" },
+    ],
+    process: [
+      { step: "01", title: "Geological Survey & Pay-Dirt Sampling", desc: "Systematic core drilling, alluvial trench mapping, and atomic absorption spectrometry (AAS) assaying of auriferous pay-gravels." },
+      { step: "02", title: "Centrifugal Gravity Recovery", desc: "Chemical-free primary processing using Knelson-type centrifugal bowls and reciprocating shaking tables maximizing free-milling Au yield." },
+      { step: "03", title: "Mine-Site Smelting & Assayed Dore", desc: "Induction smelting into stamped doré bars with verified fire assay certificates, serial numbering, and secured chain of custody." },
+    ],
+    qualityCertifications: [
+      "Ministry of Mines Concession License",
+      "Independent Fire Assay Certification (SGS / Alex Stewart)",
+      "OECD Due Diligence Responsible Minerals Standard",
+      "National Bank of Ethiopia Sealed Export Clearance",
+    ],
+    faqs: [
+      { q: "Is Gold Mining Hilful Ventures' primary operational focus?", a: "Yes. Gold mining and precious mineral extraction in East Africa constitutes our core primary division, backed by active concession operations and field headquarters in Assosa, Ethiopia." },
+      { q: "What is the purity of your gold doré bars?", a: "Our mine-smelted gold doré bars carry guaranteed assay grades between 92.0% and 98.5% (22k to 23.5k equivalent purity) before secondary bullion refining." },
+      { q: "How is export security and custody managed?", a: "All doré consignments are cleared through the National Bank of Ethiopia and escorted via premier armored logistics (Brink's / Malca-Amit) directly to destination gateway vaults." },
+    ],
+    products: [
+      {
+        id: "prod-101",
+        slug: "gold-ore-concentrates",
+        name: "Gold Ore Concentrates & Gravity Feeds",
+        departmentSlug: "gold-mining-extraction",
+        departmentName: "Gold Mining & Mineral Extraction",
+        shortDesc: "High-grade auriferous mineral concentrates from alluvial and hard-rock gravity recovery circuits.",
+        fullDesc:
+          "Beneficiated gold ore concentrates extracted from rich placer gravels and quartz vein formations. Prepared through hydrocyclone sizing and multi-tier shaking tables to deliver high-yield furnace charge or leaching feed.",
+        image: "/hero-mine.jpg",
+        galleryImages: ["/hero-mine.jpg", "/chemicals.jpg"],
+        specs: {
+          name: "Auriferous Ore Concentrates",
+          grade: "Au Grade: 50g/MT – 350g/MT Calibrated",
+          packaging: "Heavy-duty UN-approved sealed tamper-evident steel drums",
+          moq: "5 Metric Tons",
+          origin: "Assosa Gold Mining Belt, Ethiopia",
+          purityOrForm: "Coarse to fine mineral concentrate",
+        },
+        applications: [
+          "Refinery pyrometallurgical smelting charge",
+          "Vat and tank hydrometallurgical leaching plants",
+          "Precious metal secondary upgrading operations",
+        ],
+        qualityDocs: ["Fire Assay Batch Certificate", "XRF Elemental Analysis", "Concession Origin Document", "Certificate of Origin"],
+        shippingOptions: ["Secured Armored Air Freight", "Sealed 20ft ocean containers (FOB Djibouti / CIF Global Ports)"],
+        brochureUrl: "#enquire",
+        featured: true,
+      },
+      {
+        id: "prod-102",
+        slug: "assayed-gold-dore-bars",
+        name: "Assayed Gold Dore Bars & Bullion",
+        departmentSlug: "gold-mining-extraction",
+        departmentName: "Gold Mining & Mineral Extraction",
+        shortDesc: "Direct mine-smelted unrefined gold doré bars with verified fire assay purity (92% - 98.5% Au).",
+        fullDesc:
+          "Primary unrefined gold bullion bars cast directly at our mine-site induction foundries in Assosa. Every bar is individually stamped, weighed, and accompanied by accredited fire assay documentation ensuring strict OECD chain of custody.",
+        image: "/hero-mine.jpg",
+        galleryImages: ["/hero-mine.jpg"],
+        specs: {
+          name: "Raw Gold Doré Bars",
+          grade: "Au Purity 92.0% – 98.5% (Verified Fire Assay)",
+          packaging: "Secured tamper-evident security cases with serialized bolt seals",
+          moq: "5 Kilograms (Commercial Lot)",
+          origin: "Primary Concessions, Assosa, Ethiopia",
+          purityOrForm: "Cast solid Doré Bars (1kg / 2.5kg / 5kg)",
+        },
+        applications: [
+          "LBMA refinery feedstock for Good Delivery 99.99% gold",
+          "Commercial bullion reserves and sovereign minting",
+          "High-spec industrial electronics alloy feedstock",
+        ],
+        qualityDocs: ["Accredited Fire Assay Certificate", "Central Bank Export License", "OECD Chain of Custody Declaration"],
+        shippingOptions: ["Brink's / Malca-Amit Armored Air Courier to Dubai, Zurich, London, or Mumbai"],
+        brochureUrl: "#enquire",
+        featured: true,
+      },
+      {
+        id: "prod-103",
+        slug: "alluvial-gold-recovery-systems",
+        name: "Alluvial Gold Processing & Flotation Chemistry",
+        departmentSlug: "gold-mining-extraction",
+        departmentName: "Gold Mining & Mineral Extraction",
+        shortDesc: "Specialized leaching agents, xanthates, and flotation reagents for maximum precious metal yield.",
+        fullDesc:
+          "High-efficiency leaching reagents, frothers, and collectors specifically formulated for fine-grain auriferous sands and refractory sulfidic gold ores, accelerating leaching kinetics and boosting gold recovery.",
+        image: "/chemicals.jpg",
+        galleryImages: ["/chemicals.jpg", "/hero-mine.jpg"],
+        specs: {
+          name: "Gold Extraction & Flotation Chemical System",
+          grade: "Technical Grade Mineral Processing Reagents (98% Active)",
+          packaging: "25kg moisture-proof craft bags / 1MT Jumbo tote units",
+          moq: "20 Metric Tons (1 x 20ft FCL)",
+          origin: "Direct Chemical Refineries (India)",
+          purityOrForm: "Free-flowing dry crystals & concentrated liquid formulations",
+        },
+        applications: [
+          "CIL / CIP gold leaching operations",
+          "Placer gold centrifugal enrichment",
+          "Refractory sulfide ore flotation",
+        ],
+        qualityDocs: ["Batch Inspection Certificate", "Dangerous Goods Compliance", "MSDS 16-Section Standard"],
+        shippingOptions: ["Containerized 20ft ocean freight with IMO maritime safety clearance"],
+        brochureUrl: "#enquire",
+        featured: true,
+      },
+    ],
+  },
+  {
+    id: "dept-2",
+    slug: "drilling-chemicals",
+    number: "02",
+    name: "Drilling & Mud Chemicals",
     tagline: "High-Performance Fluid Systems & Specialized Extraction Chemistry",
     overview:
-      "Formulated for deep borehole stability, rheology optimization, and extreme thermodynamic conditions in oil & gas exploration and heavy mineral extraction.",
+      "Formulated for deep borehole stability, rheology optimization, and extreme thermodynamic conditions in oil & gas exploration and heavy mineral drilling.",
     whatWeDo:
       "Hilful Ventures delivers certified drilling fluid polymers, organic starch derivatives, and high-purity inorganic rheology modifiers designed to endure high pressure and high temperature (HPHT) geological regimes. We collaborate directly with accredited chemical refineries to ensure international API Specification 13A standards.",
     image: "/chemicals.jpg",
@@ -127,11 +252,11 @@ export const DEPARTMENTS: DepartmentItem[] = [
     ],
     products: [
       {
-        id: "prod-101",
+        id: "prod-201",
         slug: "water-based-drilling-fluids",
         name: "Water Based Drilling Fluids",
-        departmentSlug: "mining-drilling-chemicals",
-        departmentName: "Mining & Drilling Chemicals",
+        departmentSlug: "drilling-chemicals",
+        departmentName: "Drilling & Mud Chemicals",
         shortDesc: "High-yield bentonite additives, PAC-LV, and xanthan polymer systems for borehole stability.",
         fullDesc:
           "Engineered for superior shale inhibition and cuttings suspension in diverse geological strata. Our water-based drilling polymer line provides optimal rheology control with negligible formation damage, supporting both fresh water and saturated salt fluid environments.",
@@ -157,11 +282,11 @@ export const DEPARTMENTS: DepartmentItem[] = [
         featured: true,
       },
       {
-        id: "prod-102",
+        id: "prod-202",
         slug: "oil-synthetic-based-fluids",
         name: "Oil / Synthetic Based Fluids",
-        departmentSlug: "mining-drilling-chemicals",
-        departmentName: "Mining & Drilling Chemicals",
+        departmentSlug: "drilling-chemicals",
+        departmentName: "Drilling & Mud Chemicals",
         shortDesc: "Primary & secondary emulsifiers, organophilic clays, and synthetic fluid loss controllers.",
         fullDesc:
           "Formulated for extreme wellbore conditions where water-based systems fail due to temperature, salt saturation, or reactive shale. Delivers high electrical stability, controlled fluid loss, and exceptional lubricity to prevent stuck pipe hazards in deep drilling.",
@@ -186,11 +311,11 @@ export const DEPARTMENTS: DepartmentItem[] = [
         featured: true,
       },
       {
-        id: "prod-103",
+        id: "prod-203",
         slug: "modified-starch",
         name: "Modified Starch (Drilling Grade)",
-        departmentSlug: "mining-drilling-chemicals",
-        departmentName: "Mining & Drilling Chemicals",
+        departmentSlug: "drilling-chemicals",
+        departmentName: "Drilling & Mud Chemicals",
         shortDesc: "Pregelatinized, non-ionic crosslinked starch for high-temperature fluid loss mitigation.",
         fullDesc:
           "A premium grade pregelatinized corn/potato starch derivative tailored specifically for drilling fluid filtration control. Exhibits thermal stability up to 130°C and maintains functional polymer chain integrity even in saturated brine and divalent calcium ion conditions.",
@@ -217,9 +342,9 @@ export const DEPARTMENTS: DepartmentItem[] = [
     ],
   },
   {
-    id: "dept-2",
+    id: "dept-3",
     slug: "ferrous-non-ferrous-metal",
-    number: "02",
+    number: "03",
     name: "Ferrous / Non-Ferrous Metal",
     tagline: "Certified Secondary Industrial Scrap & Pure Foundry Melts",
     overview:
@@ -366,9 +491,9 @@ export const DEPARTMENTS: DepartmentItem[] = [
     ],
   },
   {
-    id: "dept-3",
+    id: "dept-4",
     slug: "minerals-mud-chemicals",
-    number: "03",
+    number: "04",
     name: "Minerals & Mud Chemicals to ONG Exploration",
     tagline: "High-Grade Iron Ore & Specialized Mud Chemicals for ONG Drilling",
     overview:
@@ -520,9 +645,9 @@ export const DEPARTMENTS: DepartmentItem[] = [
     ],
   },
   {
-    id: "dept-4",
+    id: "dept-5",
     slug: "quartz-and-fly-ash",
-    number: "04",
+    number: "05",
     name: "Quartz and Fly Ash",
     tagline: "Pulverized Fuel Ash & High-Purity Natural Quartz for Industrial Infrastructure",
     overview:
@@ -711,8 +836,8 @@ export const PROCESS_STEPS = [
 export const WHY_US_ITEMS = [
   {
     number: "01",
-    title: "Focused 4-Sector Specialization",
-    desc: "We concentrate exclusively on Mining Chemicals, Secondary Metals, Minerals & Mud Chemicals, and Quartz & Fly Ash — ensuring deep domain expertise and consistent grade precision.",
+    title: "Focused 5-Sector Specialization",
+    desc: "We concentrate exclusively on Gold Mining & Extraction, Drilling Chemicals, Secondary Metals, Minerals & Mud Chemicals for ONG Exploration, and Quartz & Fly Ash — ensuring deep domain expertise and consistent grade precision.",
   },
   {
     number: "02",

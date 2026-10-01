@@ -415,7 +415,7 @@ export function ProductCatalogClient({ departments, initialProducts }: Props) {
                   </Link>
 
                   <a
-                    href={`https://wa.me/919994033191?text=${encodeURIComponent(`Hello Hilful Ventures, I would like to enquire about ${prod.name}.`)}`}
+                    href={`https://wa.me/919655522111?text=${encodeURIComponent(`Hello Hilful Ventures, I would like to enquire about ${prod.name}.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{

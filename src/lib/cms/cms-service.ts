@@ -13,17 +13,42 @@ const HOME_FILE = path.join(DATA_DIR, "cms-home.json");
 const ABOUT_FILE = path.join(DATA_DIR, "cms-about.json");
 const GALLERY_FILE = path.join(DATA_DIR, "cms-gallery.json");
 
+const memoryCache = new Map<string, any>();
+const TMP_DIR = path.join("/tmp", "hilful-data");
+
+function getTmpPath(filePath: string): string {
+  const fileName = path.basename(filePath);
+  return path.join(TMP_DIR, fileName);
+}
+
 function ensureDirectoryExists() {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
-  }
+  try {
+    if (!fs.existsSync(DATA_DIR)) {
+      fs.mkdirSync(DATA_DIR, { recursive: true });
+    }
+  } catch {}
 }
 
 function readJsonFile<T>(filePath: string): T | null {
+  if (memoryCache.has(filePath)) {
+    return memoryCache.get(filePath) as T;
+  }
+  try {
+    const tmpPath = getTmpPath(filePath);
+    if (fs.existsSync(tmpPath)) {
+      const data = fs.readFileSync(tmpPath, "utf-8");
+      const parsed = JSON.parse(data) as T;
+      memoryCache.set(filePath, parsed);
+      return parsed;
+    }
+  } catch {}
+
   try {
     if (fs.existsSync(filePath)) {
       const data = fs.readFileSync(filePath, "utf-8");
-      return JSON.parse(data) as T;
+      const parsed = JSON.parse(data) as T;
+      memoryCache.set(filePath, parsed);
+      return parsed;
     }
   } catch (err) {
     console.warn(`[CMS Service] Failed to read ${filePath}:`, err);
@@ -32,11 +57,19 @@ function readJsonFile<T>(filePath: string): T | null {
 }
 
 function writeJsonFile<T>(filePath: string, data: T): void {
+  memoryCache.set(filePath, data);
   try {
     ensureDirectoryExists();
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
   } catch (err) {
-    console.warn(`[CMS Service] Failed to write ${filePath}:`, err);
+    try {
+      if (!fs.existsSync(TMP_DIR)) {
+        fs.mkdirSync(TMP_DIR, { recursive: true });
+      }
+      fs.writeFileSync(getTmpPath(filePath), JSON.stringify(data, null, 2), "utf-8");
+    } catch (tmpErr) {
+      console.warn(`[CMS Service] /tmp fallback also failed for ${filePath}:`, tmpErr);
+    }
   }
 }
 

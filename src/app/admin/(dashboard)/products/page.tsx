@@ -32,10 +32,10 @@ export default function AdminProductsPage() {
   // Form state
   const [formData, setFormData] = useState({
     name: "",
-    departmentSlug: "mining-drilling-chemicals",
+    departmentSlug: "gold-mining-extraction",
     shortDesc: "",
     fullDesc: "",
-    image: "/chemicals.jpg",
+    image: "/hero-mine.jpg",
     grade: "",
     packaging: "",
     moq: "",
@@ -76,16 +76,18 @@ export default function AdminProductsPage() {
 
   const handleOpenAdd = () => {
     setIsNew(true);
+    const targetDeptSlug = filterDept === "all" ? "gold-mining-extraction" : filterDept;
+    const targetDept = departments.find((d) => d.slug === targetDeptSlug);
     const newProdTemplate: ProductItem = {
       id: `prod-${Date.now()}`,
       slug: `new-product-${Date.now()}`,
       name: "",
-      departmentSlug: filterDept === "all" ? "mining-drilling-chemicals" : filterDept,
-      departmentName: "Mining & Drilling Chemicals",
+      departmentSlug: targetDeptSlug,
+      departmentName: targetDept?.name || "Gold Mining & Mineral Extraction",
       shortDesc: "",
       fullDesc: "",
-      image: "/chemicals.jpg",
-      galleryImages: ["/chemicals.jpg"],
+      image: "/hero-mine.jpg",
+      galleryImages: ["/hero-mine.jpg"],
       specs: {
         name: "",
         grade: "",

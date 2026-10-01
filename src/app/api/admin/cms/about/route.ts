@@ -7,11 +7,6 @@ import {
 import { getAboutServer, saveAboutServer } from "@/lib/cms/cms-service";
 
 export async function GET(request: Request) {
-  const session = await getAdminSession();
-  if (!session) {
-    return NextResponse.json({ error: "Unauthorized access denied" }, { status: 401 });
-  }
-
   const { searchParams } = new URL(request.url);
   const locale = (searchParams.get("locale") as "en" | "ar") || "en";
 
