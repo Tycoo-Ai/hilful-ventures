@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import { SafeImage } from "@/components/ui/safe-image";
 import { Link } from "@/i18n/routing";
 import { Container, Lightbox, type LightboxImage } from "@/components/ui";
-import { Reveal, FadeIn, StaggerChildren, StaggerItem } from "@/components/animations";
+import { Reveal, FadeIn } from "@/components/animations";
 import { ArrowRight, ArrowUpRight, Maximize2, AlertCircle } from "lucide-react";
 import type { GalleryPageContent } from "@/data/gallery-content";
 
@@ -69,13 +69,19 @@ export function GalleryPageView({ content, locale = "en" }: GalleryPageViewProps
             </FadeIn>
 
             <Reveal delay={0.12}>
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight font-heading">
+              <h1
+                className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight font-heading"
+                style={{ color: "#F6F0E4" }}
+              >
                 {content.hero.headline}
               </h1>
             </Reveal>
 
             <Reveal delay={0.2}>
-              <p className="mt-6 text-base sm:text-xl text-neutral-300 leading-relaxed font-normal max-w-3xl">
+              <p
+                className="mt-6 text-base sm:text-xl leading-relaxed font-normal max-w-3xl"
+                style={{ color: "rgba(246, 240, 228, 0.85)" }}
+              >
                 {content.hero.subtext}
               </p>
             </Reveal>
@@ -125,11 +131,8 @@ export function GalleryPageView({ content, locale = "en" }: GalleryPageViewProps
             })}
           </div>
 
-          {/* Masonry / Editorial Composition Grid */}
-          <StaggerChildren
-            staggerDelay={0.06}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[280px] lg:auto-rows-[300px]"
-          >
+          {/* Guaranteed Visible Responsive Masonry Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[280px] lg:auto-rows-[300px]">
             {filteredItems.map((item, idx) => {
               const isFeatured = item.aspectRatio === "featured";
               const isWide = item.aspectRatio === "wide";
@@ -144,7 +147,10 @@ export function GalleryPageView({ content, locale = "en" }: GalleryPageViewProps
                 : "col-span-1";
 
               return (
-                <StaggerItem key={item.id} className={spanClasses}>
+                <div
+                  key={item.id}
+                  className={`${spanClasses} h-full min-h-[280px] w-full`}
+                >
                   <div
                     onClick={() => handleOpenLightbox(idx)}
                     onKeyDown={(e) => {
@@ -155,7 +161,7 @@ export function GalleryPageView({ content, locale = "en" }: GalleryPageViewProps
                     }}
                     role="button"
                     tabIndex={0}
-                    className="relative w-full h-full rounded-sm overflow-hidden bg-neutral-900 group cursor-pointer border border-neutral-200/90 focus-visible:outline-accent-600 shadow-2xs hover:shadow-lg transition-shadow duration-300"
+                    className="relative w-full h-full min-h-[280px] rounded-sm overflow-hidden bg-neutral-900 group cursor-pointer border border-neutral-200/90 focus-visible:outline-accent-600 shadow-2xs hover:shadow-lg transition-all duration-300"
                     aria-label={`Open photo in lightbox: ${item.title}`}
                   >
                     <SafeImage
@@ -194,18 +200,28 @@ export function GalleryPageView({ content, locale = "en" }: GalleryPageViewProps
                         className={`${
                           isFeatured ? "text-xl sm:text-2xl" : "text-base sm:text-lg"
                         } font-bold tracking-tight text-white mb-1.5 font-heading leading-tight`}
+                        style={{ color: "#F6F0E4" }}
                       >
                         {item.title}
                       </h3>
-                      <p className="text-xs text-neutral-300 leading-relaxed font-normal line-clamp-2">
+                      <p
+                        className="text-xs text-neutral-300 leading-relaxed font-normal line-clamp-2"
+                        style={{ color: "rgba(246, 240, 228, 0.85)" }}
+                      >
                         {item.caption}
                       </p>
                     </div>
                   </div>
-                </StaggerItem>
+                </div>
               );
             })}
-          </StaggerChildren>
+          </div>
+
+          {filteredItems.length === 0 && (
+            <div className="py-16 text-center text-neutral-500 font-mono text-sm">
+              No media assets found for this department.
+            </div>
+          )}
         </Container>
       </section>
 
@@ -235,13 +251,19 @@ export function GalleryPageView({ content, locale = "en" }: GalleryPageViewProps
             </FadeIn>
 
             <Reveal delay={0.12}>
-              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight font-heading">
+              <h2
+                className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight font-heading"
+                style={{ color: "#F6F0E4" }}
+              >
                 {content.cta.headline}
               </h2>
             </Reveal>
 
             <Reveal delay={0.2}>
-              <p className="text-base sm:text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed font-normal">
+              <p
+                className="text-base sm:text-xl max-w-2xl mx-auto leading-relaxed font-normal"
+                style={{ color: "rgba(246, 240, 228, 0.85)" }}
+              >
                 {content.cta.subtext}
               </p>
             </Reveal>

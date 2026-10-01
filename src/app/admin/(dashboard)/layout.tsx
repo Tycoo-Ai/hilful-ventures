@@ -17,13 +17,16 @@ export default async function AdminDashboardLayout({
   }
 
   return (
-    <div style={{
-      minHeight: "100dvh",
-      background: "#160e08",
-      color: "#F6F0E4",
-      display: "flex",
-      fontFamily: "var(--font-body-stack, Inter, system-ui, sans-serif)",
-    }}>
+    <div
+      className="admin-shell"
+      style={{
+        minHeight: "100dvh",
+        background: "#160e08",
+        color: "#F6F0E4",
+        display: "flex",
+        fontFamily: "var(--font-body-stack, Inter, system-ui, sans-serif)",
+      }}
+    >
       {/* Fixed Admin Sidebar */}
       <AdminSidebar />
 

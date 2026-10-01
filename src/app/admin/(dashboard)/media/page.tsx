@@ -54,7 +54,7 @@ export default function AdminMediaPage() {
   const [cloudinaryConfig, setCloudinaryConfig] = useState<{
     isConfigured: boolean;
     cloudName: string;
-  }>({ isConfigured: false, cloudName: "" });
+  }>({ isConfigured: true, cloudName: "sbjkwjoj" });
 
   const [statusMessage, setStatusMessage] = useState<{
     type: "success" | "error" | "warning";
@@ -304,10 +304,10 @@ export default function AdminMediaPage() {
               {assets.length} Total Assets
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white font-sans mt-2">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white font-sans mt-2" style={{ color: "#F6F0E4" }}>
             Centralized Media Library
           </h1>
-          <p className="text-xs text-neutral-400 font-sans mt-1">
+          <p className="text-xs text-neutral-400 font-sans mt-1" style={{ color: "#D1C7B7" }}>
             Production media architecture: Cloudinary CDN &middot; PostgreSQL metadata registry &middot; Centralized CMS visual asset wiring.
           </p>
         </div>

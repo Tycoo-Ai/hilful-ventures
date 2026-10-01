@@ -14,10 +14,10 @@ export default function AdminCapabilitiesPage() {
               CMS Entity / Capability
             </span>
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-white font-sans mt-2">
-            Operational Capabilities (4 Pillars)
+          <h1 className="text-2xl font-bold tracking-tight font-sans mt-2" style={{ color: "#F6F0E4" }}>
+            Operational Capabilities ({capabilities.length} Pillars)
           </h1>
-          <p className="text-xs text-neutral-400 font-mono mt-1">
+          <p className="text-xs font-mono mt-1" style={{ color: "#D1C7B7" }}>
             Core industrial capability pillars strictly validated against Hilful operational scope.
           </p>
         </div>
@@ -25,7 +25,7 @@ export default function AdminCapabilitiesPage() {
         <Link
           href="/en#capabilities"
           target="_blank"
-          className="inline-flex items-center gap-2 px-4 py-2 bg-[#162f4d] hover:bg-[#1a385a] text-white text-xs font-mono font-bold uppercase tracking-wider rounded-sm transition-colors border border-[#2d5f8a] self-start sm:self-auto"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-[#162f4d] hover:bg-[#1a385a] text-[#F6F0E4] text-xs font-mono font-bold uppercase tracking-wider rounded-sm transition-colors border border-[#2d5f8a] self-start sm:self-auto"
         >
           <span>View on Public Site</span>
           <ArrowRight className="w-3.5 h-3.5" />
@@ -39,33 +39,34 @@ export default function AdminCapabilitiesPage() {
             className="p-6 rounded-sm bg-[#0c1a2a] border border-[#1b3450] space-y-4"
           >
             <div className="flex items-center justify-between border-b border-[#182e46] pb-3">
-              <span className="text-xs font-mono font-bold text-accent-400 uppercase">
+              <span className="text-xs font-mono font-bold text-accent-400 uppercase" style={{ color: "#C9935A" }}>
                 Pillar {cap.number}
               </span>
-              <span className="text-[9px] font-mono uppercase tracking-wider text-green-400 bg-green-950/60 px-2 py-0.5 rounded-xs border border-green-700/60 font-bold">
+              <span className="text-[9px] font-mono uppercase tracking-wider text-green-400 bg-green-950/60 px-2 py-0.5 rounded-xs border border-green-700/60 font-bold" style={{ color: "#4ade80" }}>
                 PUBLISHED
               </span>
             </div>
 
             <div>
-              <h3 className="text-base font-bold text-white font-sans mb-1">
+              <h3 className="text-base font-bold font-sans mb-1" style={{ color: "#F6F0E4" }}>
                 {cap.title}
               </h3>
             </div>
 
-            <p className="text-xs text-neutral-300 leading-relaxed">
+            <p className="text-xs leading-relaxed" style={{ color: "#D1C7B7" }}>
               {cap.overview}
             </p>
 
             <div className="pt-2">
-              <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider block mb-2">
+              <span className="text-[10px] font-mono uppercase tracking-wider block mb-2" style={{ color: "#9c9284" }}>
                 Operational Scope
               </span>
               <div className="flex flex-wrap gap-1.5">
                 {cap.activities.map((act, i) => (
                   <span
                     key={i}
-                    className="text-[11px] font-mono px-2 py-1 rounded-xs bg-[#091522] border border-[#1e3857] text-neutral-300"
+                    className="text-[11px] font-mono px-2 py-1 rounded-xs bg-[#091522] border border-[#1e3857]"
+                    style={{ color: "#F6F0E4" }}
                   >
                     {act}
                   </span>

@@ -151,10 +151,10 @@ export default function AdminHsePage() {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#182a3e] pb-6">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-white font-sans">
+          <h1 className="text-2xl font-bold tracking-tight text-white font-sans" style={{ color: "#F6F0E4" }}>
             HSE &amp; Operational Standards CMS
           </h1>
-          <p className="text-xs text-neutral-400 font-mono mt-1">
+          <p className="text-xs text-neutral-400 font-mono mt-1" style={{ color: "#D1C7B7" }}>
             Workforce Safety, Host-Jurisdiction Compliance, Equipment Operating Standards
           </p>
         </div>
@@ -199,11 +199,11 @@ export default function AdminHsePage() {
 
       {/* Mandatory Compliance Directive */}
       <div className="p-4 rounded-sm bg-[#16120b] border border-amber-800/60 text-xs font-mono space-y-2">
-        <div className="flex items-center gap-2 text-amber-400 font-bold uppercase tracking-wider">
+        <div className="flex items-center gap-2 text-amber-400 font-bold uppercase tracking-wider" style={{ color: "#fbbf24" }}>
           <AlertTriangle className="w-4 h-4 shrink-0" />
           <span>Strict Content Governance Directive</span>
         </div>
-        <p className="text-neutral-300 leading-relaxed">
+        <p className="text-neutral-300 leading-relaxed" style={{ color: "#D1C7B7" }}>
           Do not introduce unsupported ISO, OSHA, zero-incident, or fabricated safety statistics. Retain sober corporate positioning focused on workforce safety and statutory host-jurisdiction compliance.
         </p>
       </div>
@@ -228,7 +228,7 @@ export default function AdminHsePage() {
 
       {/* Hero Section */}
       <div className="bg-[#0c1a2a] p-6 rounded-sm border border-[#1b3450] space-y-4">
-        <h2 className="text-sm font-mono font-bold uppercase tracking-wider text-accent-400 border-b border-[#182e46] pb-3">
+        <h2 className="text-sm font-mono font-bold uppercase tracking-wider text-accent-400 border-b border-[#182e46] pb-3" style={{ color: "#C9935A" }}>
           1. HSE Hero Header
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -285,7 +285,7 @@ export default function AdminHsePage() {
 
       {/* Principles Section */}
       <div className="bg-[#0c1a2a] p-6 rounded-sm border border-[#1b3450] space-y-4">
-        <h2 className="text-sm font-mono font-bold uppercase tracking-wider text-accent-400 border-b border-[#182e46] pb-3">
+        <h2 className="text-sm font-mono font-bold uppercase tracking-wider text-accent-400 border-b border-[#182e46] pb-3" style={{ color: "#C9935A" }}>
           2. Principles &amp; Operational Standards
         </h2>
         <div>

@@ -82,20 +82,75 @@ body::after {
 }
 
 /* ── Typography baseline ────────────────────────────────────────────────────── */
-h1, h2, h3, h4 {
+:where(h1, h2, h3, h4) {
   font-family: var(--font-heading-stack);
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: -0.01em;
+  color: inherit;
+}
+
+:where(h1) { font-size: clamp(2.5rem, 5vw, 5rem); }
+:where(h2) { font-size: clamp(2rem, 3.8vw, 3.75rem); }
+:where(h3) { font-size: clamp(1.5rem, 2.5vw, 2.4rem); }
+:where(h4) { font-size: clamp(1.2rem, 1.8vw, 1.6rem); }
+
+:where(p) { color: inherit; }
+
+/* Default baseline colors for standard un-themed public content */
+body:not(.admin-shell):not([data-theme="dark"]) :where(h1, h2, h3, h4):not([class*="text-"]):not([style*="color"]) {
   color: var(--espresso);
 }
 
-h1 { font-size: clamp(2.5rem, 5vw, 5rem); }
-h2 { font-size: clamp(2rem, 3.8vw, 3.75rem); }
-h3 { font-size: clamp(1.5rem, 2.5vw, 2.4rem); }
-h4 { font-size: clamp(1.2rem, 1.8vw, 1.6rem); }
+body:not(.admin-shell):not([data-theme="dark"]) :where(p):not([class*="text-"]):not([style*="color"]) {
+  color: var(--walnut);
+}
 
-p { color: var(--walnut); }
+/* ── Admin Dashboard Typography Enforcement ─────────────────────────────────── */
+.admin-shell {
+  color: #F6F0E4 !important;
+}
+
+.admin-shell :where(h1, h2, h3, h4):not([class*="text-"]):not([style*="color"]),
+.admin-shell h1:not([style*="color"]),
+.admin-shell h2:not([style*="color"]),
+.admin-shell h3:not([style*="color"]),
+.admin-shell h4:not([style*="color"]) {
+  color: #F6F0E4 !important;
+}
+
+.admin-shell :where(p):not([class*="text-"]):not([style*="color"]) {
+  color: #D1C7B7 !important;
+}
+
+/* ── Dark Sections High Contrast Typography Enforcement ─────────────────────── */
+.dark-section,
+[data-theme="dark"],
+[class*="bg-[#070e17]"],
+[class*="bg-[#07121f]"],
+[class*="bg-[#0c1a2a]"],
+[class*="bg-[#0a1726]"],
+[class*="bg-[#08121d]"],
+[class*="bg-[#07111c]"],
+[class*="bg-[#160e08]"] {
+  color: #F6F0E4;
+}
+
+.dark-section :where(h1, h2, h3, h4):not([style*="color"]):not([class*="text-"]),
+[data-theme="dark"] :where(h1, h2, h3, h4):not([style*="color"]):not([class*="text-"]),
+[class*="bg-[#070e17]"] :where(h1, h2, h3, h4):not([style*="color"]):not([class*="text-"]),
+[class*="bg-[#07121f]"] :where(h1, h2, h3, h4):not([style*="color"]):not([class*="text-"]),
+[class*="bg-[#0c1a2a]"] :where(h1, h2, h3, h4):not([style*="color"]):not([class*="text-"]) {
+  color: #F6F0E4 !important;
+}
+
+.dark-section :where(p):not([style*="color"]):not([class*="text-"]),
+[data-theme="dark"] :where(p):not([style*="color"]):not([class*="text-"]),
+[class*="bg-[#070e17]"] :where(p):not([style*="color"]):not([class*="text-"]),
+[class*="bg-[#07121f]"] :where(p):not([style*="color"]):not([class*="text-"]),
+[class*="bg-[#0c1a2a]"] :where(p):not([style*="color"]):not([class*="text-"]) {
+  color: rgba(246, 240, 228, 0.85) !important;
+}
 
 a { color: inherit; text-decoration: none; }
 
