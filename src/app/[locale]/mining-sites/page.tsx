@@ -3,7 +3,7 @@ import { Link } from "@/i18n/routing";
 import type { Metadata } from "next";
 import { getMiningSitesServer } from "@/lib/cms/cms-service";
 import { MiningSitesClient } from "@/components/mining/mining-sites-client";
-import { FinalCta } from "@/components/home/final-cta";
+import { FinalCTA } from "@/components/home/final-cta";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -317,7 +317,7 @@ export default async function MiningSitesPage({
 
       {/* 4. COMMERCIAL QUERY ANCHOR SECTION */}
       <div id="commercial-query-section">
-        <FinalCta locale={locale} />
+        <FinalCTA />
       </div>
     </div>
   );

@@ -743,3 +743,7 @@ ${spec}`;
     </section>
   );
 }
+
+export const FinalCta = FinalCTA;
+export default FinalCTA;
+
