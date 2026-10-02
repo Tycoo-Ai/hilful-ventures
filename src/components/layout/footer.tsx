@@ -141,7 +141,7 @@ export function Footer({ settings }: { settings?: any }) {
               ))}
               <li>
                 <Link
-                  href="/products"
+                  href="/mining-sites"
                   style={{
                     fontSize: "0.875rem",
                     fontWeight: 600,
@@ -151,6 +151,22 @@ export function Footer({ settings }: { settings?: any }) {
                     alignItems: "center",
                     gap: "4px",
                     marginTop: "6px",
+                  }}
+                >
+                  Mining Sites &amp; Exploration Portal &rarr;
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/products"
+                  style={{
+                    fontSize: "0.875rem",
+                    fontWeight: 600,
+                    color: "rgba(246, 240, 228, 0.8)",
+                    textDecoration: "none",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "4px",
                   }}
                 >
                   Full Product Catalog &rarr;

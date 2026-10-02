@@ -49,6 +49,7 @@ const navGroups: NavGroup[] = [
       { label: "About Us", href: "/admin/about", icon: Icons.about },
       { label: "Why Us (Advantage)", href: "/admin/capabilities", icon: Icons.whyus },
       { label: "Investor Trust (Process)", href: "/admin/hse", icon: Icons.process },
+      { label: "Mining Sites Portal", href: "/admin/mining-sites", icon: Icons.departments },
     ],
   },
   {

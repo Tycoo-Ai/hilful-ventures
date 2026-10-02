@@ -169,8 +169,8 @@ export const DEPARTMENTS: DepartmentItem[] = [
         shortDesc: "Direct mine-smelted unrefined gold doré bars with verified fire assay purity (92% - 98.5% Au).",
         fullDesc:
           "Primary unrefined gold bullion bars cast directly at our mine-site induction foundries in Assosa. Every bar is individually stamped, weighed, and accompanied by accredited fire assay documentation ensuring strict OECD chain of custody.",
-        image: "/hero-mine.jpg",
-        galleryImages: ["/hero-mine.jpg"],
+        image: "/gold-dore-bars.jpg",
+        galleryImages: ["/gold-dore-bars.jpg"],
         specs: {
           name: "Raw Gold Doré Bars",
           grade: "Au Purity 92.0% – 98.5% (Verified Fire Assay)",

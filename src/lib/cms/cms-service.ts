@@ -14,6 +14,7 @@ const PRODS_FILE = path.join(DATA_DIR, "cms-products.json");
 const HOME_FILE = path.join(DATA_DIR, "cms-home.json");
 const ABOUT_FILE = path.join(DATA_DIR, "cms-about.json");
 const GALLERY_FILE = path.join(DATA_DIR, "cms-gallery.json");
+const MINING_SITES_FILE = path.join(DATA_DIR, "cms-mining-sites.json");
 
 const memoryCache = new Map<string, any>();
 const TMP_DIR = path.join("/tmp", "hilful-data");
@@ -178,7 +179,20 @@ export async function getDepartmentBySlugServer(slug: string): Promise<Departmen
     slug === "waste-paper" ? "minerals-mud-chemicals" :
     slug === "used-tyres" ? "quartz-and-fly-ash" :
     slug;
-  return depts.find((d) => d.slug === normalizedSlug) || null;
+  const dept = depts.find((d) => d.slug === normalizedSlug) || null;
+  if (!dept) return null;
+
+  // Hydrate products with latest live products store so product changes (photos, specs, MOQ)
+  // are immediately visible on the department page!
+  try {
+    const allProds = await getProductsServer();
+    const deptProds = allProds.filter((p) => p.departmentSlug === dept.slug);
+    if (deptProds.length > 0) {
+      return { ...dept, products: deptProds };
+    }
+  } catch {}
+
+  return dept;
 }
 
 export async function saveDepartmentServer(dept: DepartmentItem): Promise<DepartmentItem> {
@@ -369,6 +383,11 @@ export async function saveProductServer(product: ProductItem): Promise<ProductIt
         targetDept.products.push(product);
       }
       writeJsonFile(DEPTS_FILE, depts);
+      try {
+        await saveCloudJson("cms-departments", depts);
+      } catch (cloudDeptErr) {
+        console.warn("[CMS Service] Cloudinary department update warning:", cloudDeptErr);
+      }
     }
   } catch (syncErr) {
     console.warn("[CMS Service] Department product sync warning:", syncErr);
@@ -691,55 +710,131 @@ export interface GalleryDiskItem {
 
 const DEFAULT_GALLERY_ITEMS: GalleryDiskItem[] = [
   {
-    id: "gal-01",
-    title: "Mining & Drilling Fluid Polymers",
-    category: "Mining & Drilling Chemicals",
-    imageUrl: "/chemicals.jpg",
-    caption: "Specialized API 13A drilling fluid polymers and starch derivatives in moisture-sealed export packaging.",
+    id: "gal-gold-01",
+    title: "Primary Gold Concession Extraction & Alluvial Benches",
+    category: "Gold Mining & Mineral Extraction",
+    imageUrl: "/hero-mine.jpg",
+    caption: "High-yield alluvial gold mining concession pit and pay-dirt extraction in Assosa Woreda, Benishangul-Gumuz, Ethiopia.",
     status: "PUBLISHED",
     featured: true,
   },
   {
-    id: "gal-02",
-    title: "HMS 1 & 2 Steel Scrap Processing",
+    id: "gal-gold-02",
+    title: "Knelson Gravity Separation & Hydrocyclone Sizing",
+    category: "Gold Mining & Mineral Extraction",
+    imageUrl: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=1400&q=85",
+    caption: "Chemical-free centrifugal recovery circuits capturing fine auriferous gold particles from alluvial wash slurry.",
+    status: "PUBLISHED",
+    featured: true,
+  },
+  {
+    id: "gal-gold-03",
+    title: "Assayed Mine-Smelted Gold Doré Bars (92%-98.5% Au)",
+    category: "Gold Mining & Mineral Extraction",
+    imageUrl: "/gold-dore-bars.jpg",
+    caption: "Mine-site induction furnace smelted gold doré bars stamped and certified with independent fire assay certificates.",
+    status: "PUBLISHED",
+    featured: true,
+  },
+  {
+    id: "gal-chem-01",
+    title: "API 13A Drilling Fluid Polymers & Rheology Additives",
+    category: "Drilling & Mud Chemicals",
+    imageUrl: "/chemicals.jpg",
+    caption: "Specialized PAC-LV, xanthan polymer complexes, and organophilic clays packaged in hermetic export craft bags.",
+    status: "PUBLISHED",
+    featured: true,
+  },
+  {
+    id: "gal-chem-02",
+    title: "HPHT Rheological Testing & Fluid Loss Control",
+    category: "Drilling & Mud Chemicals",
+    imageUrl: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=85",
+    caption: "High pressure high temperature (HPHT) filter press verification confirming minimal mud cake permeability.",
+    status: "PUBLISHED",
+    featured: true,
+  },
+  {
+    id: "gal-chem-03",
+    title: "Pregelatinized Crosslinked Modified Starch",
+    category: "Drilling & Mud Chemicals",
+    imageUrl: "/chemicals.jpg",
+    caption: "Thermal endurance up to 130°C in high-salinity brines for borehole wall consolidation and fluid stabilization.",
+    status: "PUBLISHED",
+  },
+  {
+    id: "gal-metal-01",
+    title: "HMS 1 & 2 Steel Scrap Hydraulic Baling & Shearing",
     category: "Ferrous / Non-Ferrous Metal",
     imageUrl: "/metals.jpg",
-    caption: "Heavy melting steel scrap 80:20 blend mechanically sheared and containerized for foundry remelting.",
+    caption: "ISRI 200-206 certified 80:20 heavy melting steel scrap processed for high furnace charge density.",
     status: "PUBLISHED",
     featured: true,
   },
   {
-    id: "gal-03",
-    title: "High-Purity Iron Ore Fines & Lumps",
-    category: "Minerals & Mud Chemicals",
+    id: "gal-metal-02",
+    title: "99.9% Pure Millberry Copper Wire Scrap",
+    category: "Ferrous / Non-Ferrous Metal",
+    imageUrl: "/metals.jpg",
+    caption: "Unalloyed bright electrolytic copper wire bundles sourced from electrical transmission dismantling.",
+    status: "PUBLISHED",
+  },
+  {
+    id: "gal-metal-03",
+    title: "Secondary Aluminium Tense/Tabor & Honey Brass Scrap",
+    category: "Ferrous / Non-Ferrous Metal",
+    imageUrl: "/metals.jpg",
+    caption: "Dense sorted secondary non-ferrous foundry melts loaded into 20ft ocean containers with verified weighbridge slips.",
+    status: "PUBLISHED",
+  },
+  {
+    id: "gal-ong-01",
+    title: "High Fe Content Iron Ore (62% - 64.5% Fe Lumps & Fines)",
+    category: "Minerals & Mud Chemicals to ONG Exploration",
     imageUrl: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=1200&q=80",
-    caption: "Premium grade iron ore sourced from reliable extraction pits for metallurgical and DRI steelmaking operations.",
+    caption: "Calibrated 10-40mm lump ore and sinter fines sourced from certified mining concessions for blast furnace and DRI steelmaking.",
     status: "PUBLISHED",
     featured: true,
   },
   {
-    id: "gal-04",
-    title: "Class F Micronized Pulverized Fly Ash",
-    category: "Quartz & Fly Ash",
-    imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
-    caption: "Pozzolanic pulverized fuel ash byproduct with high glass content, ideal for high-performance concrete.",
-    status: "PUBLISHED",
-    featured: true,
-  },
-  {
-    id: "gal-05",
-    title: "Pure Millberry Copper Wire Scrap",
-    category: "Ferrous / Non-Ferrous Metal",
-    imageUrl: "/metals.jpg",
-    caption: "99.9% bare electrolytic copper wire scrap prepared for secondary smelting and wire rod drawing.",
-    status: "PUBLISHED",
-  },
-  {
-    id: "gal-06",
-    title: "Deep Drilling Wellbore Fluid Additives",
-    category: "Mining & Drilling Chemicals",
+    id: "gal-ong-02",
+    title: "High-Density Drilling Barite (4.20 SG BaSO4)",
+    category: "Minerals & Mud Chemicals to ONG Exploration",
     imageUrl: "/chemicals.jpg",
-    caption: "High-temperature organic starch derivatives and bentonite rheology modifiers.",
+    caption: "Ultra-heavy barium sulfate weighing powders milled to API 13A particle specifications for high-pressure exploration wells.",
+    status: "PUBLISHED",
+  },
+  {
+    id: "gal-ong-03",
+    title: "Metallurgical Sinter Feed & Ore Concentrates",
+    category: "Minerals & Mud Chemicals to ONG Exploration",
+    imageUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=85",
+    caption: "Bulk mineral charges prepared to custom grain sizing and moisture profiles for cupola and arc furnace smelting.",
+    status: "PUBLISHED",
+  },
+  {
+    id: "gal-quartz-01",
+    title: "ASTM C618 Class F & Class C Pulverized Fuel Fly Ash",
+    category: "Quartz and Fly Ash",
+    imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
+    caption: "Classified pozzolanic micro-powder with loss on ignition under 3%, packed in 1.4 MT moisture-sealed jumbo tote bags.",
+    status: "PUBLISHED",
+    featured: true,
+  },
+  {
+    id: "gal-quartz-02",
+    title: "High-Purity Natural Crystalline Quartz (99.5%+ SiO2)",
+    category: "Quartz and Fly Ash",
+    imageUrl: "/hero-mine.jpg",
+    caption: "Optically sorted snow-white vein quartz with ultra-low iron (Fe2O3 < 0.02%) for float glass and engineered quartz stone.",
+    status: "PUBLISHED",
+  },
+  {
+    id: "gal-quartz-03",
+    title: "Micronized Silica Flour (300-500 Mesh) & Cenospheres",
+    category: "Quartz and Fly Ash",
+    imageUrl: "/chemicals.jpg",
+    caption: "Super-fine ball-milled crystalline silica flour and lightweight buoyant cenospheres for oil-well cementing and refractories.",
     status: "PUBLISHED",
   },
 ];
@@ -834,4 +929,145 @@ export async function deleteGalleryItemServer(id: string): Promise<boolean> {
   revalidateWebRoutes(["/en/gallery", "/ar/gallery", "/admin/gallery"]);
   return true;
 }
+
+// ============================================================================
+// MINING & EXPLORATION SITES CMS SERVICE
+// ============================================================================
+
+export interface MiningSiteItem {
+  id: string;
+  title: string;
+  country: string;
+  region: string;
+  type: "ACTIVE_OPERATING" | "ASSISTING_PARTNER" | "FEASIBLE_EXPANSION";
+  category: string;
+  mineralScope: string;
+  status: "ACTIVE" | "IN_PROGRESS" | "LICENSED" | "AVAILABLE_FOR_PARTNERSHIP";
+  statusBadge: string;
+  description: string;
+  imageUrl: string;
+  coordinates?: string;
+  keyMetrics?: {
+    scaleOrArea?: string;
+    processingCapacity?: string;
+    logisticsRoute?: string;
+    assayIntegrity?: string;
+  };
+  operationalHighlights: string[];
+  sortOrder: number;
+}
+
+export async function getMiningSitesServer(): Promise<MiningSiteItem[]> {
+  // 1. Check persistent Cloudinary storage first
+  try {
+    const cloudSites = await getCloudJson<MiningSiteItem[]>("cms-mining-sites");
+    if (cloudSites && Array.isArray(cloudSites) && cloudSites.length > 0) {
+      writeJsonFile(MINING_SITES_FILE, cloudSites);
+      return cloudSites.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+    }
+  } catch {}
+
+  // 2. Fallback to local JSON file
+  const disk = readJsonFile<MiningSiteItem[]>(MINING_SITES_FILE);
+  if (disk && Array.isArray(disk) && disk.length > 0) {
+    return disk.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+  }
+
+  return [];
+}
+
+export async function saveMiningSiteServer(site: MiningSiteItem): Promise<MiningSiteItem> {
+  const current = await getMiningSitesServer();
+  const idx = current.findIndex((s) => s.id === site.id);
+
+  let updated: MiningSiteItem[];
+  if (idx >= 0) {
+    updated = [...current];
+    updated[idx] = { ...current[idx], ...site };
+  } else {
+    updated = [site, ...current];
+  }
+
+  writeJsonFile(MINING_SITES_FILE, updated);
+
+  try {
+    await saveCloudJson("cms-mining-sites", updated);
+  } catch (cloudErr) {
+    console.warn("[CMS Service] Cloudinary mining sites save warning:", cloudErr);
+  }
+
+  // Best-effort Prisma update to Project model
+  try {
+    await prisma.project.upsert({
+      where: { id: site.id },
+      update: {
+        title: site.title,
+        category: site.category,
+        description: site.description,
+        imageUrl: site.imageUrl,
+        status: "PUBLISHED",
+        sortOrder: site.sortOrder || 0,
+        updatedAt: new Date(),
+      },
+      create: {
+        id: site.id,
+        title: site.title,
+        category: site.category,
+        description: site.description,
+        imageUrl: site.imageUrl,
+        status: "PUBLISHED",
+        sortOrder: site.sortOrder || 0,
+      },
+    });
+  } catch (err) {
+    console.warn("[CMS Service] Prisma project upsert warning:", err);
+  }
+
+  revalidateWebRoutes([
+    "/en/mining-sites",
+    "/ar/mining-sites",
+    "/en/exploration-portal",
+    "/ar/exploration-portal",
+    "/admin/mining-sites",
+    "/",
+    "/en",
+    "/ar",
+  ]);
+
+  return site;
+}
+
+export async function deleteMiningSiteServer(id: string): Promise<boolean> {
+  const current = await getMiningSitesServer();
+  const updated = current.filter((s) => s.id !== id);
+  writeJsonFile(MINING_SITES_FILE, updated);
+
+  try {
+    await saveCloudJson("cms-mining-sites", updated);
+  } catch (cloudErr) {
+    console.warn("[CMS Service] Cloudinary mining sites delete warning:", cloudErr);
+  }
+
+  try {
+    await prisma.project.deleteMany({
+      where: { id },
+    });
+  } catch (err) {
+    console.warn("[CMS Service] Prisma project delete warning:", err);
+  }
+
+  revalidateWebRoutes([
+    "/en/mining-sites",
+    "/ar/mining-sites",
+    "/en/exploration-portal",
+    "/ar/exploration-portal",
+    "/admin/mining-sites",
+    "/",
+    "/en",
+    "/ar",
+  ]);
+
+  return true;
+}
+
 

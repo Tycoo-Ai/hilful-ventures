@@ -89,8 +89,8 @@ export default async function GalleryPage({
         };
       });
 
-      // Merge base departmental items with any newly uploaded CMS items
-      content.items = [...cmsMapped, ...baseContent.items.filter((b) => !cmsMapped.some((c) => c.id === b.id))];
+      // Use the CMS list as the single source of truth for the live gallery
+      content.items = cmsMapped;
     }
   } catch (err) {
     console.warn("Gallery CMS overlay fallback:", err);

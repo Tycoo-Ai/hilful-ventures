@@ -241,6 +241,21 @@ export function Header({ settings }: { settings?: any }) {
             </Link>
 
             <Link
+              href="/mining-sites"
+              className="hv-nav-link"
+              style={{
+                fontSize: "14px",
+                fontWeight: 500,
+                color: "#1E130C",
+                textDecoration: "none",
+                position: "relative",
+                padding: "8px 0",
+              }}
+            >
+              Mining Sites
+            </Link>
+
+            <Link
               href="/gallery"
               className="hv-nav-link"
               style={{
@@ -762,6 +777,21 @@ export function Header({ settings }: { settings?: any }) {
               }}
             >
               Process
+            </Link>
+
+            <Link
+              href="/mining-sites"
+              onClick={() => setMobileMenuOpen(false)}
+              style={{
+                fontSize: "18px",
+                fontWeight: 500,
+                color: "#F6F0E4",
+                textDecoration: "none",
+                padding: "8px 0",
+                borderBottom: "1px solid rgba(168,104,58,0.2)",
+              }}
+            >
+              Mining Sites
             </Link>
 
             <Link

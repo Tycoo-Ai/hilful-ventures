@@ -80,7 +80,7 @@ export const galleryContentEn: GalleryPageContent = {
     },
     {
       id: "gal-gold-03",
-      src: "/hero-mine.jpg",
+      src: "/gold-dore-bars.jpg",
       alt: "Assayed gold dore bars and bullion verification",
       title: "Assayed Mine-Smelted Gold Doré Bars (92%-98.5% Au)",
       category: "GOLD_MINING",
