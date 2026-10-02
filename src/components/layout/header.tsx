@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Link } from "@/i18n/routing";
+import { Link, usePathname } from "@/i18n/routing";
 import Image from "next/image";
 import { DEPARTMENTS } from "@/data/hilful-data";
 
@@ -15,6 +15,13 @@ export function Header({ settings }: { settings?: any }) {
 
   const megaMenuRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
+
+  // Close menus automatically whenever navigating to a new route
+  useEffect(() => {
+    setMegaOpen(false);
+    setMobileMenuOpen(false);
+  }, [pathname]);
 
   // Fetch live departments so mega-menu reflects updated cover pictures and titles
   useEffect(() => {
@@ -45,10 +52,10 @@ export function Header({ settings }: { settings?: any }) {
       }
     };
     const handleClickOutside = (e: MouseEvent) => {
-      if (
-        navRef.current &&
-        !navRef.current.contains(e.target as Node)
-      ) {
+      const target = e.target as Node;
+      const isInsideNav = navRef.current ? navRef.current.contains(target) : false;
+      const isInsideMega = megaMenuRef.current ? megaMenuRef.current.contains(target) : false;
+      if (!isInsideNav && !isInsideMega) {
         setMegaOpen(false);
       }
     };

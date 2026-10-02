@@ -2,26 +2,30 @@
 
 import { useEffect, useRef } from "react";
 
-const STEPS = [
+const TRUST_PILLARS = [
   {
     num: "01",
-    title: "Enquiry",
-    body: "Share your product requirements, volume, quality specs, and destination country.",
+    tag: "CONCESSION ASSET BACKING",
+    title: "Direct Geological Asset Security",
+    body: "Secured physical concessions and verified exploratory deposits in high-yield belts (Assosa & Eastern corridors) with JORC-aligned reserves.",
   },
   {
     num: "02",
-    title: "Sourcing",
-    body: "We identify verified suppliers from our global network and obtain competitive pricing.",
+    tag: "CROSS-BORDER JURISDICTION",
+    title: "Dual-Continent Corporate Governance",
+    body: "Structured operations across India and Ethiopia providing full sovereign statutory compliance, mineral export permits, and zero counterparty ambiguity.",
   },
   {
     num: "03",
-    title: "Inspection",
-    body: "Third-party quality inspection and grade verification before shipment confirmation.",
+    tag: "ASSAY INTEGRITY",
+    title: "100% Laboratory Assay Verification",
+    body: "Every ore shipment, chemical lot, and alloy batch is pre-inspected by certified independent bureaus (SGS, ALS, Bureau Veritas) with traceable COAs.",
   },
   {
     num: "04",
-    title: "Delivery",
-    body: "End-to-end logistics, documentation, and customs clearance support to your destination.",
+    tag: "CAPITAL DISCIPLINE",
+    title: "De-risked Off-Take & Liquidity Protection",
+    body: "Incoterms-governed contracts with insured CIF/FOB terms, backed by established institutional banking facilities protecting partner liquidity.",
   },
 ];
 
@@ -61,17 +65,28 @@ export function EngagementProcess({ sectionTag, headline, steps }: { sectionTag?
   }, []);
 
   return (
-    <section className="section section--parchment" id="process" ref={sectionRef} aria-label="How we work">
+    <section className="section section--parchment" id="process" ref={sectionRef} aria-label="Institutional Trust Architecture">
       <div className="container-xl" style={{ marginBottom: "clamp(2rem, 4vw, 4rem)" }}>
-        <p className="label reveal">How We Work</p>
-        <h2 className="reveal reveal-delay-1" style={{ marginTop: "0.75rem" }}>
-          From Enquiry<br />
-          to&nbsp;<em style={{ fontStyle: "italic", color: "var(--copper)" }}>Delivery</em>
+        <p className="label reveal" style={{ color: "var(--copper, #A8683A)", fontSize: "12px", letterSpacing: "0.28em", textTransform: "uppercase" }}>
+          {sectionTag || "Institutional Assurance"}
+        </p>
+        <h2 className="reveal reveal-delay-1" style={{ marginTop: "0.75rem", fontFamily: "var(--font-heading-stack, 'Cormorant Garamond', Georgia, serif)", fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#1E130C", lineHeight: 1.15 }}>
+          {headline ? (
+            <span>{headline}</span>
+          ) : (
+            <>
+              Why Capital Partners &amp; Investors<br />
+              <em style={{ fontStyle: "italic", color: "var(--copper, #A8683A)" }}>Trust Hilful Ventures</em>
+            </>
+          )}
         </h2>
+        <p className="reveal reveal-delay-2" style={{ color: "#5A3A22", fontSize: "1.05rem", lineHeight: 1.7, maxWidth: "60ch", marginTop: "1rem" }}>
+          A fortified operational framework engineered for capital protection, transparency, regulatory resilience, and verified cross-border physical asset delivery.
+        </p>
       </div>
 
-      <div className="hv-process" role="list" aria-label="4-step process">
-        {STEPS.map((s, i) => (
+      <div className="hv-process" role="list" aria-label="4 institutional trust pillars">
+        {TRUST_PILLARS.map((s, i) => (
           <div
             key={s.num}
             className="hv-process__step"
@@ -79,9 +94,16 @@ export function EngagementProcess({ sectionTag, headline, steps }: { sectionTag?
             style={{ transitionDelay: `${i * 0.12}s` }}
           >
             <div className="hv-process__step-line" aria-hidden="true" />
-            <div className="hv-process__step-num" aria-hidden="true">{s.num}</div>
-            <h3 className="hv-process__step-title">{s.title}</h3>
-            <p className="hv-process__step-body">{s.body}</p>
+            <div className="hv-process__step-num" aria-hidden="true" style={{ color: "rgba(168, 104, 58, 0.25)" }}>{s.num}</div>
+            <span style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#A8683A", display: "block", marginBottom: "8px" }}>
+              {s.tag}
+            </span>
+            <h3 className="hv-process__step-title" style={{ fontSize: "1.3rem", color: "#1E130C", lineHeight: 1.25, marginBottom: "12px" }}>
+              {s.title}
+            </h3>
+            <p className="hv-process__step-body" style={{ color: "#5A3A22", fontSize: "0.9rem", lineHeight: 1.65 }}>
+              {s.body}
+            </p>
           </div>
         ))}
       </div>

@@ -248,7 +248,7 @@ export default async function ProductDetailPage({
                     textDecoration: "none",
                   }}
                 >
-                  Request Official Quote
+                  Submit Commercial Query
                 </a>
 
                 <a
@@ -603,7 +603,7 @@ export default async function ProductDetailPage({
               marginBottom: "14px",
             }}
           >
-            Request Official Quotation for {prod.name}
+            Submit Commercial Query for {prod.name}
           </h2>
           <p
             style={{
@@ -618,7 +618,7 @@ export default async function ProductDetailPage({
 
           <div style={{ display: "flex", justifyContent: "center", gap: "16px", flexWrap: "wrap" }}>
             <a
-              href={`https://wa.me/919655522111?text=${encodeURIComponent(`Hello Hilful Ventures, I would like to request a quotation for ${prod.name} (MOQ: ${prod.specs.moq}).`)}`}
+              href={`https://wa.me/919655522111?text=${encodeURIComponent(`Hello Hilful Ventures, I would like to submit a commercial query for ${prod.name} (MOQ: ${prod.specs.moq}).`)}`}
               target="_blank"
               rel="noopener noreferrer"
               style={{

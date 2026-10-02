@@ -45,7 +45,7 @@ export function FinalCTA({ content }: { content?: any }) {
     const interest = String(payload.areaOfInterest || "").trim();
     const spec = String(payload.message || "").trim();
 
-    const formattedText = `*HILFUL VENTURES — FORMAL QUOTATION REQUEST*
+    const formattedText = `*HILFUL VENTURES — DIRECT COMMERCIAL QUERY*
 • *Name:* ${name}
 • *Company:* ${company || "Individual/Entity"}
 • *Phone:* ${phone}
@@ -56,8 +56,8 @@ export function FinalCTA({ content }: { content?: any }) {
 ${spec}`;
 
     const waUrl = `https://wa.me/919655522111?text=${encodeURIComponent(formattedText)}`;
-    const emailSubject = `Formal Quotation Request: ${name} (${company || interest})`;
-    const emailBody = `Dear Hilful Ventures Trade Desk,\n\nI would like to submit a formal quotation request:\n\nName: ${name}\nCompany: ${company}\nPhone: ${phone}\nEmail: ${email}\nOffice/Route: ${route}\nProduct/Division: ${interest}\n\nSpecifications / Volume Requirements:\n${spec}\n\nKind regards,\n${name}`;
+    const emailSubject = `Direct Commercial Query: ${name} (${company || interest})`;
+    const emailBody = `Dear Hilful Ventures Trade Desk,\n\nI would like to submit a direct commercial query / inquiry:\n\nName: ${name}\nCompany: ${company}\nPhone: ${phone}\nEmail: ${email}\nOffice/Route: ${route}\nProduct/Division: ${interest}\n\nSpecifications / Volume Requirements:\n${spec}\n\nKind regards,\n${name}`;
     const mailUrl = `mailto:hilfulventures@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
     setDispatchUrls({ whatsapp: waUrl, mailto: mailUrl });
@@ -336,7 +336,7 @@ ${spec}`;
                 marginBottom: "8px",
               }}
             >
-              Submit a Quotation Request
+              Submit a Commercial Query Request
             </h3>
             <p
               style={{
@@ -632,10 +632,10 @@ ${spec}`;
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: "8px", color: "#25D366", fontWeight: 700, marginBottom: "8px", fontSize: "15px" }}>
                     <span>✓</span>
-                    <span>Quotation Request Ready &amp; Dispatched</span>
+                    <span>Commercial Query Prepared &amp; Dispatched</span>
                   </div>
                   <p style={{ margin: "0 0 12px 0", fontSize: "13px", color: "rgba(246, 240, 228, 0.85)", lineHeight: 1.5 }}>
-                    Your quotation details for <strong>{selectedOfficeInForm}</strong> have been prepared. Click below to continue directly via WhatsApp or Email:
+                    Your commercial query details for <strong>{selectedOfficeInForm}</strong> have been prepared. Click below to continue directly via WhatsApp or Email:
                   </p>
                   
                   {dispatchUrls && (
@@ -734,7 +734,7 @@ ${spec}`;
                   if (status !== "sending") e.currentTarget.style.backgroundColor = "#A8683A";
                 }}
               >
-                {status === "sending" ? "Routing Enquiry..." : "Send Formal Enquiry"}
+                {status === "sending" ? "Routing Commercial Query..." : "Submit Commercial Query"}
               </button>
             </form>
           </div>

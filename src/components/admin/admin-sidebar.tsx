@@ -47,24 +47,22 @@ const navGroups: NavGroup[] = [
       { label: "Products", href: "/admin/products", icon: Icons.departments },
       { label: "Gallery", href: "/admin/gallery", icon: Icons.gallery },
       { label: "About Us", href: "/admin/about", icon: Icons.about },
-      { label: "Why Us", href: "/admin/capabilities", icon: Icons.whyus },
-      { label: "Process", href: "/admin/hse", icon: Icons.process },
+      { label: "Why Us (Advantage)", href: "/admin/capabilities", icon: Icons.whyus },
+      { label: "Investor Trust (Process)", href: "/admin/hse", icon: Icons.process },
     ],
   },
   {
-    title: "Sales",
+    title: "Commercial",
     items: [
-      { label: "Enquiries", href: "/admin/inquiries", icon: Icons.enquiries },
+      { label: "Commercial Queries", href: "/admin/inquiries", icon: Icons.enquiries },
     ],
   },
   {
-    title: "Site",
+    title: "Site & Governance",
     items: [
       { label: "Media Library", href: "/admin/media", icon: Icons.media },
-      { label: "Navigation", href: "/admin/settings", icon: Icons.nav },
-      { label: "Theme", href: "/admin/settings", icon: Icons.theme },
-      { label: "SEO", href: "/admin/seo", icon: Icons.seo },
-      { label: "Settings", href: "/admin/settings", icon: Icons.settings },
+      { label: "SEO & Metadata", href: "/admin/seo", icon: Icons.seo },
+      { label: "Settings & Theme", href: "/admin/settings", icon: Icons.settings },
     ],
   },
 ];

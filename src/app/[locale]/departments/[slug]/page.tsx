@@ -181,7 +181,7 @@ export default async function DepartmentDetailPage({
                 textDecoration: "none",
               }}
             >
-              Request Department Quote
+              Submit Department Query
             </a>
           </div>
         </div>
@@ -769,7 +769,7 @@ export default async function DepartmentDetailPage({
               marginBottom: "16px",
             }}
           >
-            Request Quotation for {dept.name}
+            Submit Commercial Query for {dept.name}
           </h2>
           <p
             style={{

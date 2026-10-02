@@ -294,13 +294,13 @@ export default function AdminMediaPage() {
   return (
     <div className="max-w-7xl mx-auto space-y-8 pb-20">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#1b3450] pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[rgba(168,104,58,0.25)] pb-6">
         <div>
           <div className="flex items-center gap-2">
             <span className="text-[10px] font-mono uppercase tracking-widest text-accent-400 bg-accent-950/60 border border-accent-800/40 px-2 py-0.5 rounded-xs">
               CMS Entity / MediaAsset
             </span>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 border border-[#1b3450] px-2 py-0.5 rounded-xs">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 border border-[rgba(168,104,58,0.25)] px-2 py-0.5 rounded-xs">
               {assets.length} Total Assets
             </span>
           </div>
@@ -322,7 +322,7 @@ export default function AdminMediaPage() {
       </div>
 
       {/* Cloudinary Architecture & Credentials Status Banner */}
-      <div className="p-4 sm:p-5 rounded-sm bg-[#0a1726] border border-[#1d3d61] flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-4 sm:p-5 rounded-sm bg-[#26180F] border border-[rgba(168,104,58,0.3)] flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="space-y-1.5 max-w-3xl">
           <div className="flex items-center gap-2">
             {cloudinaryConfig.isConfigured ? (
@@ -386,7 +386,7 @@ export default function AdminMediaPage() {
       )}
 
       {/* Filters and Search Bar */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 bg-[#0c1a2a] p-4 rounded-sm border border-[#1b3450]">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 bg-[#1E130C] p-4 rounded-sm border border-[rgba(168,104,58,0.25)]">
         {/* Category Pills */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
           {categories.map((cat) => (
@@ -412,7 +412,7 @@ export default function AdminMediaPage() {
             placeholder="Search by filename, alt text, public ID..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#08121d] border border-[#1e3857] rounded-sm pl-8 pr-3 py-2 text-xs text-white placeholder-neutral-500 font-sans focus:outline-none focus:border-accent-500"
+            className="w-full bg-[#160e08] border border-[rgba(168,104,58,0.25)] rounded-sm pl-8 pr-3 py-2 text-xs text-white placeholder-neutral-500 font-sans focus:outline-none focus:border-accent-500"
           />
         </div>
       </div>
@@ -424,7 +424,7 @@ export default function AdminMediaPage() {
           <span>Loading media repository...</span>
         </div>
       ) : filteredAssets.length === 0 ? (
-        <div className="p-12 text-center bg-[#0c1a2a] border border-[#1b3450] rounded-sm text-neutral-400 font-sans text-xs">
+        <div className="p-12 text-center bg-[#1E130C] border border-[rgba(168,104,58,0.25)] rounded-sm text-neutral-400 font-sans text-xs">
           No media assets found matching the selected filter.
         </div>
       ) : (
@@ -433,7 +433,7 @@ export default function AdminMediaPage() {
           {filteredAssets.map((asset) => (
             <div
               key={asset.id}
-              className="bg-[#0c1a2a] rounded-sm border border-[#1b3450] overflow-hidden flex flex-col justify-between group hover:border-[#2d5f8a] transition-all shadow-sm"
+              className="bg-[#1E130C] rounded-sm border border-[rgba(168,104,58,0.25)] overflow-hidden flex flex-col justify-between group hover:border-[rgba(168,104,58,0.4)] transition-all shadow-sm"
             >
               <div>
                 {/* Media Preview Box */}
@@ -445,7 +445,7 @@ export default function AdminMediaPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-2 left-2 flex items-center gap-1.5">
-                    <span className="text-[9px] font-mono px-2 py-0.5 rounded-xs bg-[#091522cc] backdrop-blur-xs text-accent-300 border border-[#203c5d] uppercase font-bold">
+                    <span className="text-[9px] font-mono px-2 py-0.5 rounded-xs bg-[#26180Fcc] backdrop-blur-xs text-accent-300 border border-[#203c5d] uppercase font-bold">
                       {asset.category}
                     </span>
                     <span
@@ -527,7 +527,7 @@ export default function AdminMediaPage() {
               </div>
 
               {/* Action Toolbar */}
-              <div className="p-3 bg-[#091522] border-t border-[#152a40] flex items-center justify-between gap-2">
+              <div className="p-3 bg-[#26180F] border-t border-[#152a40] flex items-center justify-between gap-2">
                 <div className="flex items-center gap-1.5">
                   <a
                     href={asset.url}
@@ -577,8 +577,8 @@ export default function AdminMediaPage() {
       {/* Usage References Modal */}
       {viewingUsageAsset && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0c1a2a] border border-[#234368] rounded-sm w-full max-w-lg shadow-2xl overflow-hidden flex flex-col">
-            <div className="p-4 border-b border-[#182e46] flex items-center justify-between bg-[#0a1522]">
+          <div className="bg-[#1E130C] border border-[#234368] rounded-sm w-full max-w-lg shadow-2xl overflow-hidden flex flex-col">
+            <div className="p-4 border-b border-[rgba(168,104,58,0.2)] flex items-center justify-between bg-[#0a1522]">
               <div className="flex items-center gap-2">
                 <Layers className="w-4 h-4 text-accent-400" />
                 <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-white">
@@ -602,7 +602,7 @@ export default function AdminMediaPage() {
                 {viewingUsageAsset.usages?.map((usage, idx) => (
                   <div
                     key={idx}
-                    className="p-3 bg-[#08121d] border border-[#1e3857] rounded-sm text-xs font-mono text-emerald-300 flex items-center gap-2.5"
+                    className="p-3 bg-[#160e08] border border-[rgba(168,104,58,0.25)] rounded-sm text-xs font-mono text-emerald-300 flex items-center gap-2.5"
                   >
                     <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                     <span>{usage}</span>
@@ -632,8 +632,8 @@ export default function AdminMediaPage() {
       {/* Edit Metadata Modal */}
       {editingAsset && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0c1a2a] border border-[#234368] rounded-sm w-full max-w-lg shadow-2xl overflow-hidden flex flex-col">
-            <div className="p-4 border-b border-[#182e46] flex items-center justify-between bg-[#0a1522]">
+          <div className="bg-[#1E130C] border border-[#234368] rounded-sm w-full max-w-lg shadow-2xl overflow-hidden flex flex-col">
+            <div className="p-4 border-b border-[rgba(168,104,58,0.2)] flex items-center justify-between bg-[#0a1522]">
               <div className="flex items-center gap-2">
                 <Edit2 className="w-4 h-4 text-accent-400" />
                 <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-white">
@@ -660,7 +660,7 @@ export default function AdminMediaPage() {
                   onChange={(e) =>
                     setEditingAsset({ ...editingAsset, filename: e.target.value })
                   }
-                  className="w-full bg-[#08121d] border border-[#1e3857] rounded-sm px-3.5 py-2 text-xs text-white font-mono focus:outline-none focus:border-accent-500"
+                  className="w-full bg-[#160e08] border border-[rgba(168,104,58,0.25)] rounded-sm px-3.5 py-2 text-xs text-white font-mono focus:outline-none focus:border-accent-500"
                 />
               </div>
 
@@ -673,7 +673,7 @@ export default function AdminMediaPage() {
                   onChange={(e) =>
                     setEditingAsset({ ...editingAsset, category: e.target.value })
                   }
-                  className="w-full bg-[#08121d] border border-[#1e3857] rounded-sm px-3.5 py-2 text-xs text-white font-mono focus:outline-none focus:border-accent-500"
+                  className="w-full bg-[#160e08] border border-[rgba(168,104,58,0.25)] rounded-sm px-3.5 py-2 text-xs text-white font-mono focus:outline-none focus:border-accent-500"
                 >
                   {categories.filter((c) => c !== "All").map((c) => (
                     <option key={c} value={c}>
@@ -694,7 +694,7 @@ export default function AdminMediaPage() {
                   onChange={(e) =>
                     setEditingAsset({ ...editingAsset, altText: e.target.value })
                   }
-                  className="w-full bg-[#08121d] border border-[#1e3857] rounded-sm px-3.5 py-2 text-xs text-white font-sans focus:outline-none focus:border-accent-500"
+                  className="w-full bg-[#160e08] border border-[rgba(168,104,58,0.25)] rounded-sm px-3.5 py-2 text-xs text-white font-sans focus:outline-none focus:border-accent-500"
                 />
               </div>
 
@@ -708,11 +708,11 @@ export default function AdminMediaPage() {
                   onChange={(e) =>
                     setEditingAsset({ ...editingAsset, caption: e.target.value })
                   }
-                  className="w-full bg-[#08121d] border border-[#1e3857] rounded-sm px-3.5 py-2 text-xs text-white font-sans focus:outline-none focus:border-accent-500"
+                  className="w-full bg-[#160e08] border border-[rgba(168,104,58,0.25)] rounded-sm px-3.5 py-2 text-xs text-white font-sans focus:outline-none focus:border-accent-500"
                 />
               </div>
 
-              <div className="flex items-center justify-between pt-4 border-t border-[#182e46]">
+              <div className="flex items-center justify-between pt-4 border-t border-[rgba(168,104,58,0.2)]">
                 <button
                   type="button"
                   onClick={() => setEditingAsset(null)}
@@ -736,8 +736,8 @@ export default function AdminMediaPage() {
       {/* Replace Image Modal */}
       {replacingAsset && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0c1a2a] border border-[#234368] rounded-sm w-full max-w-lg shadow-2xl overflow-hidden flex flex-col">
-            <div className="p-4 border-b border-[#182e46] flex items-center justify-between bg-[#0a1522]">
+          <div className="bg-[#1E130C] border border-[#234368] rounded-sm w-full max-w-lg shadow-2xl overflow-hidden flex flex-col">
+            <div className="p-4 border-b border-[rgba(168,104,58,0.2)] flex items-center justify-between bg-[#0a1522]">
               <div className="flex items-center gap-2">
                 <Upload className="w-4 h-4 text-accent-400" />
                 <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-white">
@@ -753,7 +753,7 @@ export default function AdminMediaPage() {
             </div>
 
             <div className="p-6 space-y-4">
-              <div className="p-3 bg-[#08121d] border border-[#1e3857] rounded-sm text-xs font-sans text-neutral-300">
+              <div className="p-3 bg-[#160e08] border border-[rgba(168,104,58,0.25)] rounded-sm text-xs font-sans text-neutral-300">
                 Replaces the visual file for <strong>{replacingAsset.filename}</strong> while preserving existing references in CMS sections.
               </div>
 
@@ -782,7 +782,7 @@ export default function AdminMediaPage() {
                 </div>
               </div>
 
-              <div className="pt-2 border-t border-[#182e46] flex justify-end">
+              <div className="pt-2 border-t border-[rgba(168,104,58,0.2)] flex justify-end">
                 <button
                   type="button"
                   onClick={() => setReplacingAsset(null)}
@@ -799,8 +799,8 @@ export default function AdminMediaPage() {
       {/* Register New Asset Modal */}
       {isAdding && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0c1a2a] border border-[#234368] rounded-sm w-full max-w-lg shadow-2xl overflow-hidden flex flex-col">
-            <div className="p-4 border-b border-[#182e46] flex items-center justify-between bg-[#0a1522]">
+          <div className="bg-[#1E130C] border border-[#234368] rounded-sm w-full max-w-lg shadow-2xl overflow-hidden flex flex-col">
+            <div className="p-4 border-b border-[rgba(168,104,58,0.2)] flex items-center justify-between bg-[#0a1522]">
               <div className="flex items-center gap-2">
                 <Upload className="w-4 h-4 text-accent-400" />
                 <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-white">
@@ -848,7 +848,7 @@ export default function AdminMediaPage() {
               </div>
 
               {/* Or Register Verified URL */}
-              <form onSubmit={handleSaveAsset} className="space-y-4 pt-4 border-t border-[#182e46]">
+              <form onSubmit={handleSaveAsset} className="space-y-4 pt-4 border-t border-[rgba(168,104,58,0.2)]">
                 <div>
                   <span className="text-[11px] font-mono text-accent-400 uppercase tracking-wider block mb-2 font-bold">
                     Or Register Verified Image Reference
@@ -861,7 +861,7 @@ export default function AdminMediaPage() {
                     required
                     value={newAsset.url}
                     onChange={(e) => setNewAsset({ ...newAsset, url: e.target.value })}
-                    className="w-full bg-[#08121d] border border-[#1e3857] rounded-sm px-3.5 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-accent-500"
+                    className="w-full bg-[#160e08] border border-[rgba(168,104,58,0.25)] rounded-sm px-3.5 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-accent-500"
                     placeholder="https://..."
                   />
                 </div>
@@ -875,7 +875,7 @@ export default function AdminMediaPage() {
                     required
                     value={newAsset.filename}
                     onChange={(e) => setNewAsset({ ...newAsset, filename: e.target.value })}
-                    className="w-full bg-[#08121d] border border-[#1e3857] rounded-sm px-3.5 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-accent-500"
+                    className="w-full bg-[#160e08] border border-[rgba(168,104,58,0.25)] rounded-sm px-3.5 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-accent-500"
                     placeholder="e.g. hero-open-pit-operation.jpg"
                   />
                 </div>
@@ -888,7 +888,7 @@ export default function AdminMediaPage() {
                     <select
                       value={newAsset.category}
                       onChange={(e) => setNewAsset({ ...newAsset, category: e.target.value })}
-                      className="w-full bg-[#08121d] border border-[#1e3857] rounded-sm px-3 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-accent-500"
+                      className="w-full bg-[#160e08] border border-[rgba(168,104,58,0.25)] rounded-sm px-3 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-accent-500"
                     >
                       {categories.filter((c) => c !== "All").map((c) => (
                         <option key={c} value={c}>
@@ -909,7 +909,7 @@ export default function AdminMediaPage() {
                           provider: e.target.value as "CLOUDINARY" | "LOCAL" | "UNSPLASH",
                         })
                       }
-                      className="w-full bg-[#08121d] border border-[#1e3857] rounded-sm px-3 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-accent-500"
+                      className="w-full bg-[#160e08] border border-[rgba(168,104,58,0.25)] rounded-sm px-3 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-accent-500"
                     >
                       <option value="CLOUDINARY">Cloudinary</option>
                       <option value="UNSPLASH">Unsplash (Approved)</option>
@@ -927,12 +927,12 @@ export default function AdminMediaPage() {
                     required
                     value={newAsset.altText}
                     onChange={(e) => setNewAsset({ ...newAsset, altText: e.target.value })}
-                    className="w-full bg-[#08121d] border border-[#1e3857] rounded-sm px-3.5 py-1.5 text-xs text-white font-sans focus:outline-none focus:border-accent-500"
+                    className="w-full bg-[#160e08] border border-[rgba(168,104,58,0.25)] rounded-sm px-3.5 py-1.5 text-xs text-white font-sans focus:outline-none focus:border-accent-500"
                     placeholder="Representative industrial operational environment"
                   />
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-[#182e46]">
+                <div className="flex items-center justify-between pt-4 border-t border-[rgba(168,104,58,0.2)]">
                   <button
                     type="button"
                     onClick={() => setIsAdding(false)}
