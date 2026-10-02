@@ -171,7 +171,20 @@ const initialSites: MiningSiteItem[] = [
 ];
 
 export default function AdminMiningSitesPage() {
-  const [sites, setSites] = useState<MiningSiteItem[]>(initialSites);
+  const [sites, setSites] = useState<MiningSiteItem[]>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const local = localStorage.getItem("hilful_cms_mining_sites");
+        if (local) {
+          const parsed = JSON.parse(local);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            return parsed;
+          }
+        }
+      } catch {}
+    }
+    return initialSites;
+  });
   const [filterType, setFilterType] = useState<string>("all");
   const [editingSite, setEditingSite] = useState<MiningSiteItem | null>(null);
   const [isNew, setIsNew] = useState(false);
@@ -179,14 +192,60 @@ export default function AdminMiningSitesPage() {
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
+    let localHasCustom = false;
+    let localData: MiningSiteItem[] = [];
+
+    // 1. Load from localStorage first for zero-latency instant rendering of user edits
+    try {
+      const local = localStorage.getItem("hilful_cms_mining_sites");
+      if (local) {
+        const parsed = JSON.parse(local);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          localData = parsed;
+          setSites(parsed);
+          localHasCustom = true;
+        }
+      }
+    } catch {}
+
+    // 2. Fetch from cloud / API to sync latest server changes
     fetch("/api/admin/cms/mining-sites")
       .then((r) => r.json())
       .then((data) => {
         if (data.sites && Array.isArray(data.sites) && data.sites.length > 0) {
+          // If server fell back to defaults because Cloudinary was momentarily slow,
+          // but browser already has user's custom edits in localStorage, DO NOT revert!
+          // Instead, self-heal the server by syncing the user's edits back up!
+          if (data.source === "default" && localHasCustom && localData.length > 0) {
+            console.log("[CMS] Server returned default fallback; auto-healing server with local edits...");
+            fetch("/api/admin/cms/mining-sites", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ allSites: localData }),
+            }).catch(() => {});
+            return;
+          }
+
           setSites(data.sites);
+          try {
+            localStorage.setItem("hilful_cms_mining_sites", JSON.stringify(data.sites));
+          } catch {}
         }
       })
       .catch((err) => console.warn("Failed to load mining sites from API:", err));
+
+    // 3. Listen to cross-tab BroadcastChannel
+    try {
+      if (typeof BroadcastChannel !== "undefined") {
+        const bc = new BroadcastChannel("hilful_cms_channel");
+        bc.onmessage = (event) => {
+          if (event.data?.type === "MINING_SITES_UPDATED" && Array.isArray(event.data?.data)) {
+            setSites(event.data.data);
+          }
+        };
+        return () => bc.close();
+      }
+    } catch {}
   }, []);
 
   const [formData, setFormData] = useState({
@@ -317,28 +376,45 @@ export default function AdminMiningSitesPage() {
       operationalHighlights: highlights,
     };
 
+    let nextSites: MiningSiteItem[];
+    if (isNew) {
+      nextSites = [targetSite, ...sites];
+    } else {
+      nextSites = sites.map((s) => (s.id === targetSite.id ? targetSite : s));
+    }
+    setSites(nextSites);
+
+    // Save to localStorage immediately so user edits are NEVER lost
+    try {
+      localStorage.setItem("hilful_cms_mining_sites", JSON.stringify(nextSites));
+      if (typeof BroadcastChannel !== "undefined") {
+        const bc = new BroadcastChannel("hilful_cms_channel");
+        bc.postMessage({ type: "MINING_SITES_UPDATED", data: nextSites });
+        bc.close();
+      }
+    } catch {}
+
     try {
       const res = await fetch("/api/admin/cms/mining-sites", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(targetSite),
+        body: JSON.stringify({ site: targetSite, allSites: nextSites }),
       });
       const data = await res.json();
-      const savedSite = data.site || targetSite;
-
-      if (isNew) {
-        setSites((prev) => [savedSite, ...prev]);
-        showToast(`✓ Site "${savedSite.title}" added to live portal!`);
-      } else {
-        setSites((prev) => prev.map((s) => (s.id === savedSite.id ? savedSite : s)));
-        showToast(`✓ Site "${savedSite.title}" updated live!`);
+      if (data.sites && Array.isArray(data.sites)) {
+        setSites(data.sites);
+        try {
+          localStorage.setItem("hilful_cms_mining_sites", JSON.stringify(data.sites));
+        } catch {}
+      } else if (data.site) {
+        const updatedWithServer = nextSites.map((s) => (s.id === data.site.id ? data.site : s));
+        setSites(updatedWithServer);
+        try {
+          localStorage.setItem("hilful_cms_mining_sites", JSON.stringify(updatedWithServer));
+        } catch {}
       }
+      showToast(`✓ Site "${targetSite.title}" saved live to cloud & portal!`);
     } catch {
-      if (isNew) {
-        setSites((prev) => [targetSite, ...prev]);
-      } else {
-        setSites((prev) => prev.map((s) => (s.id === targetSite.id ? targetSite : s)));
-      }
       showToast(`✓ Site "${targetSite.title}" saved locally.`);
     } finally {
       setSaving(false);
@@ -348,17 +424,27 @@ export default function AdminMiningSitesPage() {
 
   const handleDelete = async (id: string) => {
     if (confirm("Are you sure you want to delete this mining site / concession?")) {
+      const nextSites = sites.filter((s) => s.id !== id);
+      setSites(nextSites);
+
+      try {
+        localStorage.setItem("hilful_cms_mining_sites", JSON.stringify(nextSites));
+        if (typeof BroadcastChannel !== "undefined") {
+          const bc = new BroadcastChannel("hilful_cms_channel");
+          bc.postMessage({ type: "MINING_SITES_UPDATED", data: nextSites });
+          bc.close();
+        }
+      } catch {}
+
       try {
         await fetch("/api/admin/cms/mining-sites", {
-          method: "DELETE",
+          method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ id }),
+          body: JSON.stringify({ allSites: nextSites }),
         });
-        setSites((prev) => prev.filter((s) => s.id !== id));
         showToast("✓ Site deleted from live portal.");
       } catch {
-        setSites((prev) => prev.filter((s) => s.id !== id));
-        showToast("✓ Site deleted.");
+        showToast("✓ Site deleted locally.");
       }
       setEditingSite(null);
     }

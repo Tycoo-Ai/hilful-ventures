@@ -1176,25 +1176,82 @@ export const DEFAULT_MINING_SITES: MiningSiteItem[] = [
   },
 ];
 
-export async function getMiningSitesServer(): Promise<MiningSiteItem[]> {
+export async function getMiningSitesWithMetaServer(): Promise<{ sites: MiningSiteItem[]; source: "cloud" | "disk" | "default" }> {
   // 1. Check persistent Cloudinary storage first
   try {
     const cloudSites = await getCloudJson<MiningSiteItem[]>("cms-mining-sites");
     if (cloudSites && Array.isArray(cloudSites) && cloudSites.length > 0) {
       writeJsonFile(MINING_SITES_FILE, cloudSites);
-      return cloudSites.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+      return { sites: cloudSites.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0)), source: "cloud" };
     }
   } catch {}
 
   // 2. Fallback to local JSON file
   const disk = readJsonFile<MiningSiteItem[]>(MINING_SITES_FILE);
   if (disk && Array.isArray(disk) && disk.length > 0) {
-    return disk.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+    return { sites: disk.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0)), source: "disk" };
   }
 
   // 3. Guaranteed fallback to default canonical mining sites
   writeJsonFile(MINING_SITES_FILE, DEFAULT_MINING_SITES);
-  return DEFAULT_MINING_SITES;
+  return { sites: DEFAULT_MINING_SITES, source: "default" };
+}
+
+export async function getMiningSitesServer(): Promise<MiningSiteItem[]> {
+  const meta = await getMiningSitesWithMetaServer();
+  return meta.sites;
+}
+
+export async function saveMiningSitesBulkServer(sites: MiningSiteItem[]): Promise<MiningSiteItem[]> {
+  writeJsonFile(MINING_SITES_FILE, sites);
+
+  try {
+    await saveCloudJson("cms-mining-sites", sites);
+  } catch (cloudErr) {
+    console.warn("[CMS Service] Cloudinary mining sites bulk save warning:", cloudErr);
+  }
+
+  // Best-effort Prisma update to Project model
+  try {
+    for (const site of sites) {
+      await prisma.project.upsert({
+        where: { id: site.id },
+        update: {
+          title: site.title,
+          category: site.category,
+          description: site.description,
+          imageUrl: site.imageUrl,
+          status: "PUBLISHED",
+          sortOrder: site.sortOrder || 0,
+          updatedAt: new Date(),
+        },
+        create: {
+          id: site.id,
+          title: site.title,
+          category: site.category,
+          description: site.description,
+          imageUrl: site.imageUrl,
+          status: "PUBLISHED",
+          sortOrder: site.sortOrder || 0,
+        },
+      });
+    }
+  } catch (err) {
+    console.warn("[CMS Service] Prisma projects bulk upsert warning:", err);
+  }
+
+  revalidateWebRoutes([
+    "/en/mining-sites",
+    "/ar/mining-sites",
+    "/en/exploration-portal",
+    "/ar/exploration-portal",
+    "/admin/mining-sites",
+    "/",
+    "/en",
+    "/ar",
+  ]);
+
+  return sites;
 }
 
 export async function saveMiningSiteServer(site: MiningSiteItem): Promise<MiningSiteItem> {
@@ -1209,51 +1266,7 @@ export async function saveMiningSiteServer(site: MiningSiteItem): Promise<Mining
     updated = [site, ...current];
   }
 
-  writeJsonFile(MINING_SITES_FILE, updated);
-
-  try {
-    await saveCloudJson("cms-mining-sites", updated);
-  } catch (cloudErr) {
-    console.warn("[CMS Service] Cloudinary mining sites save warning:", cloudErr);
-  }
-
-  // Best-effort Prisma update to Project model
-  try {
-    await prisma.project.upsert({
-      where: { id: site.id },
-      update: {
-        title: site.title,
-        category: site.category,
-        description: site.description,
-        imageUrl: site.imageUrl,
-        status: "PUBLISHED",
-        sortOrder: site.sortOrder || 0,
-        updatedAt: new Date(),
-      },
-      create: {
-        id: site.id,
-        title: site.title,
-        category: site.category,
-        description: site.description,
-        imageUrl: site.imageUrl,
-        status: "PUBLISHED",
-        sortOrder: site.sortOrder || 0,
-      },
-    });
-  } catch (err) {
-    console.warn("[CMS Service] Prisma project upsert warning:", err);
-  }
-
-  revalidateWebRoutes([
-    "/en/mining-sites",
-    "/ar/mining-sites",
-    "/en/exploration-portal",
-    "/ar/exploration-portal",
-    "/admin/mining-sites",
-    "/",
-    "/en",
-    "/ar",
-  ]);
+  await saveMiningSitesBulkServer(updated);
 
   return site;
 }
@@ -1261,13 +1274,7 @@ export async function saveMiningSiteServer(site: MiningSiteItem): Promise<Mining
 export async function deleteMiningSiteServer(id: string): Promise<boolean> {
   const current = await getMiningSitesServer();
   const updated = current.filter((s) => s.id !== id);
-  writeJsonFile(MINING_SITES_FILE, updated);
-
-  try {
-    await saveCloudJson("cms-mining-sites", updated);
-  } catch (cloudErr) {
-    console.warn("[CMS Service] Cloudinary mining sites delete warning:", cloudErr);
-  }
+  await saveMiningSitesBulkServer(updated);
 
   try {
     await prisma.project.deleteMany({
@@ -1276,17 +1283,6 @@ export async function deleteMiningSiteServer(id: string): Promise<boolean> {
   } catch (err) {
     console.warn("[CMS Service] Prisma project delete warning:", err);
   }
-
-  revalidateWebRoutes([
-    "/en/mining-sites",
-    "/ar/mining-sites",
-    "/en/exploration-portal",
-    "/ar/exploration-portal",
-    "/admin/mining-sites",
-    "/",
-    "/en",
-    "/ar",
-  ]);
 
   return true;
 }

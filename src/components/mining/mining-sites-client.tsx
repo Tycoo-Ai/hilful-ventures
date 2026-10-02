@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import type { MiningSiteItem } from "@/lib/cms/cms-service";
@@ -11,11 +11,48 @@ interface MiningSitesClientProps {
 }
 
 export function MiningSitesClient({ sites, locale }: MiningSitesClientProps) {
+  const [siteList, setSiteList] = useState<MiningSiteItem[]>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const local = localStorage.getItem("hilful_cms_mining_sites");
+        if (local) {
+          const parsed = JSON.parse(local);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch {}
+    }
+    return sites;
+  });
   const [activeFilter, setActiveFilter] = useState<string>("ALL");
 
   const isArabic = locale === "ar";
 
-  const filteredSites = sites.filter((site) => {
+  // Hydrate from localStorage / cross-tab broadcast live
+  useEffect(() => {
+    try {
+      const local = localStorage.getItem("hilful_cms_mining_sites");
+      if (local) {
+        const parsed = JSON.parse(local);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setSiteList(parsed);
+        }
+      }
+    } catch {}
+
+    try {
+      if (typeof BroadcastChannel !== "undefined") {
+        const bc = new BroadcastChannel("hilful_cms_channel");
+        bc.onmessage = (event) => {
+          if (event.data?.type === "MINING_SITES_UPDATED" && Array.isArray(event.data?.data)) {
+            setSiteList(event.data.data);
+          }
+        };
+        return () => bc.close();
+      }
+    } catch {}
+  }, []);
+
+  const filteredSites = siteList.filter((site) => {
     if (activeFilter === "ALL") return true;
     return site.type === activeFilter;
   });

@@ -1,7 +1,7 @@
 [
   {
     "id": "site-assosa-01",
-    "title": "Assosa Placer & Hard-Rock Concession Hub",
+    "title": "SITE VISIT",
     "country": "Ethiopia",
     "region": "Benishangul-Gumuz Region (Blue Nile Basin)",
     "type": "ACTIVE_OPERATING",
@@ -9,8 +9,8 @@
     "mineralScope": "Alluvial Gold, Placer Pay-Dirt, Auriferous Quartz Veins (92% - 98.5% Au)",
     "status": "ACTIVE",
     "statusBadge": "Direct Hilful Active Concession",
-    "description": "Primary open-pit alluvial excavation and mineral recovery concession operating under direct Hilful field management. Features active hydraulic excavator benches, Knelson gravity concentrators, multi-tier wash plants, and an on-site induction furnace with certified fire assay verification.",
-    "imageUrl": "/hero-mine.jpg",
+    "description": "THE SITE VISIT BY OUR EXECUTIVE DIRECTOR",
+    "imageUrl": "https://res.cloudinary.com/sbjkwjoj/image/upload/v1790937050/hilful/general/WhatsApp_Image_2026-10-01_at_10_53_47_AM_1790937050398.jpg",
     "coordinates": "10.0667° N, 34.5333° E",
     "keyMetrics": {
       "scaleOrArea": "140 Hectares Direct Concession",
@@ -21,7 +21,7 @@
     "operationalHighlights": [
       "100% chemical-free primary gravity extraction via centrifugal hydrocyclones",
       "On-site security perimeter and Brink's/Malca-Amit compliant chain of custody",
-      "Direct smelter casting of 1kg and 5kg unrefined gold doré bars",
+      "Direct smelter casting of unrefined gold doré bars",
       "Full compliance with Ministry of Mines & Energy environmental covenants"
     ],
     "sortOrder": 1

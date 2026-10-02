@@ -1,15 +1,16 @@
 import { NextResponse } from "next/server";
 import { getAdminSession } from "@/lib/auth";
 import {
-  getMiningSitesServer,
+  getMiningSitesWithMetaServer,
   saveMiningSiteServer,
+  saveMiningSitesBulkServer,
   deleteMiningSiteServer,
 } from "@/lib/cms/cms-service";
 
 export async function GET() {
   try {
-    const sites = await getMiningSitesServer();
-    return NextResponse.json({ success: true, sites });
+    const { sites, source } = await getMiningSitesWithMetaServer();
+    return NextResponse.json({ success: true, sites, source });
   } catch (err: unknown) {
     console.error("[Mining Sites API GET] Error:", err);
     return NextResponse.json({ error: "Failed to retrieve mining sites" }, { status: 500 });
@@ -24,18 +25,26 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json();
-    if (!body || !body.title || !body.country) {
+
+    // If client supplied the full authoritative list (e.g., self-healing or reordering)
+    if (body && Array.isArray(body.allSites) && body.allSites.length > 0) {
+      const savedSites = await saveMiningSitesBulkServer(body.allSites);
+      return NextResponse.json({ success: true, sites: savedSites });
+    }
+
+    const siteData = body?.site || body;
+    if (!siteData || !siteData.title || !siteData.country) {
       return NextResponse.json(
         { error: "Site title and country are required" },
         { status: 400 }
       );
     }
 
-    if (!body.id) {
-      body.id = `site-${Date.now()}`;
+    if (!siteData.id) {
+      siteData.id = `site-${Date.now()}`;
     }
 
-    const saved = await saveMiningSiteServer(body);
+    const saved = await saveMiningSiteServer(siteData);
     return NextResponse.json({ success: true, site: saved });
   } catch (err: unknown) {
     console.error("[Mining Sites API POST] Error:", err);
